@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'; // 라우터를 사용하기 �
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter basename="/project1/"> 
+    <BrowserRouter basename="/OK/"> 
       <App />
     </BrowserRouter>
   </StrictMode>,
