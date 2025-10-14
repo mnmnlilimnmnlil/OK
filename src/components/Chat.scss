@@ -1,0 +1,226 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(90deg, $primary-color 0%, #4dabf7 100%);
+  color: white;
+  
+  h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  
+  &.connected {
+    background-color: #51cf66;
+    box-shadow: 0 0 10px rgba(81, 207, 102, 0.5);
+  }
+  
+  &.loading {
+    background-color: #ffd43b;
+    animation: pulse 1.5s infinite;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #2d2d2d;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $primary-color;
+    border-radius: 3px;
+  }
+}
+
+.welcome-message {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  margin: 2rem 0;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 0.5rem;
+  
+  &.user {
+    justify-content: flex-end;
+    
+    .message-content {
+      background: linear-gradient(135deg, $primary-color 0%, #4dabf7 100%);
+      color: white;
+      border-radius: 18px 18px 4px 18px;
+    }
+  }
+  
+  &.assistant {
+    justify-content: flex-start;
+    
+    .message-content {
+      background: #3a3a3a;
+      color: #e9ecef;
+      border-radius: 18px 18px 18px 4px;
+    }
+  }
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 0.75rem 1rem;
+  word-wrap: break-word;
+  line-height: 1.4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  
+  span {
+    width: 6px;
+    height: 6px;
+    background-color: #888;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out;
+    
+    &:nth-child(1) { animation-delay: -0.32s; }
+    &:nth-child(2) { animation-delay: -0.16s; }
+    &:nth-child(3) { animation-delay: 0s; }
+  }
+}
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.chat-input {
+  display: flex;
+  padding: 1rem 1.5rem;
+  background: #2d2d2d;
+  border-top: 1px solid #404040;
+  gap: 0.75rem;
+  
+  textarea {
+    flex: 1;
+    background: #3a3a3a;
+    border: 1px solid #555;
+    border-radius: 20px;
+    padding: 0.75rem 1rem;
+    color: white;
+    font-family: inherit;
+    font-size: 0.9rem;
+    resize: none;
+    outline: none;
+    transition: all 0.3s ease;
+    
+    &::placeholder {
+      color: #888;
+    }
+    
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba(51, 153, 255, 0.2);
+    }
+    
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+  
+  .send-button {
+    background: linear-gradient(135deg, $primary-color 0%, #4dabf7 100%);
+    border: none;
+    border-radius: 20px;
+    padding: 0.75rem 1.5rem;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(51, 153, 255, 0.3);
+    }
+    
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+}
+
+@include mobile {
+  .chat-container {
+    height: 100vh;
+    border-radius: 0;
+  }
+  
+  .message-content {
+    max-width: 85%;
+  }
+  
+  .chat-input {
+    padding: 0.75rem 1rem;
+    
+    textarea {
+      font-size: 16px; // iOS 줌 방지
+    }
+  }
+}
