@@ -12,7 +12,7 @@ console.log('API Key:', process.env.OPENAI_API_KEY ? 'Loaded' : 'Not loaded');
 console.log('Port:', process.env.PORT);
 
 const client = new OpenAI({ 
-  apiKey: process.env.OPENAI_API_KEY || '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'
+  apiKey: process.env.OPENAI_API_KEY
 });
 
 // 스키마 검증
