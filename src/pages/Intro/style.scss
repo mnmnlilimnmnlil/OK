@@ -1,0 +1,16 @@
+.intro-container {
+  position: relative;
+  width: 100vw;
+  height: 300vh;
+  overflow-x: hidden;
+}
+
+.intro-title {
+  position: absolute;
+  bottom: 60px;
+  left: 50px;
+  font-size: 4rem;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
