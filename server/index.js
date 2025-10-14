@@ -8,9 +8,14 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '1mb' }));
 
+// 서버 상태 확인 엔드포인트
+app.get('/api/status', (req, res) => {
+  res.json({ status: 'OK', message: 'Server is running' });
+});
+
 // 환경변수 로딩
 const apiKey = process.env.OPENAI_API_KEY;
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8787;
 
 if (!apiKey) {
   console.error('❌ OPENAI_API_KEY environment variable is required');
