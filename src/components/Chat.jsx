@@ -25,7 +25,7 @@ export default function Chat() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/ok-e', {
+      const response = await fetch('http://localhost:8787/api/ok-e', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
