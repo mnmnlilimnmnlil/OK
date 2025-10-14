@@ -1,8 +1,45 @@
-.page-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  font-size: 3rem;
-  color: white;
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.ok-e-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 50%, #2d2d2d 100%);
+  padding: 2rem;
+}
+
+.ok-e-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  
+  h1 {
+    font-size: 3rem;
+    color: $primary-color;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(51, 153, 255, 0.3);
+  }
+  
+  p {
+    font-size: 1.2rem;
+    color: #888;
+    margin: 0;
+  }
+}
+
+@include mobile {
+  .ok-e-container {
+    padding: 1rem;
+  }
+  
+  .ok-e-header {
+    margin-bottom: 1rem;
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
 }
