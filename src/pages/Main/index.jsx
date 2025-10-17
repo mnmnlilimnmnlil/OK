@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import "./style.scss";
+import styles from "./style.module.scss";
 
 export default function Main() {
   return (
-    <div className="main-container">
-      <video className="main-video" src="/assets/ok-main.mp4" autoPlay loop muted />
-      <nav className="nav">
+    <div className={styles.mainContainer}>
+      <video className={styles.mainVideo} src="/assets/ok-main.mp4" autoPlay loop muted />
+      <nav className={styles.nav}>
         <Link to="/system-before">SYSTEM BEFORE</Link>
         <Link to="/design-guide">DESIGN GUIDE</Link>
         <Link to="/tablet">TABLET</Link>

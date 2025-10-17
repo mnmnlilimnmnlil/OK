@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
-import './Chat.scss';
+import axios from 'axios';
+import styles from './Chat.module.scss';
 
 export default function Chat() {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -14,6 +16,28 @@ export default function Chat() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // 서버 연결 상태 확인
+  useEffect(() => {
+    const checkServer = async () => {
+      try {
+        // 실제 API 호출로 서버와 API 키 모두 확인
+        const response = await axios.post('http://localhost:8787/api/ok-e', {
+          messages: [{ role: 'user', content: 'test' }],
+          model: 'gpt-4o-mini',
+          temperature: 0.7
+        });
+        setIsConnected(true);
+      } catch (error) {
+        console.error('Server connection error:', error);
+        setIsConnected(false);
+      }
+    };
+
+    checkServer();
+    const interval = setInterval(checkServer, 10000); // 10초마다 확인 (API 호출이므로 간격 늘림)
+    return () => clearInterval(interval);
+  }, []);
 
   const sendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
@@ -25,24 +49,13 @@ export default function Chat() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8787/api/ok-e', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          messages: newMessages,
-          model: 'gpt-4o-mini',
-          temperature: 0.7
-        }),
+      const response = await axios.post('http://localhost:8787/api/ok-e', {
+        messages: newMessages,
+        model: 'gpt-4o-mini',
+        temperature: 0.7
       });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const data = await response.json();
-      const assistantMessage = { role: 'assistant', content: data.message.content };
+      const assistantMessage = { role: 'assistant', content: response.data.message.content };
       setMessages(prev => [...prev, assistantMessage]);
     } catch (error) {
       console.error('Error:', error);
@@ -61,34 +74,34 @@ export default function Chat() {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-header">
+    <div className={styles['chat__container']}>
+      <div className={styles['chat__header']}>
         <h3>OK-E Chat</h3>
-        <div className="status-indicator">
-          <div className={`status-dot ${isLoading ? 'loading' : 'connected'}`}></div>
-          <span>{isLoading ? '응답 중...' : '연결됨'}</span>
+        <div className={styles['chat__status-indicator']}>
+          <div className={`${styles['chat__status-dot']} ${isConnected ? styles['chat__status-dot--connected'] : styles['chat__status-dot--disconnected']}`}></div>
+          <span>{isConnected ? '서버 연결됨' : '서버 연결 끊김'}</span>
         </div>
       </div>
       
-      <div className="chat-messages">
+      <div className={styles['chat__messages']}>
         {messages.length === 0 && (
-          <div className="welcome-message">
+          <div className={styles['chat__welcome-message']}>
             <p>안녕하세요! OK-E와 대화해보세요.</p>
           </div>
         )}
         
         {messages.map((message, index) => (
-          <div key={index} className={`message ${message.role}`}>
-            <div className="message-content">
+          <div key={index} className={`${styles['chat__message']} ${styles[`chat__message--${message.role}`]}`}>
+            <div className={styles['chat__message-content']}>
               {message.content}
             </div>
           </div>
         ))}
         
         {isLoading && (
-          <div className="message assistant">
-            <div className="message-content">
-              <div className="typing-indicator">
+          <div className={`${styles['chat__message']} ${styles['chat__message--assistant']}`}>
+            <div className={styles['chat__message-content']}>
+              <div className={styles['chat__typing-indicator']}>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -100,7 +113,7 @@ export default function Chat() {
         <div ref={messagesEndRef} />
       </div>
       
-      <div className="chat-input">
+      <div className={styles['chat__input']}>
         <textarea
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
@@ -112,7 +125,7 @@ export default function Chat() {
         <button 
           onClick={sendMessage} 
           disabled={!inputMessage.trim() || isLoading}
-          className="send-button"
+          className={styles['chat__send-button']}
         >
           전송
         </button>

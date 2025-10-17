@@ -7,7 +7,7 @@ import Tablet from "./pages/Tablet";
 import SmartWatch from "./pages/SmartWatch";
 import Kiosk from "./pages/Kiosk";
 import OKe from "./pages/OKe";
-import "./styles/global.scss";
+import "./styles/main.scss";
 
 function App() {
   return (
