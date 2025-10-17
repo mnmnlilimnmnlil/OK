@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import * as THREE from "three";
 import { OrbitControls } from "three-stdlib";
-import "./style.scss";
+import styles from "./style.module.scss";
 
 export default function Intro() {
   const canvasRef = useRef();
@@ -58,9 +58,9 @@ export default function Intro() {
   }, [navigate]);
 
   return (
-    <div className="intro-container">
+    <div className={styles.introContainer}>
       <canvas ref={canvasRef}></canvas>
-      <h1 className="intro-title">OK</h1>
+      <h1 className={styles.introTitle}>OK</h1>
     </div>
   );
 }

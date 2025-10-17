@@ -13,6 +13,14 @@ app.get('/api/status', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
+// API 테스트 엔드포인트 (GET)
+app.get('/api/ok-e', (req, res) => {
+  res.json({ 
+    status: 'OK', 
+    message: 'API endpoint is working. Use POST method for chat requests.' 
+  });
+});
+
 // 환경변수 로딩
 const apiKey = process.env.OPENAI_API_KEY;
 const port = process.env.PORT || 8787;
@@ -63,6 +71,7 @@ app.post('/api/chat', async (req, res) => {
 
 // 새로운 정교한 API
 app.post('/api/ok-e', async (req, res) => {
+  console.log('📨 API 요청 받음:', req.body);
   const { error, value } = ChatRequestSchema.validate(req.body);
   
   if (error) {
@@ -75,11 +84,13 @@ app.post('/api/ok-e', async (req, res) => {
   const { messages, model, temperature } = value;
 
   try {
+    console.log('🤖 GPT API 호출 시작:', { model, messages, temperature });
     const response = await client.chat.completions.create({
       model,
       messages,
       temperature
     });
+    console.log('✅ GPT API 응답 받음:', response.choices?.[0]?.message?.content);
 
     return res.json({
       id: response.id,
@@ -87,6 +98,7 @@ app.post('/api/ok-e', async (req, res) => {
       usage: response.usage ?? null
     });
   } catch (err) {
+    console.error('❌ GPT API 에러:', err);
     const error = err;
     return res
       .status(error?.status ?? 500)
