@@ -1,0 +1,53 @@
+// COLOR VARIABLES
+$color-blue-500: #2e90fa;
+$color-gray-400: #98a2b3;
+
+// MIXINS
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+.okEContainer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 50%, #2d2d2d 100%);
+  padding: 2rem;
+}
+
+.okEHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+  
+  h1 {
+    font-size: 3rem;
+    color: $color-blue-500;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(51, 153, 255, 0.3);
+  }
+  
+  p {
+    font-size: 1.2rem;
+    color: $color-gray-400;
+    margin: 0;
+  }
+}
+
+@include mobile {
+  .okEContainer {
+    padding: 1rem;
+  }
+  
+  .okEHeader {
+    margin-bottom: 1rem;
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}
