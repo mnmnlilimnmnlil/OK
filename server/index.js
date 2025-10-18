@@ -5,7 +5,17 @@ import Joi from 'joi';
 import OpenAI from 'openai';
 
 const app = express();
-app.use(cors());
+
+// CORS 설정 - GitHub Pages 도메인 허용
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://mnmnlilimnmnlil.github.io'
+  ],
+  credentials: true
+}));
+
 app.use(express.json({ limit: '1mb' }));
 
 // 서버 상태 확인 엔드포인트
