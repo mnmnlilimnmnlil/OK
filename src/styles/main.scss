@@ -1,0 +1,22 @@
+@use './color';
+@use './font';
+@forward './color';
+@forward './font';
+
+* {
+    padding: 0;
+    margin: 0;
+
+    box-sizing: border-box;
+
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+}
+
+body {
+  margin: 0;
+  background-color: color.$color-black-900;
+  font-family: 'Noto Sans KR', sans-serif;
+  overflow-x: hidden;
+  color: color.$color-white-000;
+}
