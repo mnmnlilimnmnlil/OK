@@ -23,7 +23,7 @@ app.get('/api/ok-e', (req, res) => {
 
 // 환경변수 로딩
 const apiKey = process.env.OPENAI_API_KEY;
-const port = process.env.PORT || 8787;
+const port = process.env.PORT || 8080;
 
 if (!apiKey) {
   console.error('❌ OPENAI_API_KEY environment variable is required');
