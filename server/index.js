@@ -6,13 +6,9 @@ import OpenAI from 'openai';
 
 const app = express();
 
-// CORS 설정 - GitHub Pages 도메인 허용
+// CORS 설정 - 모든 도메인 허용 (개발용)
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'https://mnmnlilimnmnlil.github.io'
-  ],
+  origin: true,
   credentials: true
 }));
 
