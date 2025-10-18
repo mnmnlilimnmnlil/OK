@@ -22,7 +22,7 @@ export default function Chat() {
     const checkServer = async () => {
       try {
         // 실제 API 호출로 서버와 API 키 모두 확인
-        const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8787'}/api/ok-e`, {
+        const response = await axios.post(`https://ok-production-92f2.up.railway.app/api/ok-e`, {
           messages: [{ role: 'user', content: 'test' }],
           model: 'gpt-4o-mini',
           temperature: 0.7
@@ -49,7 +49,7 @@ export default function Chat() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:8787'}/api/ok-e`, {
+      const response = await axios.post(`https://ok-production-92f2.up.railway.app/api/ok-e`, {
         messages: newMessages,
         model: 'gpt-4o-mini',
         temperature: 0.7
