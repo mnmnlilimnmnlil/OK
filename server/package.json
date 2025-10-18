@@ -1,0 +1,20 @@
+{
+  "name": "ok-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "openai": "^6.3.0",
+    "joi": "^17.13.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
