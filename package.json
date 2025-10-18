@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "VITE_API_URL=https://your-railway-url.railway.app npm run build",
+    "predeploy": "VITE_API_URL=https://ok-production-92f2.up.railway.app npm run build",
     "deploy": "gh-pages -d dist",
     "server": "cd server && node index.js",
     "start": "concurrently \"npm run server\" \"npm run dev\"",
