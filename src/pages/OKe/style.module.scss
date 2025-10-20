@@ -2,26 +2,49 @@
 
 .okEContainer {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 50%, #2d2d2d 100%);
+  background: $color-dark;
   padding: 2rem;
+  border: 1px solid red;
+  color: $color-light;
 }
 
 .okEHeader {
   text-align: center;
   margin-bottom: 2rem;
-  
-  h1 {
-    font-size: 3rem;
-    color: $color-primary;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    text-shadow: 0 0 20px rgba(51, 153, 255, 0.3);
+
+  h6 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: $font-pretendard;
+    margin-bottom: 3.2rem;
   }
-  
-  p {
-    font-size: 1.2rem;
-    color: $color-gray-400;
-    margin: 0;
+
+  h1 {
+    font-size: 7rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-family: $font-pretendard;
+    transform: skew(-6deg);
+
+    span {
+      font-family: $font-gotham;
+      font-weight: 600;
+    }
+  }
+}
+
+.okImgBox {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  video {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    min-height: 600px;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
   }
 }
 
@@ -29,14 +52,14 @@
   .okEContainer {
     padding: 1rem;
   }
-  
+
   .okEHeader {
     margin-bottom: 1rem;
-    
+
     h1 {
       font-size: 2rem;
     }
-    
+
     p {
       font-size: 1rem;
     }
