@@ -1,10 +1,8 @@
-// No color variables needed
+@use '../../styles/main' as *;
 
 .pageContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   height: 100vh;
   font-size: 3rem;
-  color: #ffffff;
+  color: $color-white;
 }
