@@ -4,13 +4,24 @@ import styles from "./style.module.scss";
 export default function Main() {
   return (
     <div className={styles.mainContainer}>
-      <video className={styles.mainVideo} src="/assets/ok-main.mp4" autoPlay loop muted />
+      {/* <video className={styles.mainVideo} src="/assets/ok-main.mp4" autoPlay loop muted /> */}
+      <div className={styles.mainVideo} style={{ 
+        background: 'linear-gradient(135deg, #0015ff 0%, #ff4d00 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '4rem',
+        color: 'white',
+        fontWeight: 'bold'
+      }}>
+        OK PROJECT
+      </div>
       <nav className={styles.nav}>
-        <Link to="/system-before">SYSTEM BEFORE</Link>
-        <Link to="/design-guide">DESIGN GUIDE</Link>
-        <Link to="/tablet">TABLET</Link>
-        <Link to="/smart-watch">SMART WATCH</Link>
-        <Link to="/kiosk">KIOSK</Link>
+        <Link to="/system-before">시스템 전략</Link>
+        <Link to="/design-guide">디자인 가이드</Link>
+        <Link to="/tablet">태블릿</Link>
+        <Link to="/smart-watch">스마트 워치</Link>
+        <Link to="/kiosk">키오스크</Link>
         <Link to="/ok-e">OK-E</Link>
       </nav>
     </div>

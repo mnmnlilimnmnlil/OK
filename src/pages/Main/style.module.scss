@@ -1,6 +1,4 @@
-// COLOR VARIABLES
-$color-white-000: #ffffff;
-$color-blue-500: #2e90fa;
+@use '../../styles/main' as *;
 
 .mainContainer {
   position: relative;
@@ -24,14 +22,14 @@ $color-blue-500: #2e90fa;
   gap: 10px;
   
   a {
-    color: $color-white-000;
+    color: $color-white;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.2rem;
     transition: color 0.3s ease;
 
     &:hover {
-      color: $color-blue-500;
+      color: $color-primary;
     }
   }
 }

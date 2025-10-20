@@ -1,13 +1,4 @@
-// COLOR VARIABLES
-$color-blue-500: #2e90fa;
-$color-gray-400: #98a2b3;
-
-// MIXINS
-@mixin mobile {
-  @media (max-width: 768px) {
-    @content;
-  }
-}
+@use '../../styles/main' as *;
 
 .okEContainer {
   min-height: 100vh;
@@ -21,7 +12,7 @@ $color-gray-400: #98a2b3;
   
   h1 {
     font-size: 3rem;
-    color: $color-blue-500;
+    color: $color-primary;
     margin-bottom: 0.5rem;
     font-weight: 700;
     text-shadow: 0 0 20px rgba(51, 153, 255, 0.3);
