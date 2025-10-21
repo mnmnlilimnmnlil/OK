@@ -6,7 +6,9 @@
   width: 100vw;
   height: 300vh; 
   overflow-x: hidden;
-  background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 50%, #2d2d2d 100%);
+  margin-left: calc(-1 * var(--site-margin));
+  margin-right: calc(-1 * var(--site-margin));
+  border:1px solid red;
 }
 
 .threeDContainer {
@@ -17,7 +19,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0015ff 0%, #ff4d00 100%);
 }
 
 .placeholder3D {

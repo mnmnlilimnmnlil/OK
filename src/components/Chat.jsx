@@ -1,13 +1,22 @@
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import styles from './Chat.module.scss';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+// import sendIcon from '../../assets/icon/ok-ebutton.svg';
 
 export default function Chat() {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const messagesEndRef = useRef(null);
+  
+  // 섹션 옵저버 훅 사용
+  const { ref: chatRef, isIntersecting: isChatVisible } = useIntersectionObserver({
+    threshold: 0.1,
+    triggerOnce: true
+  });
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -41,6 +50,11 @@ export default function Chat() {
 
   const sendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
+
+    // 첫 메시지 전송 시 채팅 인터페이스 확장
+    if (!isExpanded) {
+      setIsExpanded(true);
+    }
 
     const userMessage = { role: 'user', content: inputMessage };
     const newMessages = [...messages, userMessage];
@@ -788,15 +802,38 @@ export default function Chat() {
   };
 
   return (
-    <div className={styles.chatContainer}>
-      <div className={styles['chat__header']}>
-        <h3>OK-E Chat</h3>
-        <div className={styles['chat__status-indicator']}>
-          <div className={`${styles['chat__status-dot']} ${isConnected ? styles['chat__status-dot--connected'] : styles['chat__status-dot--disconnected']}`}></div>
-          <span>{isConnected ? '서버 연결됨' : '서버 연결 끊김'}</span>
+    <div 
+      ref={chatRef}
+      className={`${styles.chatContainer} ${isExpanded ? styles.chatContainerExpanded : styles.chatContainerCollapsed} ${isChatVisible ? styles.animateIn : ''}`}
+    >
+      {!isExpanded ? (
+        <div className={styles.chatCollapsed}>
+          <div className={styles.chatInputBar}>
+            <input
+              type="text"
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  sendMessage();
+                }
+              }}
+              placeholder="OK-E에게 물어보기"
+              className={styles.chatInputField}
+            />
+            <button 
+              className={styles.chatSendIcon}
+              onClick={sendMessage}
+              disabled={!inputMessage.trim() || isLoading}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+              </svg>
+            </button>
+          </div>
         </div>
-      </div>
-      
+      ) : (
+        <>
       <div className={styles['chat__messages']}>
         {messages.length === 0 && (
           <div className={styles['chat__welcome-message']}>
@@ -843,10 +880,12 @@ export default function Chat() {
         {isLoading && (
           <div className={`${styles['chat__message']} ${styles['chat__message--assistant']}`}>
             <div className={styles['chat__message-content']}>
-              <div className={styles['chat__typing-indicator']}>
-                <span></span>
-                <span></span>
-                <span></span>
+              <div className={styles['chat__loading']}>
+                <div className={styles['loading-dots']}>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
               </div>
             </div>
           </div>
@@ -856,22 +895,27 @@ export default function Chat() {
       </div>
       
       <div className={styles['chat__input']}>
-        <textarea
+        <input
+          type="text"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
           onKeyPress={handleKeyPress}
-          placeholder="교정 업무 관련 문의사항을 입력하세요..."
+          placeholder="OK-E에게 물어보기"
           disabled={isLoading}
-          rows={1}
+          className={styles['chat__input-field']}
         />
         <button 
           onClick={sendMessage} 
           disabled={!inputMessage.trim() || isLoading}
-          className={styles['chat__send-button']}
+          className={styles['chat__send-icon']}
         >
-          전송
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+          </svg>
         </button>
       </div>
+        </>
+      )}
     </div>
   );
 }
