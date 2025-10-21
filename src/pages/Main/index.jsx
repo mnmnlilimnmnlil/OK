@@ -6,7 +6,6 @@ export default function Main() {
     <div className={styles.mainContainer}>
       {/* <video className={styles.mainVideo} src="/assets/ok-main.mp4" autoPlay loop muted /> */}
       <div className={styles.mainVideo} style={{ 
-        background: 'linear-gradient(135deg, #0015ff 0%, #ff4d00 100%)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
