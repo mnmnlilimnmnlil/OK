@@ -5,6 +5,21 @@
 @forward './font';
 @forward './mixins';
 
+// 전체 사이트 레이아웃 변수
+:root {
+  --site-margin: 80px;
+  --site-gutter: 20px;
+
+}
+
+// 모바일에서는 마진 줄이기
+@media (max-width: 768px) {
+  :root {
+    --site-margin: 20px;
+    --site-gutter: 20px;
+  }
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -14,7 +29,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 var(--site-margin);
   background-color: color.$color-dark;
   font-family: font.$font-pretendard;
   overflow-x: hidden;

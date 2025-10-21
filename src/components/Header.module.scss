@@ -1,0 +1,57 @@
+@use '../styles/main' as *;
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 2rem var(--site-margin);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  .logoIcon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.menu {
+  .menuIcon {
+    width: 60px;
+    height: 40px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: brightness(0) invert(1);
+    
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+@include mobile {
+  .header {
+    padding: 1rem var(--site-margin);
+  }
+  
+  .logo .logoIcon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .menu .menuIcon {
+    width: 25px;
+    height: 18px;
+  }
+}
