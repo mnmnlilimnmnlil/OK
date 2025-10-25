@@ -2,6 +2,7 @@ import Chat from '../../components/Chat';
 import Header from '../../components/Header';
 import styles from './style.module.scss';
 import videoSrc from '../../assets/mp4/ok-e.mp4';
+import videoSrc2 from '../../assets/mp4/aipage.mp4';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import smartIcon from '../../assets/icon/smart.svg';
 import danderIcon from '../../assets/icon/dander.svg';
@@ -72,7 +73,7 @@ export default function OKe() {
       <div className={styles.heroSection}>
         <div className={styles.heroVideo}>
           <video
-            src={videoSrc}
+            src={videoSrc2}
             autoPlay
             muted
             loop
@@ -85,9 +86,9 @@ export default function OKe() {
           className={`${styles.heroText} ${isHeroTextVisible ? styles.animateIn : ''}`}
         >
           <h1>
-            현장과 데이터를<br />
-            연결하며<br />
-            운영되는 교정
+            대한민국 교정의<br />
+            든든한 어시스턴트<br />
+            OK-E
           </h1>
           <p>
             O.K는 현장과 데이터를 유기적으로 연결함으로써, 교정 업무의 모든<br />

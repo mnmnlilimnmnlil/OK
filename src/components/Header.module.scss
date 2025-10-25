@@ -13,6 +13,9 @@
 }
 
 .logo {
+  display: block;
+  text-decoration: none;
+  
   .logoIcon {
     width: 60px;
     height: 60px;
@@ -25,18 +28,31 @@
   }
 }
 
-.menu {
+.menuButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
   .menuIcon {
     width: 60px;
     height: 40px;
     object-fit: contain;
-    cursor: pointer;
     transition: all 0.3s ease;
     filter: brightness(0) invert(1);
-    
-    &:hover {
-      transform: scale(1.02);
-    }
   }
 }
 
@@ -50,8 +66,12 @@
     height: 35px;
   }
   
-  .menu .menuIcon {
-    width: 25px;
-    height: 18px;
+  .menuButton {
+    padding: 6px;
+
+    .menuIcon {
+      width: 25px;
+      height: 18px;
+    }
   }
 }
