@@ -8,6 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  margin: 0 calc(-1 * var(--site-margin));
+  width: calc(100% + 2 * var(--site-margin));
 }
 
 .heroVideo {
@@ -35,10 +37,11 @@
   transform: translateY(30px);
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   margin-top: 3.5rem;
+  padding: 0 var(--site-margin);
   h1 {
     font-size: 4rem;
     font-weight: 600;
-    font-family: $font-gotham;
+    font-family: $font-pretendard;
     line-height: 1.2;
     color: $color-light;
     margin: 0 0 3rem 0;
@@ -565,6 +568,8 @@
 @include mobile {
   .heroSection {
     height: 100vh;
+    margin: 0 calc(-1 * var(--site-margin));
+    width: calc(100% + 2 * var(--site-margin));
   }
   
   .heroText {

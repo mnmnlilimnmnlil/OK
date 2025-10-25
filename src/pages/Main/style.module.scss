@@ -1,35 +1,335 @@
 @use '../../styles/main' as *;
 
-.mainContainer {
+// 전역 sticky 스타일
+.padding-global {
+  padding-right: var(--site-margin);
+  padding-left: var(--site-margin);
+}
+
+.padding-global.is--sticky {
+  z-index: 1;
+  position: sticky;
+  top: 0;
+}
+
+// 히어로 섹션
+.heroSection {
   position: relative;
-  width: 100%;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0 calc(-1 * var(--site-margin));
+  width: calc(100% + 2 * var(--site-margin));
+  margin-top: 0; // 헤더와 겹치지 않도록
 }
 
-.mainVideo {
+.heroVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  z-index: 1;
+  
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
-.nav {
-  position: absolute;
-  bottom: 50px;
-  left: 50px;
+.heroText {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0;
+  text-align: left;
+  padding: 0 var(--site-margin);
+  
+  h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    font-family: $font-pretendard;
+    line-height: 1.2;
+    color: $color-light;
+    margin: 0 0 3rem 0;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: rgba(247, 247, 247, 0.9);
+    font-family: $font-pretendard;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: $color-light;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// 섹션 상단 텍스트
+.sectionHeader {
+  background: $color-dark;
+  padding: 8rem var(--site-margin) 4rem;
+  margin: 0 calc(-1 * var(--site-margin));
+  width: calc(100% + 2 * var(--site-margin));
+}
+
+.sectionMainTitle {
+  font-size: 4rem;
+  font-weight: 600;
+  color: $color-white;
+  font-family: $font-pretendard;
+  line-height: 1.2;
+  margin: 0;
+  text-align: left;
+}
+
+// 6개 섹션
+.sectionsContainer {
+  background: transparent;
+  padding: 0;
+  display: block; // flex에서 block으로 변경
+  height: auto; // 자동 높이
+  margin: 0 calc(-1 * var(--site-margin));
+  width: calc(100% + 2 * var(--site-margin));
+  position: relative;
+  z-index: 2;
+}
+
+.section {
+  position: relative;
+  width: 100%;
+  height: 100vh; // 기본 높이
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
+  border-bottom: 1px solid #333;
+  transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+  color: inherit;
   
-  a {
-    color: $color-white;
+  // 축소된 상태
+  &.collapsed {
+    height: 40vh;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #171717 0%, #2537FF 70%, #FF4D00 100%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    z-index: 1;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+  
+  &:hover {
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
+    color: inherit;
+  }
+}
+// 첫 번째 섹션에만 상단 보더
+.section:nth-child(1) {
+  border-top: 1px solid #333;
+}
 
-    &:hover {
-      color: $color-primary;
+.sectionNumber {
+  position: absolute;
+  top: 3rem;
+  left: var(--site-margin);
+  font-size: 2.7rem;
+  font-weight: 300;
+  color: $color-white;
+  font-family: $font-pretendard;
+  line-height: 1;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sectionTitle {
+  position: absolute;
+  top: 5.5rem;
+  left: calc(var(--site-margin) + 4rem);
+  font-size: 6.25rem;
+  font-weight: 700;
+  color: $color-white;
+  margin: 0;
+  font-family: $font-gotham;
+  line-height: 1.1;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sectionDescription {
+  position: absolute;
+  bottom: 2rem;
+  right: var(--site-margin);
+  max-width: 880px;
+  font-size: 2rem;
+  line-height: 1.5;
+  color: $color-white;
+  margin: 0;
+  font-family: $font-pretendard;
+  font-weight: 300;
+  text-align: left;
+  z-index: 2;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+ 
+}
+
+// 메인 영상 섹션
+.mainVideoSection {
+  background: $color-dark;
+  padding: 0;
+  margin: 0 calc(-1 * var(--site-margin));
+  margin-top: 100vh; // 섹션들과 거리 두기
+  width: calc(100% + 2 * var(--site-margin));
+  height: 200vh; // 정상적인 높이
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  
+  video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    transform: scale(0.3) translateY(20%);
+    transition: transform 0.6s ease-out;
+  }
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: $color-white;
+  z-index: 2;
+  
+  h3 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    font-family: $font-pretendard;
+    color: #4a9eff;
+  }
+  
+  p {
+    font-size: 1.5rem;
+    margin: 0 0 3rem 0;
+    font-family: $font-pretendard;
+    opacity: 0.9;
+    color: $color-white;
+  }
+}
+
+.loadingBar {
+  background: #4a9eff;
+  padding: 1.5rem 3rem;
+  border-radius: 8px;
+  display: inline-block;
+  
+  .loadingText {
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: $font-gotham;
+    color: $color-white;
+    letter-spacing: 0.1em;
+  }
+}
+
+// 모바일 반응형
+@include mobile {
+  .heroText {
+    padding: 0 var(--site-margin);
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .sectionHeader {
+    padding: 4rem var(--site-margin) 2rem;
+    margin: 0;
+    width: 100%;
+  }
+
+  .sectionMainTitle {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .sectionsContainer {
+    margin: 0;
+    width: 100%;
+  }
+
+  .section {
+    padding: 1rem var(--site-margin);
+    height: 40vh;
+  }
+
+  .sectionNumber {
+    top: 3rem;
+    font-size: 2rem;
+  }
+
+  .sectionTitle {
+    top: 3rem;
+    left: calc(var(--site-margin) + 2.5rem);
+    font-size: 3.75rem;
+  }
+
+  .sectionDescription {
+    position: static;
+    margin-top: 2rem;
+    text-align: left;
+    max-width: 100%;
+    font-size: 1.125rem;
+  }
+
+  .videoContainer {
+    height: 60vh;
+  }
+
+  .videoOverlay {
+    h3 {
+      font-size: 2rem;
+    }
+    
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  .loadingBar {
+    padding: 1rem 2rem;
+    
+    .loadingText {
+      font-size: 1rem;
     }
   }
 }
