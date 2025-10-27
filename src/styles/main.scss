@@ -20,6 +20,14 @@
   }
 }
 
+// 5K 및 초대형 해상도에서는 마진 증가
+@media (min-width: 2560px) {
+  :root {
+    --site-margin: 120px;
+    --site-gutter: 30px;
+  }
+}
+
 * {
     padding: 0;
     margin: 0;

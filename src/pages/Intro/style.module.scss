@@ -80,3 +80,20 @@
   letter-spacing: 3px;
   z-index: 5;
 }
+
+// 5K 해상도 대응
+@include imac5k {
+  .placeholder3D {
+    h2 {
+      font-size: 4rem;
+    }
+    
+    p {
+      font-size: 1.8rem;
+    }
+  }
+
+  .introTitle {
+    font-size: 6rem;
+  }
+}
