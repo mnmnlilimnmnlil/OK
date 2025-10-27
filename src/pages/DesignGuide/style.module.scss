@@ -6,3 +6,10 @@
   font-size: 3rem;
   color: $color-white;
 }
+
+// 5K 해상도 대응
+@include imac5k {
+  .pageContainer {
+    font-size: 4.5rem;
+  }
+}
