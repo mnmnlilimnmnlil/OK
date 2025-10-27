@@ -98,13 +98,21 @@
 
 // 5K 해상도 대응
 @include imac5k {
-  .logo .logoIcon {
-    width: 70px;
-    height: 70px;
+  .header {
+    padding: 3rem var(--site-margin);
   }
   
-  .menuButton .menuIcon {
-    width: 70px;
-    height: 50px;
+  .logo .logoIcon {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .menuButton {
+    padding: 12px;
+    
+    .menuIcon {
+      width: 90px;
+      height: 65px;
+    }
   }
 }

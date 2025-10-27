@@ -87,6 +87,7 @@
   line-height: 1.2;
   margin: 0;
   text-align: left;
+  margin-bottom: 10rem;
 }
 
 // 6개 섹션
@@ -118,7 +119,7 @@
   
   // 축소된 상태
   &.collapsed {
-    height: 40vh;
+    height: 37vh;
   }
   
   &::before {
@@ -279,7 +280,7 @@
   }
 
   .sectionMainTitle {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     margin-bottom: 2rem;
   }
 
@@ -425,7 +426,7 @@
   }
 
   .sectionMainTitle {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   .section {
@@ -433,14 +434,14 @@
   }
 
   .sectionNumber {
-    top: 2rem;
-    font-size: 2.2rem;
+    top: 2.2rem;
+    font-size: 1.8rem;
   }
 
   .sectionTitle {
     top: 4rem;
     left: calc(var(--site-margin) + 3.5rem);
-    font-size: 5rem;
+    font-size: 4.5rem;
     line-height: 1.1;
   }
 
@@ -448,7 +449,7 @@
     position: absolute;
     bottom: 1.5rem;
     right: var(--site-margin);
-    max-width: 680px;
+    max-width: 600px;
     max-height: 9rem;
     font-size: 1.3rem;
     line-height: 1.35;
@@ -471,28 +472,37 @@
 @include imac5k {
   .heroText {
     h1 {
-      font-size: 5rem;
+      font-size: 6rem;
       margin-bottom: 4rem;
     }
     
     p {
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
   }
 
   .sectionMainTitle {
     font-size: 5rem;
+    margin-bottom: 15rem
   }
 
   .sectionNumber {
-    font-size: 3.5rem;
+    font-size: 3.3rem;
+    top: 4.5rem;
   }
 
   .sectionTitle {
-    font-size: 8rem;
+    font-size: 9rem;
+    top: 7.5rem;
   }
 
   .sectionDescription {
     font-size: 2.5rem;
+    max-width: 1100px;
+    max-height: 15rem;
+    bottom: 4.5rem;
+  }
+  .section {
+    height: 100vh;
   }
 }
