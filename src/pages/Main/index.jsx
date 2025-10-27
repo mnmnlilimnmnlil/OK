@@ -107,13 +107,13 @@ export default function Main() {
         
         <div className={styles.heroText}>
           <h1>
-            제목은 넣을 건데<br />
-            아직 안 정했어<br />
-            더 생각해볼게
+            교정의 새로운 기준을<br />
+            설계하는 시스템<br />
+            - O.K
           </h1>
           <p>
-            교정본부에 대한 이해를 바탕으로 교정시설과 교정공무원의 전체적인 비전을 확장했습니다.
-            이러한 이해를 바탕으로 한국 교정시설의 사용자인 교정공무원의 편의성과 사용성을 중심으로 'OK'를 기획했습니다.
+            O.K는 현장과 데이터를 유기적으로 연결함으로써, 교정 업무의 모든<br />
+            과정을 하나의 흐름으로 통합하며 새로운 표준을 제시합니다.
           </p>
         </div>
       </div>
@@ -121,8 +121,8 @@ export default function Main() {
       {/* 섹션 상단 텍스트 */}
       <div className={styles.sectionHeader}>
         <h2 className={styles.sectionMainTitle}>
-          무언가 제목을 넣긴 할건데<br />
-          아직 안 정해짐 좀 더 고민할게
+          우리는 현장을 기록하고,<br />
+          사람을 중심에 둔 구조를 설계합니다
         </h2>
       </div>
 

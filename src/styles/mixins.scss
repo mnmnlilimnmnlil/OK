@@ -11,8 +11,21 @@
   }
 }
 
+@mixin laptop {
+  @media (min-width: 1025px) and (max-width: 1600px) {
+    @content;
+  }
+}
+
 @mixin desktop {
-  @media (min-width: 1025px) {
+  @media (min-width: 1601px) and (max-width: 2559px) {
+    @content;
+  }
+}
+
+// 5K (5120x2880) 및 초대형 해상도 전용 믹스인
+@mixin imac5k {
+  @media (min-width: 2560px) {
     @content;
   }
 }
