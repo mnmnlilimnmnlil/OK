@@ -8,7 +8,6 @@
   overflow-x: hidden;
   margin-left: calc(-1 * var(--site-margin));
   margin-right: calc(-1 * var(--site-margin));
-  border:1px solid red;
 }
 
 .threeDContainer {
@@ -85,15 +84,15 @@
 @include imac5k {
   .placeholder3D {
     h2 {
-      font-size: 4rem;
+      font-size: 5rem;
     }
     
     p {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
     }
   }
 
   .introTitle {
-    font-size: 6rem;
+    font-size: 7rem;
   }
 }
