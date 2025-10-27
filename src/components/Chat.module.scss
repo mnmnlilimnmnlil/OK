@@ -1299,3 +1299,32 @@
     }
   }
 }
+
+// 5K 해상도 대응
+@include imac5k {
+  .chatContainer {
+    max-width: 1400px;
+  }
+
+  .chatInputField {
+    font-size: 1.8rem;
+  }
+
+  .chat__message-content {
+    font-size: 1.3rem;
+  }
+
+  .welcome-header {
+    h3 {
+      font-size: 3rem;
+    }
+    
+    p {
+      font-size: 1.8rem;
+    }
+  }
+
+  .feature-item span {
+    font-size: 1.8rem;
+  }
+}
