@@ -15,13 +15,12 @@
 }
 
 .overviewTitle {
-  font-size: 0.875rem;
-  font-weight: 300;
+  font-size: 1.5rem;
+  font-weight: 500;
   font-family: $font-pretendard;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 0 1.2rem 0;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  color: $color-light;
+  margin: 0 0 3rem 0;
+  
 }
 
 .mainTitle {
@@ -86,7 +85,7 @@
 .cardNumber {
   font-size: 2rem;
   font-weight: 600;
-  font-family: $font-pretendard;
+  font-family: $font-gotham;
   color: $color-light;
   margin-bottom: 1.25rem;
   margin-top: 0;
@@ -106,10 +105,12 @@
   font-size: 0.95rem;
   font-weight: 300;
   font-family: $font-pretendard;
-  color: rgba(255, 255, 255, 0.65);
+  color: $color-light;
   margin: 0;
   line-height: 1.6;
   flex: 1;
+  position: absolute;
+  bottom: 2rem;
 }
 
 // 히어로 섹션
@@ -165,7 +166,7 @@
     font-family: $font-pretendard;
     margin: 0;
     font-weight: 300;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.05em;
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
   }
 }
@@ -316,22 +317,67 @@
   }
 
   .cardTitle {
-    font-size: 1.2rem;
+    font-size: 2rem;
   }
 
   .cardDescription {
-    font-size: 0.95rem;
+    font-size: 1.2rem;
   }
 }
 
 // 대형 데스크톱
 @include desktop {
+  .heroText {
+    h1 {
+      font-size: 4rem;
+    }
+    
+    p {
+      font-size: 1.5rem;
+    }
+  }
+  .overviewTitle {
+    font-size: 2rem;
+  }
   .overviewSection {
     padding: 8rem var(--site-margin) 6rem;
+    max-width: 1900px;
   }
 
   .mainTitle {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
+  }
+
+  .overviewHeader {
+    margin-bottom: 5rem;
+  }
+
+  .cardsContainer {
+    grid-template-columns: 1fr 1.3fr 1fr;
+  }
+  
+  .card {
+    height: 450px;
+    padding: 3rem 2.5rem;
+    
+    &.highlightCard {
+      height: 550px;
+    }
+  }
+
+  .cardNumber {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cardDescription {
+    font-size: 1.7rem;
+    line-height: 1.6;
   }
 }
 
@@ -347,14 +393,17 @@
       font-size: 2.2rem;
     }
   }
-
+  .overviewTitle {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+  }
   .overviewSection {
     padding: 10rem var(--site-margin) 8rem;
     max-width: 2500px;
   }
 
   .mainTitle {
-    font-size: 7rem;
+    font-size: 5rem;
   }
 
   .overviewHeader {
@@ -373,13 +422,158 @@
       height: 720px;
     }
   }
-
+  .cardNumber {
+    font-size: 3.3rem;
+  }
   .cardTitle {
-    font-size: 2rem;
-    border:1px solid red;
+    font-size: 3.3rem;
+
   }
 
   .cardDescription {
-    font-size: 1.5rem;
+    font-size: 2.3rem;
+    bottom: 4rem;
   }
+}
+
+// ===============================
+// Background 숫자 섹션
+// ===============================
+.backgroundNumbersSection {
+  background: $color-dark;
+  padding: 8rem 0;
+  color: $color-light;
+  margin: 0 calc(-1 * var(--site-margin));
+  width: calc(100% + 2 * var(--site-margin));
+}
+
+.backgroundInner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--site-margin);
+}
+
+.numbersArea {
+  position: relative;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.numberWrapper {
+  position: relative;
+  width: 600px;
+  height: 500px;
+}
+
+.numberItem {
+  position: absolute;
+  font-family: $font-gotham;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animateIn {
+  opacity: 1 !important;
+}
+
+.grayNumber {
+  background: linear-gradient(180deg, $color-light, $color-dark);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.blueNumber {
+  color: $color-primary;
+}
+
+// 위치 및 크기 - 일열로 겹침
+.num25 { 
+  left: 50px; 
+  bottom: 50px; 
+  font-size: 200px; 
+  z-index: 3; 
+  opacity: 1;
+}
+.num27 { 
+  left: 50px; 
+  bottom: 200px; 
+  font-size: 180px; 
+  z-index: 2; 
+}
+.num30 { 
+  left: 50px; 
+  bottom: 350px; 
+  font-size: 160px; 
+  z-index: 1; 
+}
+
+.alwaysVisible { opacity: 1; transform: none; }
+
+.backgroundCopy {
+  h6 {
+    font-size: 1rem;
+    margin: 0 0 1.5rem 0;
+    color: $color-light;
+    font-family: $font-pretendard;
+    opacity: .85;
+  }
+  h2 {
+    font-size: 2.6rem;
+    margin: 0 0 1.5rem 0;
+    color: $color-white;
+    font-weight: 700;
+    font-family: $font-pretendard;
+  }
+  p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: $color-light;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+}
+
+// 반응형
+@include mobile {
+  .backgroundInner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .numbersArea { height: 320px; }
+  .numberWrapper { width: 90%; max-width: 400px; height: 280px; }
+  .num25 { font-size: 120px; left: 20px; bottom: 20px; z-index: 3; opacity: 1; }
+  .num27 { font-size: 100px; left: 20px; bottom: 110px; z-index: 2; }
+  .num30 { font-size: 90px; left: 20px; bottom: 200px; z-index: 1; }
+  .backgroundCopy h2 { font-size: 2rem; }
+  .backgroundCopy p { font-size: .95rem; }
+}
+
+@include tablet {
+  .numbersArea { height: 420px; }
+  .numberWrapper { width: 550px; height: 380px; }
+  .num25 { font-size: 160px; left: 30px; bottom: 30px; z-index: 3; opacity: 1; }
+  .num27 { font-size: 140px; left: 30px; bottom: 160px; z-index: 2; }
+  .num30 { font-size: 120px; left: 30px; bottom: 290px; z-index: 1; }
+}
+
+@include laptop {
+  .backgroundInner { max-width: 1200px; }
+}
+
+@include desktop {
+  .backgroundInner { max-width: 1400px; }
+  .backgroundCopy h2 { font-size: 3rem; }
+  .backgroundCopy p { font-size: 1.15rem; }
 }

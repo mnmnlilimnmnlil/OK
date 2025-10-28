@@ -123,6 +123,24 @@
   }
 }
 
+// 대형 데스크톱
+@include desktop {
+  .heroText {
+    h1 {
+      font-size: 4rem;
+    }
+    
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  .pageContainer {
+    font-size: 4rem;
+    padding: 6rem var(--site-margin);
+  }
+}
+
 // 5K 해상도 대응
 @include imac5k {
   .heroText {
