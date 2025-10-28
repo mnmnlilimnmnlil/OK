@@ -7,7 +7,6 @@ export default function Intro() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // 스크롤이 맨 아래에 도달했을 때 다음 페이지로 이동
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
         navigate("/main");
       }
@@ -25,6 +24,7 @@ export default function Intro() {
       {/* 3D 영역 - 다른 작업자가 구현할 예정 */}
       <div className={styles.threeDContainer}>
         <div className={styles.placeholder3D}>
+          <h3>123123123</h3>
           <h2>3D 영역</h2>
           <p>작업 예정</p>
         </div>
@@ -40,3 +40,5 @@ export default function Intro() {
     </div>
   );
 }
+
+
