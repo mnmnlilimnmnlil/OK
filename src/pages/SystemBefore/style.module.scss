@@ -84,10 +84,10 @@
 }
 
 .cardNumber {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 600;
   font-family: $font-pretendard;
-  color: rgba(255, 255, 255, 0.5);
+  color: $color-light;
   margin-bottom: 1.25rem;
   margin-top: 0;
 }
@@ -350,7 +350,7 @@
 
   .overviewSection {
     padding: 10rem var(--site-margin) 8rem;
-    max-width: 2000px;
+    max-width: 2500px;
   }
 
   .mainTitle {
@@ -362,20 +362,21 @@
   }
 
   .cardsContainer {
-    grid-template-columns: 1fr 1.5fr 1fr;
+    grid-template-columns: 1.5fr 2fr 1.5fr;
   }
 
   .card {
-    height: 460px;
+    height: 620px;
     padding: 3rem 2.5rem;
     
     &.highlightCard {
-      height: 520px;
+      height: 720px;
     }
   }
 
   .cardTitle {
     font-size: 2rem;
+    border:1px solid red;
   }
 
   .cardDescription {

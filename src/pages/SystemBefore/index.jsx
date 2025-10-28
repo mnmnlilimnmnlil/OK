@@ -41,7 +41,7 @@ export default function SystemBefore() {
           <div className={`${styles.cardWrapper} ${styles.card02}`}>
             <div className={styles.card}>
               <div className={styles.cardNumber}>02</div>
-              <h4 className={styles.cardTitle}>인력부족과 과밀수용</h4>
+              <h4 className={styles.cardTitle}>인력부족과<br />과밀수용</h4>
               <p className={styles.cardDescription}>교도관 1명당 70~200명의 수용자를 관리하고 있다.</p>
             </div>
           </div>
@@ -49,7 +49,7 @@ export default function SystemBefore() {
           <div className={`${styles.cardWrapper} ${styles.card01}`}>
             <div className={`${styles.card} ${styles.highlightCard}`}>
               <div className={styles.cardNumber}>01</div>
-              <h4 className={styles.cardTitle}>「교도관직무규칙」 제34조 계호의 원칙</h4>
+              <h4 className={styles.cardTitle}>「교도관직무규칙<br />제34조 계호의 원칙</h4>
               <p className={styles.cardDescription}>교도관은 수용자를 자신의 시선 또는 실력지배권 밖에 두어서는 아니 된다.</p>
             </div>
           </div>
@@ -57,7 +57,7 @@ export default function SystemBefore() {
           <div className={`${styles.cardWrapper} ${styles.card03}`}>
             <div className={styles.card}>
               <div className={styles.cardNumber}>03</div>
-              <h4 className={styles.cardTitle}>5명 중 1명 정신건강 위험군</h4>
+              <h4 className={styles.cardTitle}>5명 중 1명<br />정신건강 위험군</h4>
               <p className={styles.cardDescription}>자살 계획, 시도가 일반 성인보다 각각 2.7배, 1.6배 높다.</p>
             </div>
           </div>
