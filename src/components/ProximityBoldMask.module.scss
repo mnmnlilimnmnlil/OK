@@ -1,0 +1,31 @@
+.proxMask {
+  line-height: 1.25;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.proxMask > .proxMask-base,
+.proxMask > .proxMask-bold {
+  position: relative;
+}
+
+.proxMask > .proxMask-bold {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(
+    circle var(--r) at var(--mx) var(--my),
+    #000 0%,
+    #000 calc(var(--r) - var(--f)),
+    transparent var(--r)
+  );
+  mask-image: radial-gradient(
+    circle var(--r) at var(--mx) var(--my),
+    #000 0%,
+    #000 calc(var(--r) - var(--f)),
+    transparent var(--r)
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  transition: -webkit-mask-image 0.08s linear, mask-image 0.08s linear;
+}
