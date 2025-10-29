@@ -147,25 +147,27 @@
 .card--border-glow::after {
   content: '';
   position: absolute;
-  inset: -12px;
-  background: 
-    radial-gradient(
-      200px circle at var(--glow-x, 50%) var(--glow-y, 50%),
-      rgba(0, 21, 255, calc(var(--glow-intensity, 0) * 1)) 0%,
-      rgba(0, 21, 255, calc(var(--glow-intensity, 0) * 0.98)) 3%,
-      rgba(0, 21, 255, calc(var(--glow-intensity, 0) * 0.9)) 10%,
-      rgba(0, 21, 255, calc(var(--glow-intensity, 0) * 0.6)) 20%,
-      rgba(0, 21, 255, calc(var(--glow-intensity, 0) * 0.4)) 30%,
-      transparent 45%
-    );
+  inset: 0;
+  padding: 1px;
+  background: radial-gradient(
+    var(--glow-radius, 200px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(var(--glow-color, 0, 21, 255), calc(var(--glow-intensity, 0) * 0.8)) 0%,
+    rgba(var(--glow-color, 0, 21, 255), calc(var(--glow-intensity, 0) * 0.4)) 30%,
+    transparent 60%
+  );
   border-radius: inherit;
-  mask-composite: exclude;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: subtract;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   pointer-events: none;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
   z-index: 1;
   opacity: var(--glow-intensity, 0);
-  filter: none;
 }
 
 .card--border-glow:hover::after {

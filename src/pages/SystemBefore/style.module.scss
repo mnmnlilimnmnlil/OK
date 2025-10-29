@@ -33,7 +33,7 @@
 .heroText {
   position: relative;
   z-index: 2;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0;
   text-align: left;
   padding: 0 var(--site-margin);
@@ -118,6 +118,15 @@
   flex-direction: column;
   width: 100%;
   aspect-ratio: 1 / 1.1;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+  
+  &:hover {
+    box-shadow: 
+      0 0 60px rgba(0, 21, 255, 0.4),
+      0 0 100px rgba(0, 21, 255, 0.2),
+      0 0 150px rgba(0, 21, 255, 0.1);
+  }
   
   &.highlightCard {
     background: linear-gradient(120deg, #0015FF 0%, #000D99 74%);
@@ -128,6 +137,13 @@
     border-radius: 12px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    
+    &:hover {
+      box-shadow: 
+        0 0 60px rgba(0, 21, 255, 0.5),
+        0 0 100px rgba(0, 21, 255, 0.3),
+        0 0 150px rgba(0, 21, 255, 0.15);
+    }
   }
 }
 
@@ -166,7 +182,7 @@
   font-family: $font-pretendard;
   color: $color-light;
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.5;
   flex: 1;
   position: absolute;
   bottom: 2rem;
@@ -200,18 +216,17 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  overflow: hidden;
 }
 
 .numberWrapper {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 
 .numberItem {
   position: absolute;
-  font-family: $font-gotham;
+  font-family: $font-pretendard;
   font-weight: 700;
   line-height: 1;
   opacity: 0;
@@ -260,11 +275,11 @@
 .backgroundCopy {
   position: absolute;
   width: 45%;
-  right: 0;
+  right: 1%;
   bottom: 10%;
   
   h6 {
-    font-size: 2.438rem;
+    font-size: 2.625rem;
     margin: 0 0 5rem 0;
     color: $color-light;
     font-family: $font-pretendard;
@@ -277,13 +292,625 @@
     font-family: $font-pretendard;
   }
   p {
-    font-size: 2.438rem;
-    line-height: 1.8;
+    font-size: 2.625rem;
+    line-height: 1.5;
     color: $color-light;
     font-weight: 300;
     letter-spacing: -0.05em;
     margin: 0;
   }
+}
+
+// ===============================
+// Digitalization 섹션
+// ===============================
+.digitalizationSection {
+  background: $color-dark;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 calc(-1 * var(--site-margin));
+  width: calc(100% + 2 * var(--site-margin));
+  position: relative;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.digitalizationHeader {
+  padding: 0 var(--site-margin);
+  
+  margin-bottom: 5rem;
+  flex-shrink: 0;
+}
+
+.sectionLabel {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0 0 5rem 0;
+}
+
+.digitalizationTitleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 4rem;
+  position: relative;
+}
+
+.digitalizationTitle {
+  font-size: 4.25rem;
+  font-weight: 700;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.digitalizationLongDescription {
+  font-size: 2rem;
+  line-height: 1.5;
+  color: $color-light;
+  font-weight: 300;
+  font-family: $font-pretendard;
+  letter-spacing: -0.05em;
+  margin: 0;
+  max-width: 50%;
+ 
+}
+
+.infoBoxesContainer {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  
+  padding: 0;
+}
+
+.infoBoxesWrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 0 var(--site-margin);
+  width: max-content;
+}
+
+.infoBox {
+  flex-shrink: 0;
+  width: 560px;
+  min-height: 320px;
+  padding: 0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  position: relative;
+  will-change: transform;
+  transform: translateZ(0); // GPU 가속 활성화
+  background: linear-gradient(130deg, #2b2b2b 0%, #171717 71%);
+  
+  p {
+    font-size: 1.7rem;
+    line-height: 1.5;
+    color: $color-light;
+    font-family: $font-pretendard;
+    font-weight: 400;
+    margin: 0;
+    text-align: left;
+    padding: 0 4rem 3.5rem;
+  }
+}
+
+
+
+// ===============================
+// Digitalization 섹션
+// ===============================
+.digitalizationSection {
+  background: $color-dark;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 calc(-1 * var(--site-margin));
+  width: calc(100% + 2 * var(--site-margin));
+  position: relative;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.digitalizationHeader {
+  padding: 0 var(--site-margin);
+  margin-bottom: 5rem;
+  flex-shrink: 0;
+}
+
+.sectionLabel {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0 0 5rem 0;
+}
+
+.digitalizationTitleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 4rem;
+}
+
+.digitalizationTitle {
+  font-size: 4.25rem;
+  font-weight: 700;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.digitalizationLongDescription {
+  font-size: 2rem;
+  line-height: 1.5;
+  color: $color-light;
+  font-weight: 300;
+  font-family: $font-pretendard;
+  letter-spacing: -0.05em;
+  margin: 0;
+  max-width: 50%;
+}
+
+.infoBoxesContainer {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.infoBoxesWrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 0 var(--site-margin);
+  width: 500%; // 카드 5개 기준
+  will-change: transform;
+  transform: translateZ(0); // GPU 가속 활성화
+}
+
+
+
+.infoBoxOrange,.infoBoxDark {
+  position: relative;
+  background: linear-gradient(130deg, #2b2b2b 0%, #171717 71%);
+  border: 1px solid $color-secondary;
+  transition: opacity 0.3s;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(130deg, #ff783e 0%, #FF4D00 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 12px;
+    z-index: 1;
+  }
+  
+  &:hover::after {
+    opacity: 1;
+  }
+  
+  p {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// ===============================
+// Device 섹션
+// ===============================
+.deviceSection {
+  background: $color-dark;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 calc(-1 * var(--site-margin));
+  width: calc(100% + 2 * var(--site-margin));
+  position: relative;
+  padding: 0;
+  min-height: 100vh;
+  margin-top: 30rem;
+}
+
+.deviceHeader {
+  padding: 0 var(--site-margin);
+  margin-bottom: 10rem;
+  
+  flex-shrink: 0;
+}
+
+.deviceTitleWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+}
+
+.deviceTitle {
+  font-size: 4.25rem;
+  font-weight: 700;
+  font-family: $font-pretendard;
+  color: $color-light;
+  line-height: 1.2;
+}
+
+.deviceDescription {
+  font-size: 2rem;
+  line-height: 1.5;
+  color: $color-light;
+  font-weight: 300;
+  font-family: $font-pretendard;
+  letter-spacing: -0.05em;
+  margin: 0;
+  max-width: 50%;
+}
+
+.deviceList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 var(--site-margin);
+  align-items: flex-end;
+  margin-top: auto;
+  margin-bottom: 10%;
+  position: relative;
+}
+
+.deviceItem {
+  width: 800px;
+  padding: 2rem 0;
+  border-bottom: 1px solid $color-light;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  span {
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: $font-pretendard;
+    color: $color-light;
+    transition: color 0.3s ease;
+    display: block;
+  }
+  
+  &:hover {
+    background: $color-light;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    
+    span {
+      color: $color-dark;
+    }
+  }
+}
+
+.deviceInfoBox {
+  position: fixed;
+  max-width: 380px;
+  padding: 1.5rem 2rem;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  z-index: 9999;
+  color: $color-light;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.deviceInfoTitle {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.deviceInfoDescription {
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-family: $font-pretendard;
+  color: $color-light;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+// ===============================
+// User Persona 섹션
+// ===============================
+.personaSection {
+  background: $color-dark;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 calc(-1 * var(--site-margin));
+  width: calc(100% + 2 * var(--site-margin));
+  position: relative;
+  padding: 0;
+  min-height: 100vh;
+  margin-top: 30rem;
+  margin-bottom: 30rem;
+}
+
+.personaHeader {
+  padding: 0 var(--site-margin);
+  margin-bottom: 10rem;
+  
+  flex-shrink: 0;
+}
+
+.personaTitleWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 5rem;
+  position: relative;
+}
+
+.personaTitle {
+  font-size: 4.25rem;
+  font-weight: 700;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.personaDescription {
+  font-size: 2rem;
+  line-height: 1.5;
+  color: $color-light;
+  font-weight: 300;
+  font-family: $font-pretendard;
+  letter-spacing: -0.05em;
+  margin: 0;
+  max-width: 48%;
+}
+
+.personaBoxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; // 4열로 변경
+  grid-template-rows: 1fr 1fr;
+  gap: 2rem;
+  max-width: 90vw; // max-width 증가
+  margin: 0 auto;
+  margin-top: 10rem;
+  
+  // 1행: 1, 2, (빈 공간), 4번 박스
+  > :nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  > :nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  > :nth-child(4) {
+    grid-column: 4; // 4번 박스를 4열로
+    grid-row: 1;
+  }
+  
+  // 2행: 3번 박스만 아래로 (한 칸 더 오른쪽)
+  > :nth-child(3) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+}
+
+.personaBox {
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  border: 1px solid;
+  background: linear-gradient(130deg, #2b2b2b 0%, #171717 71%);
+  aspect-ratio: 1.15;
+  min-height: 0; // grid에서 aspect-ratio가 제대로 작동하도록
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+  
+  &:hover::after {
+    opacity: 1;
+  }
+  
+  .personaBoxName,
+  .personaBoxDetails,
+  .personaBoxTags {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+  }
+  
+  .personaBoxTags span {
+    transition: color 0.3s ease;
+  }
+}
+
+.personaBoxName {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+  letter-spacing: -0.05em;
+  transition: color 0.3s ease;
+}
+
+.personaBoxDetails {
+  font-size: 2rem;
+  font-weight: 300;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+  letter-spacing: -0.05em;
+  transition: color 0.3s ease;
+}
+
+.personaBoxTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto; // 바닥으로 붙이기
+  
+  span {
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: $font-pretendard;
+    line-height: 1.5;
+    letter-spacing: -0.05em;
+    transition: color 0.3s ease;
+  }
+}
+
+.personaBoxHoverText {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+  letter-spacing: -0.05em;
+  white-space: pre-line;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.personaBoxOrange {
+  border-color: $color-secondary;
+  
+  .personaBoxTags span {
+    color: $color-secondary;
+  }
+  
+  &::after {
+    background: linear-gradient(130deg, #ff783e 0%, #FF4D00 50%);
+  }
+  
+  &:hover {
+    .personaBoxName,
+    .personaBoxDetails,
+    .personaBoxTags span {
+      color: $color-light;
+    }
+  }
+}
+
+.personaBoxBlue {
+  border-color: $color-primary;
+  
+  .personaBoxTags span {
+    color: $color-primary;
+  }
+  
+  &::after {
+    background: linear-gradient(130deg, #0015ff 0%, #000d99 74%);
+  }
+  
+  &:hover {
+    .personaBoxName,
+    .personaBoxDetails,
+    .personaBoxTags span {
+      color: $color-light;
+    }
+  }
+}
+
+// ===============================
+// 마지막 섹션
+// ===============================
+.finalSection {
+  background: $color-dark;
+  min-height: 100vh;
+  position: relative;
+  
+}
+
+.finalContent {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 30rem;
+  margin-bottom: 50rem;
+}
+
+.finalTitle {
+  font-size: 5.5rem;
+  font-weight: 700;
+  font-family: $font-pretendard;
+  color: $color-light;
+  line-height: 1.2;
+  margin: 0;
+  transform: skew(-6deg);
+  align-self: flex-start;
+  width: auto;
+}
+
+.finalDescription {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: $color-light;
+  font-weight: 300;
+  font-family: $font-pretendard;
+  letter-spacing: -0.05em;
+  margin: 0;
+  max-width: 60%;
+  align-self: flex-end;
+  margin-left: auto;
+  margin-top: 0;
+  text-align: left;
 }
 
 // ===============================
@@ -354,6 +981,135 @@
     font-size: 0.875rem;
   }
 
+  // Device 섹션
+  .deviceHeader {
+    margin-bottom: 3rem;
+  }
+
+  .deviceTitleWrapper {
+    gap: 0;
+  }
+
+  .deviceTitle {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .deviceDescription {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .deviceList {
+    margin-bottom: 5%;
+  }
+
+  .deviceItem {
+    width: 200px;
+    padding: 1rem 0;
+    
+    span {
+      font-size: 1rem;
+    }
+
+    &:hover {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  .deviceInfoBox {
+    max-width: 280px;
+    padding: 1.5rem 2rem;
+  }
+
+  .deviceInfoTitle {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .deviceInfoDescription {
+    font-size: 0.85rem;
+  }
+
+  // User Persona 섹션
+  .personaHeader {
+    margin-bottom: 3rem;
+  }
+
+  .personaTitleWrapper {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .personaTitle {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .personaDescription {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .personaBoxes {
+    flex-direction: column;
+    
+    > * {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+    
+    > :nth-child(3) {
+      position: static; // 모바일에서는 일반 배치
+      top: auto;
+      left: auto;
+    }
+    
+    gap: 1.5rem;
+  }
+
+  .personaBox {
+    padding: 1.25rem 1.75rem;
+  }
+
+  .personaBoxName {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .personaBoxHoverText {
+    font-size: 0.95rem;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .personaBoxDetails {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .personaBoxTags {
+    gap: 0.25rem;
+    
+    span {
+      font-size: 0.95rem;
+    }
+  }
+
+  // 마지막 섹션
+  .finalTitle {
+    font-size: 2rem;
+  }
+
+  .finalDescription {
+    font-size: 0.95rem;
+    max-width: 100%;
+    text-align: left;
+    align-self: flex-start;
+    margin-left: 0;
+    margin-top: 2rem;
+  }
+
   // Background 숫자 섹션
   .backgroundInner {
     grid-template-columns: 1fr;
@@ -415,6 +1171,140 @@
     font-size: 0.9rem;
   }
 
+  // Device 섹션
+  .deviceHeader {
+    margin-bottom: 4rem;
+  }
+
+  .deviceTitleWrapper {
+    gap: 3rem;
+  }
+
+  .deviceTitle {
+    font-size: 3rem;
+  }
+
+  .deviceDescription {
+    font-size: 1.3rem;
+    max-width: 50%;
+  }
+
+  .deviceItem {
+    width: 280px;
+    padding: 1.5rem 0;
+    
+    span {
+      font-size: 1.3rem;
+    }
+
+    &:hover {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  .deviceInfoBox {
+    max-width: 220px;
+    padding: 2rem 2.5rem;
+  }
+
+  .deviceInfoTitle {
+    font-size: 1.2rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .deviceInfoDescription {
+    font-size: 1rem;
+  }
+
+  // User Persona 섹션
+  .personaHeader {
+    margin-bottom: 4rem;
+  }
+
+  .personaTitleWrapper {
+    gap: 3rem;
+  }
+
+  .personaTitle {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .personaDescription {
+    font-size: 1.3rem;
+    max-width: 50%;
+  }
+
+  .personaBoxes {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    
+    > :nth-child(1),
+    > :nth-child(2),
+    > :nth-child(3),
+    > :nth-child(4) {
+      grid-column: 1;
+    }
+    
+    > :nth-child(1) {
+      grid-row: 1;
+    }
+    
+    > :nth-child(2) {
+      grid-row: 2;
+    }
+    
+    > :nth-child(3) {
+      grid-row: 3;
+    }
+    
+    > :nth-child(4) {
+      grid-row: 4;
+    }
+    
+    gap: 1.5rem;
+  }
+
+  .personaBox {
+    padding: 1.75rem 2rem;
+  }
+
+  .personaBoxName {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .personaBoxHoverText {
+    font-size: 1.3rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .personaBoxDetails {
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .personaBoxTags {
+    span {
+      font-size: 1.3rem;
+    }
+  }
+
+  // 마지막 섹션
+  .finalTitle {
+    font-size: 1.3rem;
+  }
+
+  .finalDescription {
+    font-size: 1.3rem;
+    max-width: 100%;
+    text-align: left;
+    align-self: flex-start;
+    margin-left: 0;
+    margin-top: 2rem;
+  }
+
   // Background 숫자 섹션
   .numbersArea { height: 150vh; }
   .numberWrapper { width: 550px; height: 380px; }
@@ -425,6 +1315,157 @@
 
 // 노트북 반응형
 @include laptop {
+  // Digitalization 섹션
+  .digitalizationHeader {
+    margin-bottom: 5rem;
+  }
+  
+  .sectionLabel {
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
+  }
+  
+  .digitalizationTitleWrapper {
+    gap: 3rem;
+  }
+  
+  .digitalizationTitle {
+    font-size: 3.5rem;
+  }
+  
+  .digitalizationLongDescription {
+    font-size: 1.5rem;
+    max-width: 50%;
+  }
+  
+  .infoBox {
+    width: 400px;
+    min-height: 240px;
+    
+    p {
+      font-size: 1.2rem;
+      padding: 0 3rem 2.5rem;
+    }
+  }
+
+  // Device 섹션
+  .deviceHeader {
+    margin-bottom: 5rem;
+  }
+
+  .deviceTitleWrapper {
+    gap: 3rem;
+  }
+
+  .deviceTitle {
+    font-size: 3.5rem;
+  }
+
+  .deviceDescription {
+    font-size: 1.5rem;
+    max-width: 50%;
+  }
+
+  .deviceItem {
+    width: 600px;
+    padding: 1.5rem 0;
+    
+    span {
+      font-size: 1.8rem;
+    }
+
+    &:hover {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  .deviceInfoBox {
+    max-width: 300px;
+    padding: 2rem 2.5rem;
+  }
+
+  .deviceInfoTitle {
+    font-size: 1.4rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .deviceInfoDescription {
+    font-size: 1.1rem;
+  }
+
+  // User Persona 섹션
+  .personaHeader {
+    margin-bottom: 5rem;
+  }
+
+  .personaTitleWrapper {
+    gap: 3rem;
+  }
+
+  .personaTitle {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .personaDescription {
+    font-size: 1.5rem;
+    max-width: 50%;
+  }
+
+  .personaBoxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; // 4열로 변경
+    grid-template-rows: 1fr 1fr;
+    gap: 2rem;
+    
+    
+    > :nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    
+    > :nth-child(2) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    
+    > :nth-child(4) {
+      grid-column: 4; // 4번 박스를 4열로
+      grid-row: 1;
+    }
+    
+    > :nth-child(3) {
+      grid-column: 3;
+      grid-row: 2;
+    }
+  }
+
+  .personaBox {
+    padding: 1.75rem 2.25rem;
+  }
+
+  .personaBoxName {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .personaBoxHoverText {
+    font-size: 1.3rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .personaBoxDetails {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .personaBoxTags {
+    span {
+      font-size: 1.3rem;
+    }
+  }
+
   // 히어로 섹션
   .heroText {
     h1 {
@@ -437,9 +1478,6 @@
   }
 
   // Overview 섹션
-  .overviewSection {
-    
-  }
 
   .mainTitle {
     font-size: 3.2rem;
@@ -449,14 +1487,6 @@
     margin-bottom: 4.5rem;
   }
 
-  .card {
-    height: 360px;
-    
-    &.highlightCard {
-      height: 420px;
-    }
-  }
-  
   .cardsContainer {
     grid-template-columns: 1fr 1.35fr 1fr;
   }
@@ -472,10 +1502,13 @@
   // Background 숫자 섹션
   .backgroundInner {
     max-width: 1400px;
+    
   }
   .backgroundCopy {
-    width: 45%;
+    width: 43%;
     bottom: 40px;
+    
+
     h6 {
       font-size: 1.5rem;
     }
@@ -487,15 +1520,15 @@
     }
   }
   .num25 {
-    font-size: 28rem;
+    font-size: 32rem;
     bottom: 0px;
   }
   .num27 {
-    font-size: 28rem;
+    font-size: 32rem;
     bottom: 100px;
   }
   .num30 {
-    font-size: 25.5rem;
+    font-size: 32rem;
     bottom: 250px;
   }
 
@@ -503,6 +1536,168 @@
 
 // 대형 데스크톱
 @include desktop {
+  // Digitalization 섹션
+  .digitalizationHeader {
+    margin-bottom: 5rem;
+  }
+  
+  .sectionLabel {
+    font-size: 2rem;
+    margin-bottom: 5rem;
+  }
+  
+  .digitalizationTitleWrapper {
+    gap: 5rem;
+  }
+  
+  .digitalizationTitle {
+    font-size: 4.25rem;
+  }
+  
+  .digitalizationLongDescription {
+    font-size: 2rem;
+    max-width: 48%;
+  }
+
+  .infoBox {
+    width: 700px;
+    min-height: 360px;
+    
+    p {
+      font-size: 2rem;
+      padding: 0 4rem 3.5rem;
+    }
+  }
+
+  // Device 섹션
+  .deviceHeader {
+    margin-bottom: 5rem;
+  }
+
+  .deviceTitleWrapper {
+    gap: 5rem;
+  }
+
+  .deviceTitle {
+    font-size: 4.25rem;
+  }
+
+  .deviceDescription {
+    font-size: 2rem;
+    max-width: 48%;
+  }
+
+  .deviceItem {
+    width: 800px;
+    padding: 2rem 0;
+    
+    span {
+      font-size: 3rem;
+    }
+
+    &:hover {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .deviceInfoBox {
+    max-width: 480px;
+    padding: 1.8rem 2.3rem;
+  }
+
+  .deviceInfoTitle {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .deviceInfoDescription {
+    font-size: 2rem;
+  }
+
+  // User Persona 섹션
+  .personaHeader {
+    margin-bottom: 5rem;
+  }
+
+  .personaTitleWrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+
+  .personaTitle {
+    font-size: 4.25rem;
+    margin-bottom: 0;
+  }
+
+  .personaDescription {
+    font-size: 2rem;
+    max-width: 48%;
+  }
+
+  .personaBoxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; // 4열로 변경
+    grid-template-rows: 1fr 1fr;
+    gap: 2rem;
+    
+    > :nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    
+    > :nth-child(2) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    
+    > :nth-child(4) {
+      grid-column: 4; // 4번 박스를 4열로
+      grid-row: 1;
+    }
+    
+    > :nth-child(3) {
+      grid-column: 3;
+      grid-row: 2;
+    }
+  }
+
+  .personaBox {
+    padding: 2rem 2.5rem;
+  }
+
+  .personaBoxName {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .personaBoxHoverText {
+    font-size: 1.75rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .personaBoxDetails {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .personaBoxTags {
+    span {
+      font-size: 1.75rem;
+    }
+  }
+
+  // 마지막 섹션
+  .finalTitle {
+    font-size: 8.125rem;
+  }
+
+  .finalDescription {
+    font-size: 2rem;
+    max-width: 50%;
+  }
+
   // 히어로 섹션
   .heroText {
     h1 {
@@ -556,7 +1751,7 @@
 
   .cardDescription {
     font-size: 1.7rem;
-    line-height: 1.6;
+    line-height: 1.5;
   }
 
   // Background 숫자 섹션
@@ -565,6 +1760,7 @@
   }
   .backgroundCopy {
     width: 48%;
+    
     h6 {
       font-size: 2rem;
     }
@@ -582,12 +1778,187 @@
     font-size: 43rem;
   }
   .num30 {
-    font-size: 40rem;
+    font-size: 43rem;
   }
 }
 
 // 5K 해상도 대응
 @include imac5k {
+  // Digitalization 섹션
+  .digitalizationSection {
+    padding: 10rem 0;
+  }
+  
+  .digitalizationHeader {
+    margin-bottom: 5rem;
+  }
+  
+  .sectionLabel {
+    font-size: 2.625rem;
+    margin-bottom: 5rem;
+  }
+  
+  .digitalizationTitleWrapper {
+    gap: 6rem;
+  }
+  
+  .digitalizationTitle {
+    font-size: 5.188rem;
+  }
+  
+  .digitalizationLongDescription {
+    font-size: 2.625rem;
+    max-width: 50%;
+    
+  }
+  
+  .infoBox {
+    width: 860px;
+    min-height: 440px;
+    
+    p {
+      font-size: 2.3rem;
+      padding: 0 4.5rem 4rem;
+    }
+  }
+
+  // Device 섹션
+  .deviceSection {
+    padding: 10rem 0;
+  }
+
+  .deviceHeader {
+    margin-bottom: 5rem;
+  }
+
+  .deviceTitleWrapper {
+    gap: 5rem;
+  }
+
+  .deviceTitle {
+    font-size: 5.188rem;
+  }
+
+  .deviceDescription {
+    font-size: 2.625rem;
+    max-width: 47%;
+  }
+
+  .deviceItem {
+    width: 1000px;
+    padding: 2.5rem 0;
+    
+    span {
+      font-size: 4rem;
+    }
+
+    &:hover {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+
+  .deviceInfoBox {
+    max-width: 610px;
+    padding: 2rem 2.5rem;
+  }
+
+  .deviceInfoTitle {
+    font-size: 2.625rem;
+    margin-bottom: 3rem;
+  }
+
+  .deviceInfoDescription {
+    font-size: 2.625rem;
+  }
+
+  // User Persona 섹션
+  .personaSection {
+    padding: 10rem 0;
+  }
+
+  .personaHeader {
+    margin-bottom: 5rem;
+  }
+
+  .personaTitleWrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 6rem;
+  }
+
+  .personaTitle {
+    font-size: 5.188rem;
+    margin-bottom: 0;
+  }
+
+  .personaDescription {
+    font-size: 2.625rem;
+    max-width: 48%;
+  }
+
+  .personaBoxes {
+    max-width:90vw;
+    gap: 2.5rem;
+    
+    > :nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    
+    > :nth-child(2) {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    
+    > :nth-child(3) {
+      grid-column: 3;
+      grid-row: 2;
+    }
+    
+    > :nth-child(4) {
+      grid-column: 4;
+      grid-row: 1;
+    }
+  }
+
+  .personaBox {
+    padding: 2.5rem 3rem;
+  }
+
+  .personaBoxName {
+    font-size: 2.313rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .personaBoxHoverText {
+    font-size: 2.313rem;
+    margin: 0 0 1.25rem 0;
+  }
+
+  .personaBoxDetails {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .personaBoxTags {
+    gap: 0.75rem;
+    
+    span {
+      font-size: 2.313rem;
+    }
+  }
+
+  // 마지막 섹션
+  .finalTitle {
+    font-size: 10.813rem;
+  }
+
+  .finalDescription {
+    font-size: 2.625rem;
+    max-width: 50%;
+  }
+
   // 히어로 섹션
   .heroText {
     h1 {
@@ -602,7 +1973,7 @@
 
   // Overview 섹션
   .overviewTitle {
-    font-size: 2.438rem;
+    font-size: 2.625rem;
     margin-bottom: 5rem;
   }
   .overviewSection {
@@ -644,22 +2015,24 @@
    max-width: 2400px;
   }
   .backgroundCopy {
-    width: 42%;
+    width: 45%;
 
     h2 {
       font-size: 5.188rem;
     }
     p {
-      font-size: 2.438rem;
+      font-size: 2.625rem;
     }
   }
   .num25 {
-    font-size: 53rem;
+    font-size: 59rem;
   }
   .num27 {
-    font-size: 53rem;
+    font-size: 59rem;
   }
   .num30 {
-    font-size: 50rem;
+    font-size: 59rem;
   }
 }
+
+

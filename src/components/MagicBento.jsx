@@ -4,7 +4,7 @@ import './MagicBento.css';
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
-const DEFAULT_GLOW_COLOR = '132, 0, 255';
+const DEFAULT_GLOW_COLOR = '0, 21, 255';
 const MOBILE_BREAKPOINT = 768;
 
 const createParticleElement = (x, y, color = DEFAULT_GLOW_COLOR) => {
@@ -179,8 +179,6 @@ const ParticleCard = ({
     };
 
     const handleMouseMove = e => {
-      if (!element) return;
-
       const rect = element.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -188,13 +186,15 @@ const ParticleCard = ({
       const centerY = rect.height / 2;
 
       // 글로우 위치 업데이트
-      element.style.setProperty('--glow-x', `${x}px`);
-      element.style.setProperty('--glow-y', `${y}px`);
-      
-      // 글로우가 항상 보이도록
+      const relativeX = (x / rect.width) * 100;
+      const relativeY = (y / rect.height) * 100;
+      element.style.setProperty('--glow-x', `${relativeX}%`);
+      element.style.setProperty('--glow-y', `${relativeY}%`);
       element.style.setProperty('--glow-intensity', '1');
 
-      if (!enableTilt && !enableMagnetism) return;
+      if (!enableTilt && !enableMagnetism) {
+        return;
+      }
 
       if (enableTilt) {
         const rotateX = ((y - centerY) / centerY) * -10;
@@ -293,179 +293,28 @@ const ParticleCard = ({
   );
 };
 
-const GlobalSpotlight = ({
-  gridRef,
-  disableAnimations = false,
-  enabled = true,
-  spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS,
-  glowColor = DEFAULT_GLOW_COLOR
-}) => {
-  const spotlightRef = useRef(null);
-  const isInsideSection = useRef(false);
-
-  useEffect(() => {
-    if (disableAnimations || !gridRef?.current || !enabled) return;
-
-    const spotlight = document.createElement('div');
-    spotlight.className = 'global-spotlight';
-    spotlight.style.cssText = `
-      position: fixed;
-      width: 800px;
-      height: 800px;
-      border-radius: 50%;
-      pointer-events: none;
-      background: radial-gradient(circle,
-        rgba(${glowColor}, 0.15) 0%,
-        rgba(${glowColor}, 0.08) 15%,
-        rgba(${glowColor}, 0.04) 25%,
-        rgba(${glowColor}, 0.02) 40%,
-        rgba(${glowColor}, 0.01) 65%,
-        transparent 70%
-      );    
-      z-index: 200;
-      opacity: 0;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: screen;
-    `;
-    document.body.appendChild(spotlight);
-    spotlightRef.current = spotlight;
-
-    const handleMouseMove = e => {
-      if (!spotlightRef.current || !gridRef.current) return;
-
-      const section = gridRef.current.closest('.bento-section');
-      const rect = section?.getBoundingClientRect();
-      const mouseInside =
-        rect && e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
-
-      isInsideSection.current = mouseInside || false;
-      const cards = gridRef.current.querySelectorAll('.card');
-
-      if (!mouseInside) {
-        gsap.to(spotlightRef.current, {
-          opacity: 0,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-        cards.forEach(card => {
-          card.style.setProperty('--glow-intensity', '0');
-        });
-        return;
-      }
-
-      const { proximity, fadeDistance } = calculateSpotlightValues(spotlightRadius);
-      let minDistance = Infinity;
-
-      cards.forEach(card => {
-        const cardElement = card;
-        const cardRect = cardElement.getBoundingClientRect();
-        const centerX = cardRect.left + cardRect.width / 2;
-        const centerY = cardRect.top + cardRect.height / 2;
-        const distance =
-          Math.hypot(e.clientX - centerX, e.clientY - centerY) - Math.max(cardRect.width, cardRect.height) / 2;
-        const effectiveDistance = Math.max(0, distance);
-
-        minDistance = Math.min(minDistance, effectiveDistance);
-
-        let glowIntensity = 0;
-        if (effectiveDistance <= proximity) {
-          glowIntensity = 1;
-        } else if (effectiveDistance <= fadeDistance) {
-          glowIntensity = (fadeDistance - effectiveDistance) / (fadeDistance - proximity);
-        }
-
-        updateCardGlowProperties(cardElement, e.clientX, e.clientY, glowIntensity, spotlightRadius);
-      });
-
-      gsap.to(spotlightRef.current, {
-        left: e.clientX,
-        top: e.clientY,
-        duration: 0.1,
-        ease: 'power2.out'
-      });
-
-      const targetOpacity =
-        minDistance <= proximity
-          ? 0.8
-          : minDistance <= fadeDistance
-            ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8
-            : 0;
-
-      gsap.to(spotlightRef.current, {
-        opacity: targetOpacity,
-        duration: targetOpacity > 0 ? 0.2 : 0.5,
-        ease: 'power2.out'
-      });
-    };
-
-    const handleMouseLeave = () => {
-      isInsideSection.current = false;
-      gridRef.current?.querySelectorAll('.card').forEach(card => {
-        card.style.setProperty('--glow-intensity', '0');
-      });
-      if (spotlightRef.current) {
-        gsap.to(spotlightRef.current, {
-          opacity: 0,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-      }
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      spotlightRef.current?.parentNode?.removeChild(spotlightRef.current);
-    };
-  }, [gridRef, disableAnimations, enabled, spotlightRadius, glowColor]);
-
-  return null;
-};
-
-const BentoCardGrid = ({ children, gridRef }) => (
-  <div className="card-grid bento-section" ref={gridRef}>
-    {children}
-  </div>
-);
-
-const useMobileDetection = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  return isMobile;
-};
-
 const MagicBento = ({
   textAutoHide = true,
   enableStars = true,
   enableSpotlight = true,
   enableBorderGlow = true,
-  disableAnimations = false,
+  enableTilt = true,
+  enableMagnetism = true,
+  clickEffect = true,
   spotlightRadius = DEFAULT_SPOTLIGHT_RADIUS,
   particleCount = DEFAULT_PARTICLE_COUNT,
-  enableTilt = false,
   glowColor = DEFAULT_GLOW_COLOR,
-  clickEffect = true,
-  enableMagnetism = true,
-  children
+  className = '',
+  children,
+  style = {}
 }) => {
-  const isMobile = useMobileDetection();
-  const shouldDisableAnimations = disableAnimations || isMobile;
+  const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+  const shouldDisableAnimations = isMobile;
 
   if (enableStars) {
-    const classes = [];
+    const classes = [className];
     if (enableBorderGlow) classes.push('card--border-glow');
+    
     return (
       <ParticleCard
         disableAnimations={shouldDisableAnimations}
@@ -475,20 +324,20 @@ const MagicBento = ({
         clickEffect={clickEffect}
         enableMagnetism={enableMagnetism}
         className={classes.join(' ')}
-        style={{ '--glow-color': glowColor }}
+        style={{ ...style, '--glow-color': glowColor }}
       >
         {children}
       </ParticleCard>
     );
   }
 
-  const classes = [];
+  const classes = [className];
   if (enableBorderGlow) classes.push('card--border-glow');
   
   return (
     <div 
       className={classes.join(' ')}
-      style={{ '--glow-color': glowColor, position: 'relative' }}
+      style={{ ...style, '--glow-color': glowColor, position: 'relative' }}
     >
       {children}
     </div>
