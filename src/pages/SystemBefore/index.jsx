@@ -41,10 +41,13 @@ export default function SystemBefore() {
         
         <div className={styles.heroText}>
           <h1>
-            시스템 전략
+            현장과 데이터를<br />
+            연결하며<br />
+            운영되는 교정
           </h1>
           <p>
-            교정본부에 대한 이해를 바탕으로 교정기관과 교도관에 대한 전반적인 시야를 확장하였습니다.
+          데이터 기반 행정과 현장 중심을 하나로 이으며, 대한민국 교정의<br />
+          스마트화를 위한 다음 단계로 나아갑니다.
           </p>
         </div>
       </div>
@@ -89,8 +92,8 @@ export default function SystemBefore() {
           <div className={styles.numbersArea}>
             <div className={styles.numberWrapper}>
               <span className={`${styles.numberItem} ${styles.blueNumber} ${styles.num25} ${styles.alwaysVisible}`}>25</span>
-              <span className={`${styles.numberItem} ${styles.grayNumber} ${styles.num27} ${show27 ? styles.animateIn : ''}`}>27</span>
-              <span className={`${styles.numberItem} ${styles.grayNumber} ${styles.num30} ${show30 ? styles.animateIn : ''}`}>30</span>
+              <span className={`${styles.numberItem} ${styles.grayNumber} ${styles.num27} ${show27 ? styles.animateIn : ''}`}>23</span>
+              <span className={`${styles.numberItem} ${styles.grayNumber} ${styles.num30} ${show30 ? styles.animateIn : ''}`}>20</span>
             </div>
           </div>
 

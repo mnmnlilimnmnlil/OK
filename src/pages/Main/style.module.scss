@@ -1,6 +1,8 @@
 @use '../../styles/main' as *;
 
-// 전역 sticky 스타일
+// ===============================
+// 전역 스타일
+// ===============================
 .padding-global {
   padding-right: var(--site-margin);
   padding-left: var(--site-margin);
@@ -12,7 +14,9 @@
   top: 0;
 }
 
+// ===============================
 // 히어로 섹션
+// ===============================
 .heroSection {
   position: relative;
   height: 100vh;
@@ -43,7 +47,7 @@
 .heroText {
   position: relative;
   z-index: 2;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0;
   text-align: left;
   padding: 0 var(--site-margin);
@@ -71,7 +75,9 @@
   }
 }
 
-// 섹션 상단 텍스트
+// ===============================
+// 섹션 헤더
+// ===============================
 .sectionHeader {
   background: $color-dark;
   padding: 8rem var(--site-margin) 4rem;
@@ -90,7 +96,9 @@
   margin-bottom: 10rem;
 }
 
-// 6개 섹션
+// ===============================
+// 6개 섹션 컨테이너
+// ===============================
 .sectionsContainer {
   background: transparent;
   padding: 0;
@@ -144,6 +152,7 @@
     color: inherit;
   }
 }
+
 // 첫 번째 섹션에만 상단 보더
 .section:nth-child(1) {
   border-top: 1px solid #333;
@@ -195,7 +204,9 @@
   overflow: hidden;
 }
 
+// ===============================
 // 메인 영상 섹션
+// ===============================
 .mainVideoSection {
   background: $color-dark;
   padding: 0;
@@ -258,8 +269,13 @@
   }
 }
 
+// ===============================
+// 반응형 스타일
+// ===============================
+
 // 모바일 반응형
 @include mobile {
+  // 히어로 섹션
   .heroText {
     padding: 0 var(--site-margin);
     
@@ -273,6 +289,7 @@
     }
   }
 
+  // 섹션 헤더
   .sectionHeader {
     padding: 4rem var(--site-margin) 2rem;
     margin: 0;
@@ -284,6 +301,7 @@
     margin-bottom: 2rem;
   }
 
+  // 섹션 컨테이너
   .sectionsContainer {
     margin: 0;
     width: 100%;
@@ -331,6 +349,7 @@
     order: 3;
   }
 
+  // 메인 영상 섹션
   .videoContainer {
     height: 60vh;
   }
@@ -356,6 +375,7 @@
 
 // 태블릿 반응형
 @include tablet {
+  // 히어로 섹션
   .heroText {
     padding: 0 var(--site-margin);
     
@@ -369,6 +389,7 @@
     }
   }
 
+  // 섹션 헤더
   .sectionHeader {
     padding: 6rem var(--site-margin) 3rem;
   }
@@ -377,6 +398,7 @@
     font-size: 3rem;
   }
 
+  // 섹션 컨테이너
   .section {
     height: 100vh;
   }
@@ -404,6 +426,7 @@
     overflow: hidden;
   }
 
+  // 메인 영상 섹션
   .mainVideoSection {
     height: 200vh;
   }
@@ -411,6 +434,7 @@
 
 // 노트북 반응형
 @include laptop {
+  // 히어로 섹션
   .heroText {
     h1 {
       font-size: 3.5rem;
@@ -421,6 +445,7 @@
     }
   }
 
+  // 섹션 헤더
   .sectionHeader {
     padding: 7rem var(--site-margin) 3.5rem;
   }
@@ -429,6 +454,7 @@
     font-size: 3rem;
   }
 
+  // 섹션 컨테이너
   .section {
     height: 100vh;
   }
@@ -459,50 +485,87 @@
 
 // 대형 데스크톱
 @include desktop {
+  // 히어로 섹션
+  .heroText {
+    h1 {
+      font-size: 5rem;
+    }
+    
+    p {
+      font-size: 2rem;
+    }
+  }
+  // 섹션 헤더
+  .sectionMainTitle {
+    font-size: 4.25rem;
+    margin-bottom: 15rem;
+  }
+  // 섹션 설명
   .sectionDescription {
-    max-width: 850px;
+    max-width: 920px;
     max-height: 10rem;
-    font-size: 1.8rem;
+    font-size: 2rem;
     line-height: 1.4;
     overflow: hidden;
   }
+  // 섹션 컨테이너
+  .section {
+    height: 100vh;
+  }
+  // 섹션 번호
+  .sectionNumber {
+    font-size: 3rem;
+    top: 4rem;
+  }
+  // 섹션 제목
+  .sectionTitle {
+    font-size: 6.25rem;
+    top: 6rem;
+  }
+  // 섹션 설명
+
+
 }
 
 // 5K 해상도 대응
 @include imac5k {
+  // 히어로 섹션
   .heroText {
     h1 {
-      font-size: 6rem;
-      margin-bottom: 4rem;
+      font-size: 6.625rem;
+      margin-bottom: 5rem;
     }
     
     p {
-      font-size: 2.2rem;
+      font-size: 2.625rem;
     }
   }
 
+  // 섹션 헤더
   .sectionMainTitle {
-    font-size: 5rem;
-    margin-bottom: 15rem
+    font-size: 5.625rem;
+    margin-bottom: 15rem;
+  }
+
+  // 섹션 컨테이너
+  .section {
+    height: 100vh;
   }
 
   .sectionNumber {
-    font-size: 3.3rem;
+    font-size: 4rem;
     top: 4.5rem;
   }
 
   .sectionTitle {
-    font-size: 9rem;
+    font-size: 8.313rem;
     top: 7.5rem;
   }
 
   .sectionDescription {
-    font-size: 2.5rem;
-    max-width: 1100px;
+    font-size: 2.625rem;
+    max-width: 1180px;
     max-height: 15rem;
     bottom: 4.5rem;
-  }
-  .section {
-    height: 100vh;
   }
 }
