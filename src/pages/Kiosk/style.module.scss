@@ -59,13 +59,97 @@
   }
 }
 
-.pageContainer {
-  @include flex-center;
-  min-height: 100vh;
-  font-size: 3rem;
-  color: $color-white;
-  padding: 4rem var(--site-margin);
+
+.KioskSection {
+  margin-bottom: 5rem;;
+
+.KiosktxtSection {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  margin-top: 18rem;
+
+  h6 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: $font-pretendard;
+    margin-bottom: 3.2rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-family: $font-pretendard;
+  }
 }
+}
+
+.ThreeSection {
+  h6 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $color-light;
+    margin-bottom: 5rem;
+    font-family: $font-pretendard;
+  }
+}
+
+.ThreetxtSection {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-family: $font-pretendard;
+    line-height: 1.2;
+    color: $color-light;
+    flex: 0.95;
+    margin-bottom: 5.5rem;
+  }
+
+  p {
+    font-size: 1.48rem;
+    line-height: 1.6;
+    color: $color-light;
+    font-family: $font-pretendard;
+    margin-bottom: 0;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+}
+
+
+.JointSection {
+  margin-bottom: 5rem;;
+
+.JointtxtSection {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  margin-top: 18rem;
+
+  h6 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: $font-pretendard;
+    margin-bottom: 3.2rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-family: $font-pretendard;
+  }
+}
+}
+
+
+
 
 // 모바일 반응형
 @include mobile {
@@ -123,6 +207,59 @@
   }
 }
 
+@include desktop {
+
+.KioskSection{
+  .KiosktxtSection {
+  margin-bottom: 1rem;
+
+  h6 {
+    font-size: 2rem;
+  }
+
+  h1 {
+    font-size: 4.2rem;
+  }
+}
+}
+
+.ThreeSection {
+  h6 {
+    font-size: 2rem;
+    margin-bottom: 5rem;
+  }
+}
+.ThreetxtSection{
+  h1 {
+    font-size: 4.2rem;
+    margin-bottom: 5.5rem;
+  }
+  
+  p {
+    font-size: 2rem;
+  }
+}
+
+
+
+.JointSection{
+  .JointtxtSection {
+  margin-bottom: 1rem;
+
+  h6 {
+    font-size: 2rem;
+  }
+
+  h1 {
+    font-size: 4.2rem;
+  }
+}
+}
+
+
+
+}
+
 // 5K 해상도 대응
 @include imac5k {
   .heroText {
@@ -139,4 +276,52 @@
   .pageContainer {
     font-size: 4.5rem;
   }
+
+.KioskSection{
+.KiosktxtSection {
+  margin-bottom: 1rem;
+
+  h6 {
+    font-size: 2.6rem;
+  }
+
+  h1 {
+    font-size: 5.6rem;
+  }
+}
+}
+
+.ThreeSection {
+  h6 {
+    font-size: 2.6rem;
+  }
+}
+
+.ThreetxtSection {
+  h1 {
+    font-size: 5.6rem;
+  }
+  
+  p {
+    font-size: 2.6rem;
+  }
+}
+
+
+.JointSection{
+.JointtxtSection{
+  margin-bottom: 1rem;
+
+  h6 {
+    font-size: 2.6rem;
+  }
+
+  h1 {
+    font-size: 5.6rem;
+  }
+}
+}
+
+
+
 }

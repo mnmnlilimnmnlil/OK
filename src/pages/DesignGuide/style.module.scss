@@ -76,7 +76,7 @@
 
 .OutlineSection{
   background: $color-dark;
-  padding: 18rem 0;
+  padding: 18rem 0 0 0;
   color: $color-light;
   flex-direction: column; 
 }
@@ -106,7 +106,7 @@
     line-height: 1.2;
     color: $color-light;
     flex: 0.95;
-    margin-bottom: 5rem;
+    margin-bottom: 5.5rem;
   }
   
   p {
@@ -114,7 +114,7 @@
     line-height: 1.6;
     color: $color-light;
     font-family: $font-pretendard;
-    margin: 0;
+    margin-bottom: 0;
     flex: 1.05;
     font-weight: 300;
     letter-spacing: -0.02em;
@@ -125,7 +125,436 @@
 
 // 아웃라인 섹션 끝~
 
+.DesignGuideSection{
+  background: $color-dark;
+  padding: 18rem 0 0 0;
+  color: $color-light;
+  flex-direction: column; 
+}
 
+
+.DGTitleSection {
+  h6 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $color-light;
+    margin-bottom: 5rem;
+    font-family: $font-pretendard;
+  }
+}
+
+.DGtxtSection{
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-family: $font-pretendard;
+    line-height: 1.2;
+    color: $color-light;
+    flex: 0.95;
+    margin-bottom: 5rem;
+  }
+  
+
+}
+
+// 디자인어쩌고섹션 끝
+
+
+
+.HanSection {
+  display: flex;
+  justify-content: space-between; // 왼쪽-오른쪽 끝으로 정렬
+  align-items: center;
+  width: 100%;
+  margin-top: 5rem;
+  margin-bottom: 12rem;
+}
+
+.fontimage1Container {
+  display: flex;
+  justify-content: flex-start; // 왼쪽 끝
+  align-items: center;
+
+  img {
+    width: 400px;     // 크기 조정
+    height: auto;
+    display: block;
+  }
+}
+
+.HantxtSection {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 11rem;
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin-top: 2.7rem;
+    font-size: 1.4rem;
+    line-height: 1.7;
+  }
+}
+
+/* 중앙 이미지 */
+.fontimage2Container {
+  position: absolute;
+  left: 50%;                  // 가운데 정렬
+  transform: translateX(-50%); // 가운데로 정확히 이동
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;                 // 필요시 조정
+
+  img {
+    height: 300px; // 크기 조정
+    width: auto;
+    display: block;
+  }
+}
+
+.YoungSection {
+  display: flex;
+  justify-content: flex-end;  // 👉 내부 콘텐츠를 오른쪽 끝으로 밀기
+  align-items: flex-end;       // 👉 세로 기준 오른쪽(=끝) 정렬
+  flex-direction: column;      // 세로로 쌓기
+  gap: 0.5rem;
+  width: 100%;                 // 화면 전체 기준으로 오른쪽 붙음
+  
+
+  h3 {
+    line-height: 1.3;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin-top: 2.7rem;
+    font-size: 1.4rem;
+    line-height: 1.7;
+     margin-bottom: 8rem;
+     
+  }
+}
+
+
+// 끝
+
+// 컬러 시작
+
+.BlackWhiteSection {
+  display: flex;
+  justify-content: space-between; /* 양쪽 끝으로 밀착 */
+  align-items: center;            /* 세로 중앙 정렬 */
+  width: 100%;                    /* 전체 폭 사용 */
+  margin-top: 5rem;
+  padding: 18rem 0 0 0;
+}
+
+/* BLACK 박스 */
+.Black p {
+  color: #f7f7f7;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  text-align: left;
+  font-weight: 700;
+}
+
+.White p {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  text-align: right;
+  font-weight: 700;
+}
+
+
+.BlueOrangeSection {
+  display: flex;
+  justify-content: space-between; /* 양쪽 끝으로 밀착 */
+  align-items: center;            /* 세로 중앙 정렬 */
+  width: 100%;                    /* 전체 폭 사용 */
+}
+
+.Blue p {
+  color: #f7f7f7;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  text-align: left;
+  font-weight: 700;
+}
+
+.Orange p {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  text-align: right;
+  font-weight: 700;
+}
+
+
+.ColorBoxSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* BlackWhite 이미지 */
+.BlackWhiteBox img {
+  width: 100vw;
+  height: auto;
+  display: block;
+  padding-right: 100px;
+  padding-left: 100px;
+  margin-bottom: 1.5rem;
+}
+
+.ColorRow img {
+  width: 100vw;
+  height: auto;
+  display: block;
+  padding-right: 100px;
+  padding-left: 100px;
+}
+
+.LogoSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; // p1(=topText)를 오른쪽 끝에 두기
+  gap: 2rem; // 위아래 간격
+  margin-top: 8rem;
+
+  .topText {
+    max-width: 60%;
+    font-size: 1.4rem;
+    line-height: 1.7;
+  }
+
+  .contentRow {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    width: 100%;
+    margin-top: 18rem;
+
+
+    p {
+      flex: 1;
+      text-align: left;
+      font-size: 1.4rem;
+      line-height: 1.7;
+      margin-top: 30rem;
+
+    }
+
+    img {
+      width: 600px; // 원하는 크기 조정
+      height: auto;
+    }
+  }
+}
+
+/* 이미지 호버 스왑 */
+.logoSwap {
+  position: relative;
+}
+
+/* 두 이미지를 겹치기 */
+.logoSwap .base,
+.logoSwap .hover {
+  position: relative;
+  transition: opacity 240ms ease;
+}
+
+.logoSwap .hover {
+  position: absolute;
+  inset: 0;         /* 위/오/아/왼 0으로 겹치기 */
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 호버 시 교체 */
+.logoSwap:hover .hover {
+  opacity: 1;
+}
+.logoSwap:hover .base {
+  opacity: 0;
+}
+
+
+
+.KeywordSection{
+  background: $color-dark;
+  padding: 18rem 0 0 0;
+  color: $color-light;
+  flex-direction: column; 
+}
+
+
+.KWtitleSction {
+  h6 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $color-light;
+    margin-bottom: 5rem;
+    font-family: $font-pretendard;
+  }
+}
+
+.KWtxtSection{
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-family: $font-pretendard;
+    line-height: 1.2;
+    color: $color-light;
+    flex: 0.95;
+    margin-bottom: 5.5rem;
+  }
+  
+  p {
+    font-size: 1.48rem;
+    line-height: 1.6;
+    color: $color-light;
+    font-family: $font-pretendard;
+    margin-bottom: 0;
+    flex: 1.05;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+}
+
+
+
+
+
+.KWLooper {
+  --gap: 32px;        // 아이템 간격
+  --fade: 12%;        // 좌우 페이드 폭
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 12px 0;
+
+  // 양 끝 어둡게 (검정→투명)
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: var(--fade);
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, #171717, rgba(0,0,0,0));
+  }
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, #171717, rgba(0,0,0,0));
+  }
+}
+
+.KWTrack {
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
+.KWTrack > * {
+  flex: 0 0 auto;
+  margin-right: var(--gap);  // JS에서 이 값 읽어서 보정함
+}
+
+.KWTrack > *:last-child {
+  margin-right: 0;
+}
+
+.KWTrack img {
+  display: block;
+  height: 80px;      // 필요 시 clamp로 반응형
+  width: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .KWTrack { transform: none !important; }
+}
+
+
+
+
+
+
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .ColorRow {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .ColorRow span img {
+    width: 60vw;
+  }
+}
+
+
+
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+  .BlackWhiteBox img {
+    width: 280px;
+  }
+
+  .ColorRow {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .ColorRow img {
+    width: 200px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .YoungSection {
+    flex-direction: column;
+    text-align: center;
+  }
+}
 
 // 모바일 반응형
 @include mobile {
@@ -181,13 +610,13 @@
   .pageContainer {
     font-size: 3.5rem;
   }
+  
 }
 
-// 5K 해상도 대응
-@include imac5k {
-  .heroText {
+@include desktop {
+    .heroText {
     h1 {
-      font-size: 6rem;
+      font-size: 5rem;
       margin-bottom: 4rem;
     }
     
@@ -195,8 +624,379 @@
       font-size: 2rem;
     }
   }
+  // 메인 끝
 
-  .pageContainer {
-    font-size: 4.5rem;
+  .OLTitleSection {
+  h6 {
+    font-size: 2rem;
+    margin-bottom: 5rem;
   }
+}
+
+.OLtxtSection{
+  h1 {
+    font-size: 4.2rem;
+    margin-bottom: 5.5rem;
+  }
+  
+  p {
+    font-size: 2rem;
+  }
+}
+
+// 아웃라인 섹션 끝
+
+
+.DGTitleSection {
+  h6 {
+    font-size: 2rem;
+  }
+}
+
+.DGtxtSection{
+  h1 {
+    font-size: 4.2rem;
+    margin-bottom: 5.6rem;
+  }
+}
+
+.fontimage1Container {
+  img {
+    width: 470px;     // 크기 조정
+    height: auto;
+  }
+}
+
+.fontimage2Container {
+  img {
+    width: 700px;     // 크기 조정
+    height: auto;
+  }
+}
+
+.YoungtxtSection 
+  {
+  h3 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  p {
+    margin-top: 2.7rem;
+    font-size: 2rem;
+    line-height: 1.7;
+  }
+}
+
+.HantxtSection 
+  
+  {
+
+    margin-bottom: 11rem;
+
+  h3 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  p {
+    margin-top: 2.7rem;
+    font-size: 2rem;
+    line-height: 1.7;
+  }
+}
+
+.ColorSection {
+  padding: 10rem 0 0 0;
+}
+
+.Black p {
+  font-size: 1.75rem;
+  line-height: 1.6;
+}
+
+.White p {
+  font-size: 1.75rem;
+  line-height: 1.6;
+}
+
+.Blue p {
+  font-size: 1.75rem;
+  line-height: 1.6;
+}
+
+.Orange p {
+  font-size: 1.75rem;
+  line-height: 1.6;
+}
+
+.ColorRowSection{
+  margin-top: 0.4rem;
+}
+
+.LogoSection {
+  margin-top: 8rem;
+
+  .topText {
+    max-width: 60%;
+    font-size: 1.8rem;
+    line-height: 1.7;
+  }
+}
+
+.LogoSection .contentRow {     
+
+p {
+  margin-top: 35rem;
+  font-size: 1.8rem;
+}
+
+img {
+    width: 750px; // 원하는 크기 조정
+    height: auto;
+  }
+
+}
+
+
+
+  .OLTitleSection {
+  h6 {
+    font-size: 2rem;
+    margin-bottom: 5rem;
+  }
+}
+
+.OLtxtSection{
+  h1 {
+    font-size: 4.2rem;
+    margin-bottom: 5.5rem;
+  }
+  
+  p {
+    font-size: 2rem;
+  }
+}
+
+.KWTrack {
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
+.KWTrack > * {
+  flex: 0 0 auto;
+  margin-right: var(--gap);  // JS에서 이 값 읽어서 보정함
+}
+
+.KWTrack > *:last-child {
+  margin-right: 0;
+}
+
+.KWTrack img {
+  display: block;
+  height: 100px;      // 필요 시 clamp로 반응형
+  width: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+
+}
+
+
+//RMXRXMRrXMr끝끝끝
+
+// 5K 해상도 대응
+@include imac5k {
+  .heroText {
+    h1 {
+      font-size: 6.625rem;
+      margin-bottom: 5.5rem;
+    }
+    
+    p {
+      width: 1500px;
+      font-size: 2.6rem;
+    }
+  }
+
+
+  // 메인 끝
+
+
+    .OLTitleSection {
+  h6 {
+    font-size: 2.6rem;
+    margin-bottom: 5rem;
+  }
+}
+
+.OLtxtSection{
+  h1 {
+    font-size: 5.6rem;
+    margin-bottom: 5.5rem;
+  }
+  
+  p {
+    font-size: 2.6rem;
+  }
+}
+
+// 아웃라인 섹션 끝
+
+.DGTitleSection {
+  h6 {
+    font-size: 2.6rem;
+  }
+}
+
+.DGtxtSection{
+  h1 {
+    font-size: 5.6rem;
+    margin-bottom: 5.5rem;
+  }
+}
+
+
+.fontimage1Container {
+  img {
+    width: 650px;     // 크기 조정
+    height: auto;
+  }
+}
+
+.HantxtSection {
+  h3 {
+    margin: 0;
+    font-size: 2.6rem;
+  }
+
+  p {
+    margin-top: 2.7rem;
+    font-size: 2.6rem;
+    line-height: 1.7;
+  }
+}
+
+.fontimage2Container {
+  img {
+    width: 800px;     // 크기 조정
+    height: auto;
+  }
+}
+
+.YoungtxtSection {
+  h3 {
+    margin: 0;
+    font-size: 2.6rem;
+  }
+
+  p {
+    margin-top: 2.7rem;
+    font-size: 2.6rem;
+    line-height: 1.7;
+  }
+}
+
+.ColorSection {
+  padding: 10rem 0 0 0;
+}
+
+
+.Black p {
+  font-size: 2.3rem;
+  line-height: 1.6;
+}
+
+.White p {
+  font-size: 2.3rem;
+  line-height: 1.6;
+}
+
+.Blue p {
+  font-size: 2.3rem;
+  line-height: 1.6;
+}
+
+.Orange p {
+  font-size: 2.3rem;
+  line-height: 1.6;
+}
+
+.ColorRowSection{
+  margin-top: 1.5rem;
+}
+
+.LogoSection {
+  margin-top: 10rem;
+
+  .topText {
+    max-width: 60%;
+    font-size: 2.6rem;
+    line-height: 1.7;
+  }
+}
+
+.LogoSection .contentRow {
+  p {
+    margin-top: 45rem;
+    font-size: 2.6rem;
+  }
+  img {
+    width: 1000px; // 원하는 크기 조정
+    height: auto;
+  }
+}
+
+
+  .KWtitleSction {
+  h6 {
+    font-size: 2.6rem;
+    margin-bottom: 5rem;
+  }
+}
+
+.KWtxtSection{
+  h1 {
+    font-size: 5.6rem;
+    margin-bottom: 5.5rem;
+  }
+  
+  p {
+    font-size: 2.6rem;
+  }
+}
+
+
+
+.KWTrack {
+  display: flex;
+  align-items: center;
+  will-change: transform;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
+.KWTrack > * {
+  flex: 0 0 auto;
+  margin-right: var(--gap);  // JS에서 이 값 읽어서 보정함
+}
+
+.KWTrack > *:last-child {
+  margin-right: 0;
+}
+
+.KWTrack img {
+  display: block;
+  height: 130px;      // 필요 시 clamp로 반응형
+  width: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
 }
