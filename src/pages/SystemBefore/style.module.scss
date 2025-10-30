@@ -110,7 +110,7 @@
 
 .card {
   background: linear-gradient(130deg, #2b2b2b 0%, #171717 71%);
-  border: 1px solid $color-primary;
+  border: 2px solid $color-primary;
   border-radius: 0;
   padding: 2.5rem;
   height: 360px;
@@ -130,7 +130,7 @@
   
   &.highlightCard {
     background: linear-gradient(120deg, #0015FF 0%, #000D99 74%);
-    border: 1px solid $color-primary;
+    border: 2px solid $color-primary;
     z-index: 10;
     position: relative;
     height: 420px;
@@ -405,6 +405,9 @@
     margin: 0;
     text-align: left;
     padding: 0 4rem 3.5rem;
+    strong {
+      font-weight: 700;
+    }
   }
 }
 
@@ -492,7 +495,7 @@
 .infoBoxOrange,.infoBoxDark {
   position: relative;
   background: linear-gradient(130deg, #2b2b2b 0%, #171717 71%);
-  border: 1px solid $color-secondary;
+  border: 2px solid $color-secondary;
   transition: opacity 0.3s;
   
   &::after {
@@ -510,6 +513,34 @@
     opacity: 1;
   }
   
+  p {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// 파란색 변형 (페르소나 Blue 참고)
+.infoBoxBlue {
+  position: relative;
+  background: linear-gradient(130deg, #2b2b2b 0%, #171717 71%);
+  border: 2px solid $color-primary;
+  transition: opacity 0.3s;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(130deg, #0015ff 0%, #000d99 74%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 12px;
+    z-index: 1;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
   p {
     position: relative;
     z-index: 2;
@@ -611,7 +642,7 @@
   padding: 1.5rem 2rem;
   backdrop-filter: blur(10px);
   background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   opacity: 0;
   transform: translateY(10px) scale(0.95);
@@ -736,7 +767,7 @@
 .personaBox {
   padding: 2rem 2.5rem;
   border-radius: 12px;
-  border: 1px solid;
+  border: 2px solid;
   background: linear-gradient(130deg, #2b2b2b 0%, #171717 71%);
   aspect-ratio: 1.15;
   min-height: 0; // grid에서 aspect-ratio가 제대로 작동하도록
@@ -1335,12 +1366,12 @@
   
   .digitalizationLongDescription {
     font-size: 1.5rem;
-    max-width: 50%;
+    max-width: 53%;
   }
   
   .infoBox {
-    width: 400px;
-    min-height: 240px;
+    width: 500px;
+    min-height: 280px;
     
     p {
       font-size: 1.2rem;

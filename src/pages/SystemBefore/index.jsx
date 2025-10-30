@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useLayoutEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,6 +13,9 @@ import videoSrc from '../../assets/mp4/aipage.mp4';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function SystemBefore() {
+  const location = useLocation();
+  const mountToken = useRef(0);
+  
   // 숫자 섹션 옵저버
   const { ref: numbersRef, isIntersecting: isNumbersVisible } = useIntersectionObserver({
     threshold: 0.3,
@@ -61,7 +65,7 @@ export default function SystemBefore() {
     });
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isNumbersVisible) {
       setTimeout(() => setShow27(true), 300);
       setTimeout(() => setShow30(true), 600);
@@ -73,96 +77,83 @@ export default function SystemBefore() {
   const digitalizationSectionRef = useRef(null);
   const infoBoxesWrapperRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const currentToken = ++mountToken.current;
     const section = digitalizationSectionRef.current;
     const wrapper = infoBoxesWrapperRef.current;
-
-    // ref가 모두 준비되었는지 확인
     if (!section || !wrapper) return;
 
-    // 이동 거리를 계산하는 함수
-    const calculateMoveDistance = () => {
-      // 컨테이너의 실제 너비 측정 (모든 카드 포함)
+    // 남아있는 트리거 전부 제거
+    ScrollTrigger.getAll().forEach(t => t.kill(true));
+
+    const calcDistance = () => {
       const containerWidth = wrapper.scrollWidth;
       const viewportWidth = window.innerWidth;
-      
-      // 마지막 카드가 왼쪽에 닿을 때까지 이동할 거리 계산
-      // 컨테이너 전체 너비에서 뷰포트 너비를 빼면 필요한 이동 거리가 나옴
-      // 단, padding을 고려하여 정확하게 계산
-      const paddingLeft = parseFloat(getComputedStyle(wrapper).paddingLeft) || 0;
-      const paddingRight = parseFloat(getComputedStyle(wrapper).paddingRight) || 0;
-      const actualContainerWidth = containerWidth - paddingLeft - paddingRight;
-      
-      // 이동 거리 = (컨테이너 너비 - 뷰포트 너비)만큼 왼쪽으로
-      // 음수 값으로 왼쪽 이동
-      return -(actualContainerWidth - viewportWidth);
+      const cs = getComputedStyle(wrapper);
+      const padding = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+      return -(containerWidth - viewportWidth - padding);
     };
 
-    // ScrollTrigger 애니메이션을 생성하는 함수
-    let scrollTrigger = null;
-    const createScrollTrigger = () => {
-      // 기존 애니메이션이 있으면 제거
-      if (scrollTrigger && scrollTrigger.scrollTrigger) {
-        scrollTrigger.scrollTrigger.kill();
-        scrollTrigger.kill();
-      }
+    // 스크롤 가능한 거리 계산 (end 값용)
+    const calcScrollDistance = () => {
+      const containerWidth = wrapper.scrollWidth;
+      const viewportWidth = window.innerWidth;
+      const cs = getComputedStyle(wrapper);
+      const padding = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+      return Math.abs(containerWidth - viewportWidth - padding);
+    };
 
-      // 이동 거리 계산
-      const moveDistance = calculateMoveDistance();
-
-      // ScrollTrigger로 컨테이너 전체를 슬라이드
-      scrollTrigger = gsap.to(wrapper, {
-        x: moveDistance, // 픽셀 단위로 정확한 이동 (5번째 카드가 왼쪽에 닿을 때까지)
-        ease: "none", // 스크롤에 맞게 자연스러운 움직임
+    const ctx = gsap.context(() => {
+      const scrollDistance = calcScrollDistance();
+      
+      gsap.to(wrapper, {
+        x: calcDistance(),
+        ease: "none",
         scrollTrigger: {
+          id: "digitalization-pin",
           trigger: section,
           start: "top top",
-          end: "+=4000", // 스크롤 거리
+          end: `+=${scrollDistance}`,
+          scrub: true,
           pin: true,
-          scrub: true, // 스크롤과 부드럽게 동기화
           anticipatePin: 1,
+          invalidateOnRefresh: true,
         },
       });
-    };
+    }, section);
 
-    // 초기 애니메이션 생성
-    createScrollTrigger();
+    const handleResize = () => ScrollTrigger.refresh();
+    window.addEventListener("resize", handleResize);
+    requestAnimationFrame(() => ScrollTrigger.refresh());
 
-    // 창 크기 변경 시 이동 거리 재계산 및 ScrollTrigger 재생성
-    const handleResize = () => {
-      createScrollTrigger();
-      // 약간의 지연 후 refresh (레이아웃 재계산 대기)
-      setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 50);
-    };
-
-    // resize 이벤트 리스너 추가 (디바운싱 적용)
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        handleResize();
-      }, 100);
-    });
-
-    // 초기화 후 한 번 더 refresh (반응형 스타일 적용 후)
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 100);
-
-    // 클린업 함수
     return () => {
-      window.removeEventListener('resize', handleResize);
-      clearTimeout(resizeTimeout);
-      if (scrollTrigger) {
-        if (scrollTrigger.scrollTrigger) {
-          scrollTrigger.scrollTrigger.kill();
-        }
-        scrollTrigger.kill();
+      window.removeEventListener("resize", handleResize);
+      const cleanupToken = currentToken;
+      if (mountToken.current !== cleanupToken) return;
+
+      try {
+        ScrollTrigger.getById("digitalization-pin")?.kill(true);
+        ScrollTrigger.getAll().forEach(t => t.kill(true));
+      } catch (e) {
+        console.warn("GSAP cleanup error:", e);
       }
+
+      // ✅ ScrollTrigger.kill(true)가 자동으로 pin 관련 스타일을 정리하므로
+      // ctx.revert()만으로 충분합니다. 레이아웃 유지에 필요한 스타일은 보존됩니다.
+      ctx.revert();
+
+      // ✅ pin-spacer 제거 (ScrollTrigger.kill 후 남을 수 있음)
+      document.querySelectorAll(".pin-spacer").forEach(el => el.remove());
+
+      // ✅ html/body overflow만 초기화 (pin으로 추가된 것)
+      gsap.set("html, body", { clearProps: "overflow" });
+
+      // ✅ wrapper의 transform만 초기화 (x 애니메이션 관련)
+      gsap.set(wrapper, { clearProps: "transform" });
+
+      ScrollTrigger.refresh();
     };
-  }, []);
+  }, [location.pathname]); // 라우트 이동마다 트리거 재등록
 
   return (
     <>
@@ -265,19 +256,19 @@ export default function SystemBefore() {
         <div className={styles.infoBoxesContainer}>
           <div ref={infoBoxesWrapperRef} className={styles.infoBoxesWrapper}>
             <div className={`${styles.infoBox} ${styles.infoBoxOrange}`}>
-              <p>디지털 업무 도구가 부족으로<br />반복적 수기 절차로 행정 지연이 발생</p>
+              <p>디지털 업무 도구 부족으로<br /><strong>반복적 수기 절차로 행정 지연이 발생</strong></p>
+            </div>
+            <div className={`${styles.infoBox} ${styles.infoBoxBlue}`}>
+              <p>정부의 국방부 등 <strong>공공기관에서의<br />디지털 전환 추진</strong></p>
             </div>
             <div className={`${styles.infoBox} ${styles.infoBoxDark}`}>
-              <p>정부의 국방부 등 공공기관에서의<br />디지털 전환 추진</p>
+              <p>2030년까지 공공부문<br /><strong>AI 도입률 95% 달성 목표</strong></p>
+            </div>
+            <div className={`${styles.infoBox} ${styles.infoBoxBlue}`}>
+              <p>디지털 도구 도입 시 <strong>교도관의 업무<br />부담이 평균 15~20% 감소</strong></p>
             </div>
             <div className={`${styles.infoBox} ${styles.infoBoxDark}`}>
-              <p>2030년까지 공공부문<br />AI 도입률 95% 달성 목표</p>
-            </div>
-            <div className={`${styles.infoBox} ${styles.infoBoxDark}`}>
-              <p>교정시설의 스마트화를 통한<br />업무 효율성 및 보안 강화</p>
-            </div>
-            <div className={`${styles.infoBox} ${styles.infoBoxDark}`}>
-              <p>데이터 기반 의사결정 체계 구축 및<br />실시간 모니터링 시스템 도입</p>
+              <p>AI CCTV와 전자기록 적용 시<br /><strong>업무 시간 단축과 업무 부담 감소</strong></p>
             </div>
           </div>
         </div>
