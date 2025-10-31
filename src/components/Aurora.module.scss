@@ -1,0 +1,13 @@
+.aurora-container {
+	position: fixed;
+	top: -60vh;
+	left: 0;
+	opacity: 0.15;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	z-index: 99;
+	pointer-events: none;
+	transform:rotate(180deg);
+	}
+  

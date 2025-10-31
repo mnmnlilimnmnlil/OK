@@ -3,14 +3,17 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./style.module.scss";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import videoSrc from '../../assets/mp4/aipage.mp4';
-import mainVideoSrc from '../../assets/mp4/mainvideo.mp4';
+import videoSrc from '../../assets/mp4/mainpage.webm';
+import mainVideoSrc from '../../assets/mp4/mainvideo.webm';
 
 export default function Main() {
   const videoRef = useRef(null);
+  const mainVideoElRef = useRef(null);
   const navigate = useNavigate();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [collapsedSections, setCollapsedSections] = useState(new Set());
+  const [userInteracted, setUserInteracted] = useState(false);
+  const hoverTriedRef = useRef(false);
 
   useEffect(() => {
     let ticking = false;
@@ -83,6 +86,55 @@ export default function Main() {
     handleScroll(); // 초기 실행
 
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // 하단 메인 영상: 90% 이상 보이면 자동재생, 아니면 일시정지
+  useEffect(() => {
+    const videoEl = mainVideoElRef.current;
+    if (!videoEl) return;
+
+    const handleEntries = (entries) => {
+      const entry = entries[0];
+      if (!entry || !mainVideoElRef.current) return;
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.9) {
+        // 사용자 상호작용 후에는 음소거 해제하여 재생 시도
+        if (userInteracted) {
+          videoEl.muted = false;
+          videoEl.play().catch(() => {});
+        } else {
+          // 정책상 제스처 전에는 무음 자동재생만 허용
+          videoEl.muted = true;
+          videoEl.play().catch(() => {});
+        }
+      } else {
+        videoEl.pause();
+      }
+    };
+
+    const observer = new IntersectionObserver(handleEntries, {
+      threshold: [0, 0.25, 0.5, 0.75, 0.9, 1],
+    });
+
+    observer.observe(videoEl);
+
+    return () => {
+      observer.unobserve(videoEl);
+      observer.disconnect();
+      try { videoEl.pause(); } catch (_) {}
+    };
+  }, [userInteracted]);
+
+  // 첫 사용자 제스처 감지 시 음소거 해제 가능 상태로 전환
+  useEffect(() => {
+    const enableSound = () => setUserInteracted(true);
+    window.addEventListener('pointerdown', enableSound, { once: true });
+    window.addEventListener('keydown', enableSound, { once: true });
+    window.addEventListener('touchstart', enableSound, { once: true });
+    return () => {
+      window.removeEventListener('pointerdown', enableSound);
+      window.removeEventListener('keydown', enableSound);
+      window.removeEventListener('touchstart', enableSound);
+    };
   }, []);
 
   // 스크롤 진행률에 따른 스케일과 위치 계산 - 크기 변화를 작게
@@ -186,16 +238,57 @@ export default function Main() {
        {/* 메인 영상 섹션 */}
        <div ref={videoRef} className={styles.mainVideoSection}>
          <video
+           ref={mainVideoElRef}
            src={mainVideoSrc}
-            controls
+           controls
            playsInline
-
+           onMouseEnter={async () => {
+             const el = mainVideoElRef.current;
+             if (!el || hoverTriedRef.current) return;
+             hoverTriedRef.current = true;
+             try {
+               el.muted = false;
+               await el.play();
+               setUserInteracted(true);
+             } catch (_) {
+               // 브라우저 정책으로 실패 시 무음 유지
+               el.muted = true;
+               try { await el.play(); } catch (_) {}
+             }
+           }}
            style={{
              transform: `scale(${scale}) translateY(${translateY}%)`,
              transition: 'none'
-
            }}
          />
+         {!userInteracted && (
+           <button
+             onClick={() => {
+               const el = mainVideoElRef.current;
+               if (!el) return;
+               try {
+                 el.muted = false;
+                 el.play().catch(() => {});
+               } finally {
+                 setUserInteracted(true);
+               }
+             }}
+             style={{
+               position: 'absolute',
+               right: '1rem',
+               bottom: '1rem',
+               zIndex: 2,
+               padding: '0.5rem 0.75rem',
+               borderRadius: '8px',
+               border: '1px solid rgba(255,255,255,0.5)',
+               background: 'rgba(0,0,0,0.5)',
+               color: '#fff',
+               cursor: 'pointer'
+             }}
+           >
+             사운드 켜기
+           </button>
+         )}
        </div>
 
       <Footer />

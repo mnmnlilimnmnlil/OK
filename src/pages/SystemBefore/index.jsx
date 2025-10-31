@@ -8,7 +8,7 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import DeviceInfoBox from '../../components/DeviceInfoBox';
 import ShinyText from '../../components/ShinyText';
-import videoSrc from '../../assets/mp4/aipage.mp4';
+import videoSrc from '../../assets/mp4/systembefore.webm';
 
 gsap.registerPlugin(ScrollTrigger);
 
