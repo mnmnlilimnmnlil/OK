@@ -2,17 +2,79 @@ import styles from './style.module.scss';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import videoSrc from '../../assets/mp4/watch.webm';
-import onboarding from '../../assets/watchimage/bpm.webm';
-import phone from '../../assets/watchimage/bpm2.webm';
-import run from '../../assets/watchimage/stress.webm';
-import nfcVideo from '../../assets/watchimage/NFC.mov';
-import cctvImg from '../../assets/watchimage/cctv.png';
-import temperatureImg from '../../assets/watchimage/temperature.png';
+// WATCHIMAGE 폴더 모든 에셋 임포트
+import bpm from '../../assets/watchimage/bpm.mp4';
+import cctvImg from '../../assets/watchimage/CCTV.png';
+import danger from '../../assets/watchimage/danger.mp4';
+import fuckdongImg from '../../assets/watchimage/폭동.png';
+import nfcVideo from '../../assets/watchimage/NFC.mp4';
+import radio from '../../assets/watchimage/radio.mp4';
+import run from '../../assets/watchimage/Run.mp4';
+import stress from '../../assets/watchimage/stress.mp4';
+import temper from '../../assets/watchimage/temper.mp4';
+import threeW from '../../assets/watchimage/threeW.mp4';
 import { useMemo, useState, useCallback, useRef, useEffect } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 
 export default function SmartWatch() {
-  
+  // 히어로 섹션 옵저버
+  const { ref: heroTextRef, isIntersecting: isHeroTextVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // 페이지 컨테이너 옵저버들
+  const { ref: pageTitleRef, isIntersecting: isPageTitleVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  const { ref: pageContainerRef, isIntersecting: isPageContainerVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  const { ref: pageTextRef, isIntersecting: isPageTextVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // 캐러셀 섹션 옵저버
+  const { ref: carouselHeaderRef, isIntersecting: isCarouselHeaderVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // Action 섹션 옵저버들
+  const { ref: actionHeaderRef, isIntersecting: isActionHeaderVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  const { ref: actionContentRef, isIntersecting: isActionContentVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // SOS 섹션 옵저버들
+  const { ref: sosContentRef, isIntersecting: isSosContentVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // Radio 섹션 옵저버들
+  const { ref: radioContentRef, isIntersecting: isRadioContentVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // Alert 섹션 옵저버들
+  const { ref: alertContentRef, isIntersecting: isAlertContentVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
   return (
     <>
       <Header />
@@ -29,7 +91,10 @@ export default function SmartWatch() {
           />
         </div>
         
-        <div className={styles.heroText}>
+        <div 
+          ref={heroTextRef}
+          className={`${styles.heroText} ${isHeroTextVisible ? styles.animateIn : ''}`}
+        >
           <h1>
             현장 변화를<br />
             감지하는<br />
@@ -42,24 +107,25 @@ export default function SmartWatch() {
         </div>
       </div>
 
-      <div className={styles.pageContainerTitle}>
+      <div 
+        ref={pageTitleRef}
+        className={`${styles.pageContainerTitle} ${isPageTitleVisible ? styles.animateIn : ''}`}
+      >
         <h3>Smart Watch</h3>
         <h2>대한민국 교정,<br/>지금의 방향을 묻다</h2>
       </div>
-      <div className={styles.pageContainer}>
-        <ul className ={styles.pageContainerList}>
-          <li className={styles.videoItem_01}>
-            <video src={onboarding} autoPlay muted loop playsInline />
-          </li>
-          <li className={styles.videoItem_02}>
-            <video src={phone} autoPlay muted loop playsInline />
-          </li>
-          <li className={styles.videoItem_03}>
-            <video src={run} autoPlay muted loop playsInline />
-          </li>
-        </ul>
+      <div 
+        ref={pageContainerRef}
+        className={`${styles.pageContainer} ${isPageContainerVisible ? styles.animateIn : ''}`}
+      >
+        <div className={styles.videoBox}>
+          <video src={threeW} autoPlay muted loop playsInline />
+        </div>
        </div>
-       <div className={styles.pageContainerText}>
+       <div 
+        ref={pageTextRef}
+        className={`${styles.pageContainerText} ${isPageTextVisible ? styles.animateIn : ''}`}
+       >
         <p>
          위치는 교도관의 신체와 현장을 동시에 인식하는 실시간 인터페이스 입니다.<br/>
          심박수, 체온, 스트레스 지수 등 생체 데이터를 기반으로 교도관의 컨디션을 감지하고,<br/>
@@ -68,18 +134,23 @@ export default function SmartWatch() {
        </div>
       
       {/* 이미지 4 + 텍스트 상자 캐러셀 섹션 */}
-      <CarouselSection
-        items={useMemo(() => ([
-          { img: temperatureImg, title: '체온', desc: '체온 변화를 실시간으로 감지하여 이상 징후를 빠르게 식별합니다.' },
-          { img: cctvImg,        title: '상황 인지', desc: '현장의 변화를 시각적으로 요약해 직관적인 판단을 돕습니다.' },
-          { img: temperatureImg, title: '스트레스', desc: '생체 신호 기반으로 누적 피로와 스트레스를 파악합니다.' },
-          { img: cctvImg,        title: '활동 패턴', desc: '활동량과 이동 패턴 분석으로 이상 행동을 조기 탐지합니다.' },
-        ]), [])}
-      />
+             <CarouselSection
+               items={useMemo(() => ([
+                 { video: stress, title: '심박수', desc: '심장의 박동 리듬을 실시간으로 감지하고, 일정 기간 동안의 변화 패턴을 기록합니다. 안정 시와 활동 시의 심박 변화를 비교하여 긴장도나 피로도를 정밀하게 파악 할 수 있습니다.' },
+                 { video: bpm, title: '스트레스 지수', desc: '심박,체온,움직임 등 복합 샹체 데이터를 분석하여 스트레스 수준을 계산합니다. 그래프와 시각적파동을 통해 감정적 긴장 상태를 직관적으로 확인 할 수 있습니다.' },
+                 { video: danger, title: '체온', desc: '피부 온도를 지속적으로 측정해, 신처 내부의 미세한 변화까지 감지합니다. 체온 상승이나 하락의 추세를 분석하여, 피로 누적이나 질병 징후를 조기에 식별 할수 있습니다.' },
+                 { video: temper, title: '긴급 알림', desc: '워치를 통해 교도관의 건강 상태를 실시간 모니터링하고, 이상 징후가 김지되면 즉시 알림을 제공합니다. 이후 AI가 교정 시설 내 교도관 인력을 자동으로 재배치 합니다.' },
+               ]), [bpm])}
+               carouselHeaderRef={carouselHeaderRef}
+               isCarouselHeaderVisible={isCarouselHeaderVisible}
+             />
 
       {/* Real-Time Action System 섹션 */}
       <section className={styles.actionSection}>
-        <div className={styles.actionHeader}>
+        <div 
+          ref={actionHeaderRef}
+          className={`${styles.actionHeader} ${isActionHeaderVisible ? styles.animateIn : ''}`}
+        >
           <div className={styles.actionLabel}>Real-Time Action System</div>
           <h2 className={styles.actionTitle}>
             교도관의 손목 위에서
@@ -88,10 +159,13 @@ export default function SmartWatch() {
           </h2>
         </div>
         
-        <div className={styles.actionContent}>
+        <div 
+          ref={actionContentRef}
+          className={`${styles.actionContent} ${isActionContentVisible ? styles.animateIn : ''}`}
+        >
           <div className={styles.actionWatch}>
             <video
-              src={onboarding}
+              src={nfcVideo}
               autoPlay
               muted
               loop
@@ -102,8 +176,8 @@ export default function SmartWatch() {
           <div className={styles.actionText}>
             <h3 className={styles.actionSubTitle}>NFC 인식</h3>
             <p className={styles.actionDescription}>
-              수용자의 NFC 카드를 워치를 통해 인식할 수 있으며, 인식된 정보는 태블릿으로 바로 연동됩니다. 
-              이를 통해 교도관은 수용자의 프로파일을 바로 확인할 수 있고, 수용자에 대한 정보를 현장에서 
+              수용자의 NFC 카드를 워치를 통해 인식할 수 있으며, 인식된 정보는 태블릿으로 바<br/>로 연동됩니다. 
+              이를 통해 교도관은 수용자의 프로파일을 바로 확인할 수 있고, 수용<br/>자에 대한 정보를 현장에서 
               바로 빠르게 접근할 수 있습니다.
             </p>
           </div>
@@ -112,19 +186,22 @@ export default function SmartWatch() {
 
       {/* 긴급 SOS 발신 섹션 */}
       <section className={styles.sosSection}>
-        <div className={styles.sosContent}>
+        <div 
+          ref={sosContentRef}
+          className={`${styles.sosContent} ${isSosContentVisible ? styles.animateIn : ''}`}
+        >
           <div className={styles.sosText}>
             <h3 className={styles.sosSubTitle}>긴급 SOS 발신</h3>
             <p className={styles.sosDescription}>
-              교도관이 직접 5대 교정 사고 유형에서 선택하여 현장에 즉시 알림을 전송할 수 있는 기능입니다. 
-              AI 자동 감지 시스템 외에도 사람이 직접 위험 상황(도주, 폭행, 등)을 선택해 신속히 전달함으로써, 
+              교도관이 직접 5대 교정 사고 유형에서 선택하여 현장에 즉시 알림을 전송할 수 있는<br/> 기능입니다. 
+              AI 자동 감지 시스템 외에도 사람이 직접 위험 상황(도주, 폭행, 등)을 선<br/>택해 신속히 전달함으로써, 
               현장의 판단력을 보완하고 대응 속도를 높입니다.
             </p>
           </div>
           
           <div className={styles.sosWatch}>
             <video
-              src={onboarding}
+              src={run}
               autoPlay
               muted
               loop
@@ -136,10 +213,13 @@ export default function SmartWatch() {
 
       {/* 무전 수신 섹션 */}
       <section className={styles.radioSection}>
-        <div className={styles.radioContent}>
+        <div 
+          ref={radioContentRef}
+          className={`${styles.radioContent} ${isRadioContentVisible ? styles.animateIn : ''}`}
+        >
           <div className={styles.radioWatch}>
             <video
-              src={onboarding}
+              src={radio}
               autoPlay
               muted
               loop
@@ -150,9 +230,9 @@ export default function SmartWatch() {
           <div className={styles.radioText}>
             <h3 className={styles.radioSubTitle}>무전 수신</h3>
             <p className={styles.radioDescription}>
-              무전 수신 기능은 긴급 지시나 상황 보고를 실시간으로 전달하는 교신 채널입니다. 
+              무전 수신 기능은 긴급 지시나 상황 보고를 실시간으로 전달하는 교신 채널입니다.<br/>
               교도관은 워치에서 직접 수신 버튼을 통해 지시를 확인하거나 응답할 수 있어, 
-              양손이 자유롭지 않은 상황에서도 빠른 대응이 가능합니다.
+              양손<br/>이 자유롭지 않은 상황에서도 빠른 대응이 가능합니다.
             </p>
           </div>
         </div>
@@ -160,24 +240,21 @@ export default function SmartWatch() {
 
       {/* 실시간 위험 감지 알림 섹션 */}
       <section className={styles.alertSection}>
-        <div className={styles.alertContent}>
+        <div 
+          ref={alertContentRef}
+          className={`${styles.alertContent} ${isAlertContentVisible ? styles.animateIn : ''}`}
+        >
           <div className={styles.alertWatches}>
             <div className={styles.alertWatchTop}>
-              <video
-                src={onboarding}
-                autoPlay
-                muted
-                loop
-                playsInline
+              <img
+                src={cctvImg}
+                alt="CCTV 모니터링"
               />
             </div>
             <div className={styles.alertWatchBottom}>
-              <video
-                src={onboarding}
-                autoPlay
-                muted
-                loop
-                playsInline
+              <img
+                src={fuckdongImg}
+                alt="위치 추적"
               />
             </div>
           </div>
@@ -185,10 +262,9 @@ export default function SmartWatch() {
           <div className={styles.alertText}>
             <h3 className={styles.alertSubTitle}>실시간 위험 감지 알림</h3>
             <p className={styles.alertDescription}>
-              AI 기반 위치 추적 시스템은 무단 이동 패턴을 감지하고 워치로 실시간 알림을 전송합니다. 
-              교도관은 진동과 시각적 신호를 통해 도주 방향을 빠르게 식별하고, 인근 위치 정보를 바탕으로 
-              신속하게 대응할 수 있습니다. 알림은 위험도에 따라 주황색(긴급)과 파란색(경미)으로 분류되어 
-              교도관이 대응 우선순위를 판단할 수 있도록 합니다.
+              AI 기반 위치 추적 시스템은 무단 이동 패턴을 감지하고 워치로 실시간 알림을 전송<br/>됩니다. 
+              교도관은 진동과 시각적 신호를 통해 도주 방향을 빠르게 인지할 수 있으며, 근<br/>거리 위치 정보와함께
+              신속한 대응이 가능합니다. 위험도에 따라 주황색(긴급)과 파<br/>란색(경미)으로 구분되어 교도관이 우선 대응할 수 있습니다.
             </p>
           </div>
         </div>
@@ -199,7 +275,7 @@ export default function SmartWatch() {
   );
 }
 
-function CarouselSection({ items }) {
+function CarouselSection({ items, carouselHeaderRef, isCarouselHeaderVisible }) {
   const [offset, setOffset] = useState(0); // 회전 기준
   const [animMainId, setAnimMainId] = useState(null);
   const prevMainRef = useRef(null);
@@ -252,7 +328,10 @@ function CarouselSection({ items }) {
 
   return (
     <section className={styles.carouselSection}>
-      <div className={styles.carouselHeader}>
+      <div 
+        ref={carouselHeaderRef}
+        className={`${styles.carouselHeader} ${isCarouselHeaderVisible ? styles.animateIn : ''}`}
+      >
         <div className={styles.sectionLabel}>Health Monitoring</div>
         <h2 className={styles.carouselTitle}>
           생체 신호를 기반으로,
@@ -273,60 +352,47 @@ function CarouselSection({ items }) {
               style={{ x }}
               onDragEnd={handleDragEnd}
               animate={{ x: 0 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              transition={{ type: 'spring', stiffness: 150, damping: 50 }}
             >
-              {rotatedWatch.slice(0, 3).map((idx, i) => {
-                const baseCls = i === 2
-                  ? `${styles.isMain}`
-                  : i === 1
-                  ? `${styles.isMid}`
-                  : `${styles.isLeft}`;
-                const animated = i === 2 && animMainId === idx ? ` ${styles.pop}` : '';
-                const cls = `${styles.watchThumb} ${baseCls}${animated}`;
-                return (
-                  <li key={idx} className={cls}>
-                    <img src={items[idx].img} alt={items[idx].title} />
-                  </li>
-                );
-              })}
+                     {rotatedWatch.slice(0, 3).map((idx, i) => {
+                       const baseCls = i === 2
+                         ? `${styles.isMain}`
+                         : i === 1
+                         ? `${styles.isMid}`
+                         : `${styles.isLeft}`;
+                       const animated = i === 2 && animMainId === idx ? ` ${styles.pop}` : '';
+                       const cls = `${styles.watchThumb} ${baseCls}${animated}`;
+                       return (
+                         <li key={idx} className={cls}>
+                           <video src={items[idx].video} autoPlay muted loop playsInline />
+                         </li>
+                       );
+                     })}
             </motion.ul>
           </div>
 
           <div className={styles.textSide}>
-            <button className={styles.textArrowLeft} onClick={() => go(-1)} aria-label="prev">
-              <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-              </svg>
-            </button>
-            {/* 오른쪽: 1.5개 보이는 텍스트 창 (순환) */}
             <div className={styles.textWindow}>
-              <motion.div
-                className={styles.textTrack}
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.1}
-                style={{ x }}
-                onDragEnd={handleDragEnd}
-                animate={{ x: 0 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              >
-                {/* 첫 번째 카드 */}
-                <div className={styles.carouselTextBox}>
-                  <div className={styles.textHeader}><h3>{items[rotatedText[0]].title}</h3></div>
-                  <p className={styles.textBody}>{items[rotatedText[0]].desc}</p>
-                </div>
-                {/* 첫 카드와 고스트 카드 사이 고정 버튼 */}
-                <button className={styles.textArrowBetween} onClick={() => go(1)} aria-label="next">
+              <button className={styles.textArrowLeft} onClick={() => go(-1)} aria-label="prev">
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill="currentColor" d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+              </button>
+              <div className={styles.carouselTextBox}>
+                <div className={styles.textHeader}><h3>{items[rotatedText[0]].title}</h3></div>
+                <p className={styles.textBody}>{items[rotatedText[0]].desc}</p>
+                <button className={styles.textArrowRight} onClick={() => go(1)} aria-label="next">
                   <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path fill="currentColor" d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/>
                   </svg>
                 </button>
-                {/* 반쪽(고스트) 카드 */}
-                <div className={styles.carouselTextBoxGhost}>
+              </div>
+              <div className={styles.textNextWrapper}>
+                <div className={styles.carouselTextBoxNext}>
                   <div className={styles.textHeader}><h3>{items[rotatedText[1]].title}</h3></div>
                   <p className={styles.textBody}>{items[rotatedText[1]].desc}</p>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

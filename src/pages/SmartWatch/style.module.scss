@@ -1,6 +1,8 @@
 @use '../../styles/main' as *;
 
+// ===============================
 // 히어로 섹션
+// ===============================
 .heroSection {
   position: relative;
   height: 100vh;
@@ -35,6 +37,9 @@
   margin: 0;
   text-align: left;
   padding: 0 var(--site-margin);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   
   h1 {
     font-size: 4rem;
@@ -57,12 +62,83 @@
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
   }
 }
+
+// 히어로 섹션 반응형
+@include mobile {
+  .heroText {
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+@include tablet {
+  .heroText {
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    p {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+@include laptop {
+  .heroText {
+    h1 {
+      font-size: 3.5rem;
+    }
+    
+    p {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+@include desktop {
+  .heroText {
+    h1 {
+      font-size: 5rem;
+    }
+    
+    p {
+      font-size: 2rem;
+    }
+  }
+}
+
+@include imac5k {
+  .heroText {
+    h1 {
+      font-size: 6.625rem;
+      margin-bottom: 5rem;
+    }
+    
+    p {
+      font-size: 2.6rem;
+    }
+  }
+}
+
+// ===============================
+// 페이지 컨테이너 섹션
+// ===============================
 .pageContainerTitle {
   margin-top: 10rem;
   font-weight: 700;
   font-family: $font-pretendard;
   color: $color-light;
   text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   
   h3 {
     font-size: 1.5rem;
@@ -89,58 +165,34 @@
   min-height: 100vh;
   font-size: 3rem;
   color: $color-white;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
  
-  .pageContainerList {
+  .videoBox {
+    width: 70%;
+    aspect-ratio: 16 / 9;
+    background: $color-dark;
+    border-radius: 1rem;
+    overflow: hidden;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 0rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .videoItem_01 {
-    width: 20%;
-    height: 10%;
-    background: $color-dark;
-    transform: translateX(40%);
-    z-index: 1;
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  .videoItem_02 {
-    width: 30%;
-    height: 10%;
     
-   z-index:2;
     video {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-    }
-  }
-  .videoItem_03 {
-    width: 20%;
-    height: 10%;
-    background: $color-dark;
-    transform: translateX(-40%);
-    z-index: 1;
-    video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
   }
 }
-// 텍스트 섹션
+
 .pageContainerText {
   text-align: center;
-  padding: 0 var(--site-margin);
   margin-bottom: 5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   
   p {
     font-size: 1.2rem;
@@ -150,119 +202,12 @@
     text-align: center;
     font-weight: 300;
     line-height: 1.6;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.05em;
   }
 }
 
-// 첫 섹션: 워치 3열 쇼케이스
-.watchShowcase {
-  position: relative;
-  color: $color-light;
-
-  .sectionHead {
-    max-width: 1200px;
-    margin: 0 auto 4rem;
-    text-align: center; 
-
-    h2 {
-      font-family: $font-pretendard;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      font-size: 3rem; // 데스크탑 기본 타이포 통일
-      margin: 0 0 1.25rem 0;
-    }
-
-    p {
-      font-family: $font-pretendard;
-      font-weight: 300;
-      font-size: 1.2rem;
-      color: rgba(247,247,247,0.9);
-      margin: 0;
-    }
-  }
-
-  .watchGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    max-width: 140x;
-    margin: 0 auto;
-    align-items: start;
-  }
-
-  .watchItem {
-    text-align: center;
-
-    .deviceFrame {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1/1.1;
-      border-radius: 2rem;
-      background: radial-gradient(120% 160% at 50% 30%, rgba(54,71,255,0.35), rgba(0,0,0,0) 70%);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
-      overflow: hidden;
-
-      video, img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        
-        
-      }
-    }
-
-    h3 {
-      margin: 1.25rem 0 0.5rem;
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-
-    p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: rgba(247,247,247,0.8);
-    }
-  }
-
-  .center {
-    transform: translateY(-2rem);
-    .deviceFrame { box-shadow: 0 18px 60px rgba(54,71,255,0.45); }
-  }
-}
-
-// 모바일 반응형
+// 페이지 컨테이너 반응형
 @include mobile {
-  .watchShowcase {
-    padding: 4rem var(--site-margin) 5rem;
-
-    .sectionHead {
-      h2 { font-size: 1.75rem; }
-      p { font-size: 0.95rem; }
-    }
-
-    .watchGrid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    .center { transform: none; }
-  }
-  .heroText {
-    padding: 0 var(--site-margin);
-    
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
-    
-    p {
-      font-size: 1rem;
-    }
-  }
-  
   .pageContainerTitle {
     margin-top: 5rem;
     
@@ -275,10 +220,9 @@
       font-size: 1.75rem;
     }
   }
-  
+
   .pageContainer {
     font-size: 2rem;
-    padding: 3rem var(--site-margin);
   }
   
   .pageContainerText {
@@ -290,26 +234,7 @@
   }
 }
 
-// 태블릿 반응형
 @include tablet {
-  .watchShowcase {
-    .sectionHead {
-      h2 { font-size: 2.2rem; }
-      p { font-size: 1.05rem; }
-    }
-    .watchGrid { gap: 2rem; }
-  }
-  .heroText {
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 2.5rem;
-    }
-    
-    p {
-      font-size: 1.3rem;
-    }
-  }
-  
   .pageContainerTitle {
     margin-top: 8rem;
     
@@ -336,24 +261,7 @@
   }
 }
 
-// 노트북 반응형
 @include laptop {
-  .watchShowcase {
-    .sectionHead {
-      h2 { font-size: 2.6rem; }
-      p { font-size: 1.15rem; }
-    }
-  }
-  .heroText {
-    h1 {
-      font-size: 3.5rem;
-    }
-    
-    p {
-      font-size: 1.4rem;
-    }
-  }
-  
   .pageContainerTitle {
     margin-top: 10rem;
     
@@ -381,16 +289,6 @@
 }
 
 @include desktop {
-  .heroText {
-    h1 {
-      font-size: 5rem;
-    }
-    
-    p {
-      font-size: 2rem;
-    }
-  }
-  
   .pageContainerTitle {
     h3 {
       font-size: 1.5rem;
@@ -401,7 +299,7 @@
       font-size: 4.2rem;
     }
   }
-  
+
   .pageContainer {
     font-size: 4rem;
   }
@@ -415,53 +313,26 @@
   }
 }
 
-// 5K 해상도 대응
 @include imac5k {
-  .watchShowcase {
-    padding: 10rem var(--site-margin) 12rem;
-
-    .sectionHead {
-      h2 { font-size: 4rem; } // iMac 5K 타이포 통일
-      p { font-size: 1.6rem; }
-    }
-
-    .watchGrid { max-width: 1800px; gap: 3rem; }
-
-    .watchItem {
-      h3 { font-size: 1.6rem; }
-      p { font-size: 1.2rem; }
-    }
-  }
-  .heroText {
-    h1 {
-      font-size: 6.625rem;
-      margin-bottom: 5rem;
-    }
-    
-    p {
-      font-size: 2.6rem;
-    }
-  }
-  
   .pageContainerTitle {
     margin-top: 12rem;
     
     h3 {
-      font-size: 1.6rem;
-      margin-bottom: 6rem;
+      font-size: 2.6rem;
+      margin-bottom: 5rem;
     }
     
     h2 {
-      font-size: 4.5rem;
+      font-size: 5.6rem;
     }
   }
 
   .pageContainer {
-    font-size: 4.5rem;
+    font-size: 5.6rem;
   }
   
   .pageContainerText {
-    margin-bottom: 6rem;
+    margin-bottom: 5rem;
     
     p {
       font-size: 2.6rem;
@@ -470,114 +341,283 @@
 }
 
 // ===============================
-// Carousel (이미지 4 + 텍스트 박스)
+// Carousel 섹션 (이미지 4 + 텍스트 박스)
 // ===============================
+.carouselSection {
+  margin-top: 50rem;
+  margin-bottom: 20rem;
+}
 
 .carouselHeader {
-  margin: 0 0 2rem 0;
+  margin: 0 0 5rem 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
- .sectionLabel {
+
+.sectionLabel {
+  margin-bottom: 5rem;
   font-size: 1.5rem;
   font-weight: 700;
   font-family: $font-pretendard;
   color: $color-light;
-  margin: 0;
-  letter-spacing: 0.05em;
- }
+  letter-spacing: -0.05em;
+}
+
 .carouselTitle { 
-  margin: 0; 
   color: $color-light; 
   font-family: $font-pretendard; 
   line-height: 1.2;
   font-size: 3.5rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em;
 }
 
 .carouselPanel {
   position: relative;
-  background: rgba(32,32,32,0.9);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5) inset, 0 20px 60px rgba(0,0,0,0.35);
-  padding: 1.25rem 2rem; /* 세로 여백 축소: 가로 길고 세로 짧은 박스 */
+  background: rgb(38, 38, 38);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5) inset, 0 10px 60px rgba(0,0,0,0.35);
+  padding: 1.25rem 2rem;
   max-width: 100%;
   margin: 0 auto;
-  overflow: hidden; /* 보이는 영역 밖으로 슬라이드 숨김 */
-  /* 높이 흔들림 방지: 공통 패널 높이 변수 (짧게) */
-  --panelH: clamp(320px, 70vh, 540px);
-  height: calc(var(--panelH) + 2.5rem); /* 패널 자체 높이 고정 */
+  overflow: hidden;
+  --panelH: clamp(320px, 80vh, 640px);
+  height: calc(var(--panelH) + 4rem);
 }
+
 .panelArrowLeft,
 .panelArrowRight {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px; height: 44px; border-radius: 999px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
   cursor: pointer;
 }
-.panelArrowLeft { left: 1rem; }
-.panelArrowRight { right: 1rem; }
+
+.panelArrowLeft {
+  left: 1rem;
+}
+
+.panelArrowRight {
+  right: 1rem;
+}
 
 .carouselInner {
   display: grid;
-  grid-template-columns: 0.45fr 0.55fr; // 좌: 45% (워치), 우: 55% (텍스트+버튼)
-  gap: 3rem;
+  grid-template-columns: 0.42fr 0.58fr;
   align-items: stretch;
 }
 
-// 왼쪽: 3개 보이는 워치 스트립
-.watchStrip { overflow: visible; height: var(--panelH); display: flex; align-items: center; }
-.watchList { display: flex; gap: 0; padding: 0; margin: 0; list-style: none; align-items: center; height: 100%; cursor: grab; }
-.watchList:active { cursor: grabbing; }
-.watchThumb { flex: 0 0 calc(100% / 3); display: flex; align-items: center; justify-content: center; transition: transform 280ms ease, opacity 200ms ease; height: 100%; }
-.isLeft { transform: translateX(-20px) scale(0.9); opacity: 0.6; }
-.isMid { transform: translateX(-28px) scale(0.9); opacity: 0.6; }
-.isMain { transform: translateX(0) scale(1.28); z-index: 2; opacity: 1; }
-.pop { animation: popIn 320ms cubic-bezier(0.2, 0.9, 0.2, 1) both; }
-@keyframes popIn {
-  0% { transform: translateX(12px) scale(0.95); filter: brightness(0.9); }
-  60% { transform: translateX(4px) scale(1.33); filter: brightness(1); }
-  100% { transform: translateX(0) scale(1.28); }
+// 왼쪽: 워치 스트립
+.watchStrip { 
+  overflow: visible; 
+  height: var(--panelH); 
+  display: flex; 
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
 }
-.watchThumb img { max-height: 62%; width: auto; object-fit: contain; display: block; }
 
+.watchList {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  align-items: center;
+  height: 100%;
+  cursor: grab;
+  margin-left: -20px;
+  
+  &:active {
+    cursor: grabbing;
+  }
+}
 
-// 오른쪽: 1.5개 보이는 텍스트 창
+.watchThumb {
+  flex: 0 0 calc(100% / 3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1), opacity 500ms ease;
+  height: 100%;
+  
+  img,
+  video {
+    max-height: 70%; 
+    width: auto; 
+    object-fit: contain; 
+    display: block;
+  }
+}
+
+.isLeft {
+  transform: translateX(-15px) scale(0.7);
+  opacity: 0.6;
+}
+
+.isMid {
+  transform: translateX(-100px) scale(0.7);
+  opacity: 0.6;
+}
+
+.isMain {
+  transform: translateX(-120px) scale(1.1);
+  z-index: 2;
+  opacity: 1;
+}
+
+.pop {
+  animation: popIn 320ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+@keyframes popIn {
+  0% {
+    transform: translateX(-100px) scale(0.7);
+    filter: brightness(0.9);
+  }
+  60% {
+    transform: translateX(-115px) scale(1.15);
+    filter: brightness(1);
+  }
+  100% {
+    transform: translateX(-120px) scale(1.1);
+  }
+}
+
+// 오른쪽: 텍스트 영역
+.textSide {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  overflow: visible;
+  padding-right: 32px;
+  box-sizing: border-box;
+}
+
 .textWindow {
-  overflow: hidden;
   height: var(--panelH);
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  --cardW: clamp(320px, 42vw, 620px);
+  overflow: visible;
   position: relative;
-  --cardW: clamp(280px, 36vw, 560px);
-  /* 오른쪽으로 1.5개 보이도록 부드럽게 페이드 */
-  -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,1) 78%, rgba(0,0,0,0.0) 100%);
-  mask-image: linear-gradient(90deg, rgba(0,0,0,1) 78%, rgba(0,0,0,0.0) 100%);
+  width: 100%;
 }
-.textTrack { display: flex; gap: 1rem; width: 100%; align-items: center; cursor: grab; }
-.textTrack:active { cursor: grabbing; }
+
+.textArrowLeft {
+  width: 48px; 
+  height: 48px; 
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: $color-light; 
+  cursor: pointer;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  flex-shrink: 0;
+  
+  &:hover {
+    background: rgba(255,255,255,0.12);
+  }
+}
+
+.textNextWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  pointer-events: none;
+  position: relative;
+  box-sizing: border-box;
+  width: var(--cardW);
+  min-height: 140px;
+  height: auto;
+  margin-right: 32px;
+}
+
+.textArrowRight {
+  width: 48px; 
+  height: 48px; 
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: $color-light; 
+  cursor: pointer;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  flex-shrink: 0;
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  pointer-events: auto;
+  
+  &:hover {
+    background: rgba(255,255,255,0.12);
+  }
+}
+
 .carouselTextBox {
   width: var(--cardW);
-  min-height: 110px;
+  min-height: 140px;
+  height: auto;
   padding: 0.875rem 1rem;
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(46,46,46,0.85), rgba(34,34,34,0.8));
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 8px 24px rgba(0,0,0,0.35);
   backdrop-filter: blur(8px);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  max-width: 100%;
 }
-.carouselTextBoxGhost {
-  width: var(--cardW);
-  min-height: 110px;
+
+.carouselTextBoxNext {
+  width: 100%;
+  height: 100%;
+  min-height: 140px;
   padding: 0.875rem 1rem;
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(46,46,46,0.6), rgba(34,34,34,0.55));
   border: 1px solid rgba(255,255,255,0.06);
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  opacity: 0.55;
-  transform: scale(0.98);
-  pointer-events: none;
+  opacity: 0.5;
+  flex-shrink: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.textHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+  }
+}
+
+.textBody {
+  color: rgba(247,247,247,0.9);
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
 }
 
 .carouselDots {
@@ -588,87 +628,64 @@
   display: flex;
   gap: 0.5rem;
 }
-.dot, .dotActive {
-  width: 8px; height: 8px; border-radius: 50%;
+
+.dot,
+.dotActive {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   background: rgba(255,255,255,0.35);
-  border: none; cursor: pointer;
-}
-.dotActive { background: #3647FF; }
-
-.carouselTextBox {
-  border-radius: 1rem;
-  background: rgba(48,48,48,1);
-  border: 1px solid rgba(247,247,247,0.08);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-self: center;
-  max-width: 420px;
-  min-height: 180px;
+  border: none;
+  cursor: pointer;
 }
 
-.textHeader { display: flex; align-items: center; justify-content: space-between; }
-.arrowGroup { display: flex; gap: 0.5rem; }
-.arrowBtn {
-  width: 40px; height: 40px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.06); color: $color-light; cursor: pointer;
-}
-.arrowBtn:hover { background: rgba(255,255,255,0.12); }
-
-.textHeader h3 {
-  margin: 0 0 0.4rem 0;
-  font-size: 1.125rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-.textBody {
-  color: rgba(247,247,247,0.9);
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.55;
+.dotActive {
+  background: #3647FF;
 }
 
-// 텍스트 영역 양옆 화살표 배치
-.textSide {
-  display: grid;
-  width: 100%;
-  justify-content: center; /* 중앙에 텍스트 박스 기준으로 정렬 */
-  grid-template-columns: auto minmax(1000px, 1000px) auto; /* 가운데 폭 고정/반응형 */ 
-  align-items: center;
-  gap: 0.75rem;
-}
-.textArrowLeft,
-.textArrowRight {
-  width: 48px; height: 48px; border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.06);
-  color: $color-light; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-}
-.textArrowLeft { transform: translateX(-10px); }
-.textArrowRight { transform: translateX(30px); }
-.textArrowLeft:hover, .textArrowRight:hover { background: rgba(255,255,255,0.12); }
-
-/* 첫 번째 텍스트 카드 오른쪽에 붙는 절대 위치 화살표 */
-.textArrowBetween {
-  flex: 0 0 auto;
-  width: 48px; height: 48px; border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.06);
-  color: $color-light; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-}
-.textArrowBetween:hover { background: rgba(255,255,255,0.12); }
-
-// 반응형 조정
+// Carousel 섹션 반응형
 @include mobile {
-  .carouselSection { padding: 4rem var(--site-margin); }
-  .carouselPanel { padding: 1rem; max-width: 100%; border-radius: 1rem; }
-  .carouselInner { grid-template-columns: 1fr; gap: 1rem; }
-  .carouselVisual { height: clamp(220px, 38vh, 340px); }
-  .carouselTextBox { padding: 1rem; min-height: 140px; }
-  .panelArrowLeft, .panelArrowRight, .textArrowLeft, .textArrowRight { display: none; }
+  .carouselPanel {
+    padding: 1rem;
+    max-width: 100%;
+    border-radius: 1rem;
+  }
+  
+  .carouselInner {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .textSide {
+    padding-right: 0;
+  }
+  
+  .textWindow {
+    --cardW: 100%;
+  }
+  
+  .carouselTextBox,
+  .carouselTextBoxNext {
+    width: var(--cardW);
+    padding: 1rem;
+    min-height: 140px;
+    max-width: 100%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  
+  .textNextWrapper {
+    width: 100%;
+    min-height: 140px;
+    height: auto;
+  }
+  
+  .panelArrowLeft,
+  .panelArrowRight,
+  .textArrowLeft,
+  .textArrowRight {
+    display: none;
+  }
   
   .sectionLabel {
     font-size: 0.95rem;
@@ -677,12 +694,49 @@
   .carouselTitle {
     font-size: 1.75rem;
   }
+  
+  .textBody {
+    font-size: 0.85rem;
+  }
 }
 
 @include tablet {
-  .carouselSection { padding: 6rem var(--site-margin); }
-  .carouselInner { gap: 2rem; grid-template-columns: 0.5fr 0.5fr; }
-  .carouselVisual { height: clamp(260px, 42vh, 420px); }
+  .carouselInner {
+    gap: 3rem;
+    grid-template-columns: 0.42fr 0.58fr;
+  }
+  
+  .textSide {
+    padding-right: 28px;
+  }
+  
+  .textWindow {
+    --cardW: clamp(280px, 40vw, 580px);
+  }
+  
+  .carouselTextBox {
+    width: var(--cardW);
+    max-width: 100%;
+    flex-shrink: 0;
+    min-height: 180px;
+    padding: 1rem 1.25rem;
+    box-sizing: border-box;
+  }
+  
+  .carouselTextBoxNext {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    min-height: 180px;
+  }
+  
+  .textNextWrapper {
+    width: var(--cardW);
+    min-height: 180px;
+    height: auto;
+  }
   
   .sectionLabel {
     font-size: 1.05rem;
@@ -691,11 +745,48 @@
   .carouselTitle {
     font-size: 2.2rem;
   }
+  
+  .textBody {
+    font-size: 0.95rem;
+  }
 }
 
 @include laptop {
-  .carouselInner { grid-template-columns: 0.47fr 0.53fr; }
-  .carouselVisual { height: clamp(300px, 45vh, 460px); }
+  .carouselInner {
+    grid-template-columns: 0.42fr 0.58fr;
+  }
+  
+  .textSide {
+    padding-right: 32px;
+  }
+  
+  .textWindow {
+    --cardW: clamp(280px, 32vw, 440px);
+  }
+  
+  .carouselTextBox {
+    width: var(--cardW);
+    max-width: 100%;
+    flex-shrink: 0;
+    min-height: 220px;
+    padding: 1rem 1.25rem;
+    box-sizing: border-box;
+  }
+  
+  .carouselTextBoxNext {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    min-height: 220px;
+  }
+  
+  .textNextWrapper {
+    width: var(--cardW);
+    min-height: 220px;
+    height: auto;
+  }
   
   .sectionLabel {
     font-size: 1.15rem;
@@ -704,12 +795,63 @@
   .carouselTitle {
     font-size: 3rem;
   }
+  
+  .textBody {
+    font-size: 1.05rem;
+  }
 }
 
 @include desktop {
-  .carouselSection { padding: 10rem var(--site-margin); }
-  .carouselInner { grid-template-columns: 0.45fr 0.55fr; }
-  .carouselVisual { height: clamp(320px, 42vh, 500px); }
+  .carouselInner {
+    grid-template-columns: 0.42fr 0.58fr;
+  }
+  
+  .textSide {
+    padding-right: 32px;
+  }
+  
+  .textWindow {
+    --cardW: clamp(420px, 45vw, 680px);
+  }
+  
+  .carouselTextBox {
+    width: var(--cardW);
+    max-width: 100%;
+    flex-shrink: 0;
+    min-height: 256px;
+    padding: 2.25rem 1.75rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .textBody {
+    margin-top: auto;
+  }
+  
+  .carouselTextBoxNext {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    min-height: 256px;
+    padding: 2.25rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    
+    .textBody {
+      margin-top: auto;
+    }
+  }
+  
+  .textNextWrapper {
+    width: var(--cardW);
+    min-height: 256px;
+    height: auto;
+  }
   
   .sectionLabel {
     font-size: 2rem;
@@ -718,19 +860,105 @@
   .carouselTitle {
     font-size: 4.2rem;
   }
+  
+  .textHeader h3 {
+    font-size: 2rem;
+  }
+  
+  .textBody {
+    font-size: 1.4rem;
+  }
 }
 
 @include imac5k {
-  .carouselSection { padding: 12rem var(--site-margin); }
-  .carouselVisual { height: clamp(420px, 40vh, 0px); }
-  .carouselPanel { height: clamp(420px, 100vh, 1000px); }
+  .carouselPanel {
+    height: clamp(420px, 100vh, 1000px);
+  }
+  
+  .carouselInner {
+    grid-template-columns: 0.42fr 0.58fr;
+    height: clamp(420px, 100vh, 1000px);
+  }
+  
+  .watchStrip {
+    height: clamp(420px, 100vh, 1000px);
+  }
+  
+  .panelArrowLeft {
+    left: 2.5rem;
+  }
+  
+  .panelArrowRight {
+    right: 2.5rem;
+  }
+  
+  .watchThumb img,
+  .watchThumb video {
+    max-height: 65%;
+  }
+  
+  .textSide {
+    padding-right: 40px;
+  }
+  
+  .textWindow {
+    --cardW: clamp(600px, 45vw, 820px);
+  }
+  
+  .carouselTextBox {
+    width: var(--cardW);
+    max-width: 100%;
+    padding: 3rem 3.5rem;
+    min-height: 320px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .carouselTextBoxNext {
+    width: 100%;
+    height: 100%;
+    padding: 3rem 3.5rem;
+    min-height: 320px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+  
+  .textNextWrapper {
+    width: var(--cardW);
+    min-height: 320px;
+    height: auto;
+  }
+  
+  .textArrowLeft,
+  .textArrowRight {
+    width: 80px;
+    height: 80px;
+    font-size: 1.8rem;
+  }
+  
+  .textArrowRight {
+    right: -40px;
+  }
+  
+  .textHeader h3 {
+    font-size: 2.6rem;
+    margin-bottom: 2rem;
+  }
+  
+  .textBody {
+    font-size: 1.8rem;
+    line-height: 1.5;
+  }
   
   .sectionLabel {
-    font-size: 1.6rem;
+    font-size: 2.6rem;
   }
   
   .carouselTitle {
-    font-size: 4.5rem;
+    font-size: 5.6rem;
   }
 }
 
@@ -738,14 +966,17 @@
 // Real-Time Action System 섹션
 // ===============================
 .actionSection {
-  padding: 8rem var(--site-margin);
+  margin-bottom: 20rem;
   color: $color-light;
   background: $color-dark;
 }
 
 .actionHeader {
-  margin-bottom: 5rem;
+  margin-bottom: 20rem;
   text-align: left;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .actionLabel {
@@ -753,8 +984,8 @@
   font-weight: 700;
   font-family: $font-pretendard;
   color: $color-light;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.05em;
+  margin-bottom: 5rem;
+  letter-spacing: -0.05em;
 }
 
 .actionTitle {
@@ -762,37 +993,39 @@
   font-weight: 700;
   font-family: $font-pretendard;
   color: $color-light;
+  letter-spacing: -0.05em;
   line-height: 1.2;
-  margin: 0;
-  letter-spacing: -0.02em;
 }
 
 .actionContent {
   display: grid;
-  grid-template-columns: 0.45fr 1.55fr;
-  gap: 4rem;
+  grid-template-columns: 0.4fr 1.6fr;
   align-items: center;
   overflow: visible;
+  height: 60vh;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .actionWatch {
   position: relative;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
   aspect-ratio: 1.2;
   min-height: 400px;
+  transform: translateX(-20px);
   
   video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
 .actionText {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
 .actionSubTitle {
@@ -801,32 +1034,28 @@
   font-family: $font-pretendard;
   color: $color-light;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em;
+  margin-bottom: 5rem;
 }
 
 .actionDescription {
   font-size: 1.2rem;
   font-weight: 300;
   font-family: $font-pretendard;
-  color: rgba(247, 247, 247, 0.9);
+  color: $color-light;
   line-height: 1.6;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em;
 }
 
-// Real-Time Action System 섹션 반응형
+// Action 섹션 반응형
 @include mobile {
-  .actionSection {
-    padding: 4rem var(--site-margin);
-  }
-  
   .actionHeader {
     margin-bottom: 3rem;
   }
   
   .actionLabel {
     font-size: 0.95rem;
-    margin-bottom: 1rem;
   }
   
   .actionTitle {
@@ -835,16 +1064,12 @@
   
   .actionContent {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
   
   .actionWatch {
     aspect-ratio: 1.2;
     min-height: 250px;
-  }
-  
-  .actionText {
-    gap: 1.5rem;
+    width: 100%;
   }
   
   .actionSubTitle {
@@ -858,14 +1083,6 @@
 }
 
 @include tablet {
-  .actionSection {
-    padding: 6rem var(--site-margin);
-  }
-  
-  .actionHeader {
-    margin-bottom: 4rem;
-  }
-  
   .actionLabel {
     font-size: 1.05rem;
   }
@@ -874,8 +1091,8 @@
     font-size: 2.2rem;
   }
   
-  .actionContent {
-    gap: 3rem;
+  .actionWatch {
+    width: 100%;
   }
   
   .actionSubTitle {
@@ -888,17 +1105,8 @@
 }
 
 @include laptop {
-  .actionSection {
-    padding: 8rem var(--site-margin);
-  }
-  
-  .actionHeader {
-    margin-bottom: 4.5rem;
-  }
-  
   .actionLabel {
     font-size: 1.15rem;
-    margin-bottom: 1.25rem;
   }
   
   .actionTitle {
@@ -910,12 +1118,8 @@
   }
   
   .actionWatch {
-    width: 65%;
-    min-height: 380px;
-  }
-  
-  .actionText {
-    gap: 1.8rem;
+    width: 100%;
+    min-height: 100%;
   }
   
   .actionSubTitle {
@@ -928,34 +1132,17 @@
 }
 
 @include desktop {
-  .actionSection {
-    padding: 10rem var(--site-margin);
-  }
-  
-  .actionHeader {
-    margin-bottom: 5.5rem;
-  }
-  
   .actionLabel {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
   }
   
   .actionTitle {
     font-size: 4.2rem;
   }
   
-  .actionContent {
-    gap: 4rem;
-  }
-  
   .actionWatch {
-    width: 60%;
-    min-height: 400px;
-  }
-  
-  .actionText {
-    gap: 2rem;
+    width: 90%;
+    min-height: 90%;
   }
   
   .actionSubTitle {
@@ -968,30 +1155,17 @@
 }
 
 @include imac5k {
-  .actionSection {
-    padding: 12rem var(--site-margin);
-  }
-  
-  .actionHeader {
-    margin-bottom: 6rem;
-  }
-  
   .actionLabel {
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
+    font-size: 3.7rem;
   }
   
   .actionTitle {
     font-size: 5.6rem;
   }
   
-  .actionContent {
-    gap: 4.5rem;
-  }
-  
   .actionWatch {
-    width: 60%;
-    min-height: 500px;
+    width: 100%;
+    height: 100%;
   }
   
   .actionText {
@@ -999,11 +1173,11 @@
   }
   
   .actionSubTitle {
-    font-size: 2.6rem;
+    font-size: 3.7rem;
   }
   
   .actionDescription {
-    font-size: 1.6rem;
+    font-size: 2.6rem;
   }
 }
 
@@ -1011,23 +1185,25 @@
 // 긴급 SOS 발신 섹션
 // ===============================
 .sosSection {
-  padding: 8rem var(--site-margin);
   color: $color-light;
   background: $color-dark;
+  margin-bottom: 20rem;
 }
 
 .sosContent {
   display: grid;
-  grid-template-columns: 1.55fr 0.45fr;
-  gap: 4rem;
+  grid-template-columns: 1.6fr 0.4fr;
   align-items: center;
   overflow: visible;
+  height: 60vh;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .sosText {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
 .sosSubTitle {
@@ -1036,51 +1212,45 @@
   font-family: $font-pretendard;
   color: $color-light;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em;
+  margin-bottom: 5rem;
 }
 
 .sosDescription {
   font-size: 1.2rem;
   font-weight: 300;
   font-family: $font-pretendard;
-  color: rgba(247, 247, 247, 0.9);
+  color: $color-light;
   line-height: 1.6;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em;
 }
 
 .sosWatch {
   position: relative;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
   aspect-ratio: 1.2;
   min-height: 400px;
+  transform: translateX(20px);
   
   video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
-// 긴급 SOS 발신 섹션 반응형
+// SOS 섹션 반응형
 @include mobile {
-  .sosSection {
-    padding: 4rem var(--site-margin);
-  }
-  
   .sosContent {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
   
   .sosWatch {
     aspect-ratio: 1.2;
     min-height: 250px;
-  }
-  
-  .sosText {
-    gap: 1.5rem;
+    width: 100%;
   }
   
   .sosSubTitle {
@@ -1094,12 +1264,8 @@
 }
 
 @include tablet {
-  .sosSection {
-    padding: 6rem var(--site-margin);
-  }
-  
-  .sosContent {
-    gap: 3rem;
+  .sosWatch {
+    width: 100%;
   }
   
   .sosSubTitle {
@@ -1112,21 +1278,13 @@
 }
 
 @include laptop {
-  .sosSection {
-    padding: 8rem var(--site-margin);
-  }
-  
   .sosContent {
     gap: 3.5rem;
   }
   
   .sosWatch {
-    width: 65%;
-    min-height: 380px;
-  }
-  
-  .sosText {
-    gap: 1.8rem;
+    width: 100%;
+    min-height: 100%;
   }
   
   .sosSubTitle {
@@ -1139,21 +1297,9 @@
 }
 
 @include desktop {
-  .sosSection {
-    padding: 10rem var(--site-margin);
-  }
-  
-  .sosContent {
-    gap: 4rem;
-  }
-  
   .sosWatch {
-    width: 60%;
-    min-height: 400px;
-  }
-  
-  .sosText {
-    gap: 2rem;
+    width: 90%;
+    min-height: 90%;
   }
   
   .sosSubTitle {
@@ -1166,17 +1312,9 @@
 }
 
 @include imac5k {
-  .sosSection {
-    padding: 12rem var(--site-margin);
-  }
-  
-  .sosContent {
-    gap: 4.5rem;
-  }
-  
   .sosWatch {
-    width: 60%;
-    min-height: 500px;
+    width: 100%;
+    min-height: 100%;
   }
   
   .sosText {
@@ -1184,11 +1322,11 @@
   }
   
   .sosSubTitle {
-    font-size: 2.6rem;
+    font-size: 3.7rem;
   }
   
   .sosDescription {
-    font-size: 1.6rem;
+    font-size: 2.6rem;
   }
 }
 
@@ -1196,37 +1334,39 @@
 // 무전 수신 섹션
 // ===============================
 .radioSection {
-  padding: 8rem var(--site-margin);
   color: $color-light;
   background: $color-dark;
 }
 
 .radioContent {
   display: grid;
-  grid-template-columns: 0.45fr 1.55fr;
-  gap: 4rem;
+  grid-template-columns: 0.4fr 1.6fr;
   align-items: center;
   overflow: visible;
+  height: 60vh;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .radioWatch {
   position: relative;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
   aspect-ratio: 1.2;
   min-height: 400px;
+  transform: translateX(-20px);
   
   video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
 .radioText {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
 .radioSubTitle {
@@ -1235,37 +1375,30 @@
   font-family: $font-pretendard;
   color: $color-light;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em;
+  margin-bottom: 5rem;
 }
 
 .radioDescription {
   font-size: 1.2rem;
   font-weight: 300;
   font-family: $font-pretendard;
-  color: rgba(247, 247, 247, 0.9);
+  color: $color-light;
   line-height: 1.6;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em;
 }
 
-// 무전 수신 섹션 반응형
+// Radio 섹션 반응형
 @include mobile {
-  .radioSection {
-    padding: 4rem var(--site-margin);
-  }
-  
   .radioContent {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
   
   .radioWatch {
     aspect-ratio: 1.2;
     min-height: 250px;
-  }
-  
-  .radioText {
-    gap: 1.5rem;
+    width: 100%;
   }
   
   .radioSubTitle {
@@ -1279,12 +1412,8 @@
 }
 
 @include tablet {
-  .radioSection {
-    padding: 6rem var(--site-margin);
-  }
-  
-  .radioContent {
-    gap: 3rem;
+  .radioWatch {
+    width: 100%;
   }
   
   .radioSubTitle {
@@ -1297,21 +1426,13 @@
 }
 
 @include laptop {
-  .radioSection {
-    padding: 8rem var(--site-margin);
-  }
-  
   .radioContent {
     gap: 3.5rem;
   }
   
   .radioWatch {
-    width: 65%;
-    min-height: 380px;
-  }
-  
-  .radioText {
-    gap: 1.8rem;
+    width: 100%;
+    min-height: 100%;
   }
   
   .radioSubTitle {
@@ -1324,21 +1445,9 @@
 }
 
 @include desktop {
-  .radioSection {
-    padding: 10rem var(--site-margin);
-  }
-  
-  .radioContent {
-    gap: 4rem;
-  }
-  
   .radioWatch {
-    width: 60%;
-    min-height: 400px;
-  }
-  
-  .radioText {
-    gap: 2rem;
+    width: 90%;
+    min-height: 90%;
   }
   
   .radioSubTitle {
@@ -1351,17 +1460,9 @@
 }
 
 @include imac5k {
-  .radioSection {
-    padding: 12rem var(--site-margin);
-  }
-  
-  .radioContent {
-    gap: 4.5rem;
-  }
-  
   .radioWatch {
-    width: 60%;
-    min-height: 500px;
+    width: 100%;
+    min-height: 100%;
   }
   
   .radioText {
@@ -1369,11 +1470,11 @@
   }
   
   .radioSubTitle {
-    font-size: 2.6rem;
+    font-size: 3.7rem;
   }
   
   .radioDescription {
-    font-size: 1.6rem;
+    font-size: 2.6rem;
   }
 }
 
@@ -1381,23 +1482,24 @@
 // 실시간 위험 감지 알림 섹션
 // ===============================
 .alertSection {
-  padding: 8rem var(--site-margin);
   color: $color-light;
   background: $color-dark;
+  margin-bottom: 50rem;
 }
 
 .alertContent {
   display: grid;
   grid-template-columns: 0.45fr 1.55fr;
-  gap: 4rem;
   align-items: center;
   overflow: visible;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .alertWatches {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   position: relative;
 }
 
@@ -1405,12 +1507,13 @@
   position: relative;
   width: 100%;
   margin: 0 auto;
-  aspect-ratio: 1;
-  min-height: 440px;
+  aspect-ratio: 1.2;
+  min-height: 400px;
   transform: translateX(0px) translateY(340px);
   z-index: 2;
   
-  video {
+  video,
+  img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -1421,12 +1524,13 @@
   position: relative;
   width: 100%;
   margin: 0 auto;
-  aspect-ratio: 1;
-  min-height: 440px;
+  aspect-ratio: 1.2;
+  min-height: 400px;
   transform: translateX(280px) translateY(150px);
   z-index: 1;
   
-  video {
+  video,
+  img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -1436,7 +1540,9 @@
 .alertText {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  position: relative;
+  z-index: 2;
+  right: 50px;
 }
 
 .alertSubTitle {
@@ -1444,29 +1550,24 @@
   font-weight: 700;
   font-family: $font-pretendard;
   color: $color-light;
-  margin: 0;
-  letter-spacing: -0.02em;
+  margin-bottom: 5rem;
+  letter-spacing: -0.05em;
 }
 
 .alertDescription {
   font-size: 1.2rem;
   font-weight: 300;
   font-family: $font-pretendard;
-  color: rgba(247, 247, 247, 0.9);
+  color: $color-light;
   line-height: 1.6;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em;
 }
 
-// 실시간 위험 감지 알림 섹션 반응형
+// Alert 섹션 반응형
 @include mobile {
-  .alertSection {
-    padding: 4rem var(--site-margin);
-  }
-  
   .alertContent {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
   
   .alertWatches {
@@ -1480,10 +1581,6 @@
     transform: translateX(0);
   }
   
-  .alertText {
-    gap: 1.5rem;
-  }
-  
   .alertSubTitle {
     font-size: 1.25rem;
   }
@@ -1495,14 +1592,6 @@
 }
 
 @include tablet {
-  .alertSection {
-    padding: 6rem var(--site-margin);
-  }
-  
-  .alertContent {
-    gap: 3rem;
-  }
-  
   .alertWatches {
     gap: 1.8rem;
   }
@@ -1525,10 +1614,6 @@
 }
 
 @include laptop {
-  .alertSection {
-    padding: 8rem var(--site-margin);
-  }
-  
   .alertContent {
     gap: 3.5rem;
   }
@@ -1539,7 +1624,7 @@
   
   .alertWatchTop,
   .alertWatchBottom {
-    min-height: 380px;
+    min-height: 400px;
   }
   
   .alertWatchTop {
@@ -1548,10 +1633,6 @@
   
   .alertWatchBottom {
     transform: translateX(240px) translateY(120px);
-  }
-  
-  .alertText {
-    gap: 1.8rem;
   }
   
   .alertSubTitle {
@@ -1564,33 +1645,17 @@
 }
 
 @include desktop {
-  .alertSection {
-    padding: 10rem var(--site-margin);
-  }
-  
-  .alertContent {
-    gap: 4rem;
-  }
-  
-  .alertWatches {
-    gap: 2rem;
-  }
-  
   .alertWatchTop,
   .alertWatchBottom {
-    min-height: 440px;
+    min-height: 590px;
   }
   
   .alertWatchTop {
-    transform: translateX(0px) translateY(340px);
+    transform: translateX(-60px) translateY(400px);
   }
   
   .alertWatchBottom {
-    transform: translateX(280px) translateY(150px);
-  }
-  
-  .alertText {
-    gap: 2rem;
+    transform: translateX(240px) translateY(250px);
   }
   
   .alertSubTitle {
@@ -1603,40 +1668,37 @@
 }
 
 @include imac5k {
-  .alertSection {
-    padding: 12rem var(--site-margin);
-  }
-  
-  .alertContent {
-    gap: 4.5rem;
-  }
-  
   .alertWatches {
     gap: 2.5rem;
   }
   
   .alertWatchTop,
   .alertWatchBottom {
-    min-height: 550px;
+    min-height: 850px;
   }
   
   .alertWatchTop {
-    transform: translateX(0px) translateY(420px);
+    transform: translateX(50px) translateY(650px);
   }
   
   .alertWatchBottom {
-    transform: translateX(350px) translateY(180px);
-  }
-  
-  .alertText {
-    gap: 2.5rem;
+    transform: translateX(500px) translateY(300px);
   }
   
   .alertSubTitle {
-    font-size: 2.6rem;
+    font-size: 3.6rem;
   }
   
   .alertDescription {
-    font-size: 1.6rem;
+    font-size: 2.6rem;
   }
+}
+
+// ===============================
+// 애니메이션 클래스
+// ===============================
+.animateIn {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }

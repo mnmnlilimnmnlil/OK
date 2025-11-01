@@ -37,6 +37,9 @@
   margin: 0;
   text-align: left;
   padding: 0 var(--site-margin);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   
   h1 {
     font-size: 4rem;
@@ -73,6 +76,9 @@
 .overviewHeader {
   text-align: center;
   margin-bottom: 5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .overviewTitle {
@@ -98,6 +104,9 @@
   gap: 0;
   width: 100%;
   align-items: end;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .cardWrapper {
@@ -235,6 +244,8 @@
 
 .animateIn {
   opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
 }
 
 .grayNumber {
@@ -322,6 +333,9 @@
   
   margin-bottom: 5rem;
   flex-shrink: 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .sectionLabel {
@@ -569,6 +583,9 @@
   margin-bottom: 10rem;
   
   flex-shrink: 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .deviceTitleWrapper {
@@ -700,6 +717,9 @@
   margin-bottom: 10rem;
   
   flex-shrink: 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .personaTitleWrapper {
@@ -740,6 +760,9 @@
   max-width: 90vw; // max-width 증가
   margin: 0 auto;
   margin-top: 10rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   
   // 1행: 1, 2, (빈 공간), 4번 박스
   > :nth-child(1) {
@@ -924,9 +947,16 @@
   color: $color-light;
   line-height: 1.2;
   margin: 0;
-  transform: skew(-6deg);
+  transform: skew(-6deg) translateY(30px);
   align-self: flex-start;
   width: auto;
+  position: relative;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  &.animateIn {
+    transform: skew(-6deg) translateY(0) !important;
+  }
 }
 
 .finalDescription {
@@ -942,6 +972,9 @@
   margin-left: auto;
   margin-top: 0;
   text-align: left;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 // ===============================

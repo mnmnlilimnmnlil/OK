@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./style.module.scss";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 import videoSrc from '../../assets/mp4/mainpage.webm';
 import mainVideoSrc from '../../assets/mp4/mainvideo.webm';
 
@@ -14,6 +15,18 @@ export default function Main() {
   const [collapsedSections, setCollapsedSections] = useState(new Set());
   const [userInteracted, setUserInteracted] = useState(false);
   const hoverTriedRef = useRef(false);
+
+  // 히어로 섹션 옵저버
+  const { ref: heroTextRef, isIntersecting: isHeroTextVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // 섹션 헤더 옵저버
+  const { ref: sectionHeaderRef, isIntersecting: isSectionHeaderVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
 
   useEffect(() => {
     let ticking = false;
@@ -157,7 +170,10 @@ export default function Main() {
           />
         </div>
         
-        <div className={styles.heroText}>
+        <div 
+          ref={heroTextRef}
+          className={`${styles.heroText} ${isHeroTextVisible ? styles.animateIn : ''}`}
+        >
           <h1>
             교정의 새로운 기준을<br />
             설계하는 시스템<br />
@@ -171,7 +187,10 @@ export default function Main() {
       </div>
 
       {/* 섹션 상단 텍스트 */}
-      <div className={styles.sectionHeader}>
+      <div 
+        ref={sectionHeaderRef}
+        className={`${styles.sectionHeader} ${isSectionHeaderVisible ? styles.animateIn : ''}`}
+      >
         <h2 className={styles.sectionMainTitle}>
           우리는 현장을 기록하고,<br />
           사람을 중심에 둔 구조를 설계합니다

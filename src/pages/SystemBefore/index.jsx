@@ -16,8 +16,59 @@ export default function SystemBefore() {
   const location = useLocation();
   const mountToken = useRef(0);
   
+  // 히어로 섹션 옵저버
+  const { ref: heroTextRef, isIntersecting: isHeroTextVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // Overview 섹션 옵저버
+  const { ref: overviewHeaderRef, isIntersecting: isOverviewHeaderVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  const { ref: cardsContainerRef, isIntersecting: isCardsContainerVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
   // 숫자 섹션 옵저버
   const { ref: numbersRef, isIntersecting: isNumbersVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // Digitalization 섹션 옵저버
+  const { ref: digitalizationHeaderRef, isIntersecting: isDigitalizationHeaderVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // Device 섹션 옵저버
+  const { ref: deviceHeaderRef, isIntersecting: isDeviceHeaderVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // Persona 섹션 옵저버
+  const { ref: personaHeaderRef, isIntersecting: isPersonaHeaderVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  const { ref: personaBoxesRef, isIntersecting: isPersonaBoxesVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // Final 섹션 옵저버
+  const { ref: finalTitleRef, isIntersecting: isFinalTitleVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  const { ref: finalDescriptionRef, isIntersecting: isFinalDescriptionVisible } = useIntersectionObserver({
     threshold: 0.3,
     triggerOnce: true
   });
@@ -171,7 +222,10 @@ export default function SystemBefore() {
           />
         </div>
         
-        <div className={styles.heroText}>
+        <div 
+          ref={heroTextRef}
+          className={`${styles.heroText} ${isHeroTextVisible ? styles.animateIn : ''}`}
+        >
           <h1>
             현장과 데이터를<br />
             연결하며<br />
@@ -186,12 +240,18 @@ export default function SystemBefore() {
 
       {/* Overview 섹션 */}
       <section className={styles.overviewSection}>
-        <div className={styles.overviewHeader}>
+        <div 
+          ref={overviewHeaderRef}
+          className={`${styles.overviewHeader} ${isOverviewHeaderVisible ? styles.animateIn : ''}`}
+        >
           <h2 className={styles.overviewTitle}>Overview</h2>
           <h3 className={styles.mainTitle}>대한민국 교정,<br />지금의 방향을 묻다</h3>
         </div>
 
-        <div className={styles.cardsContainer}>
+        <div 
+          ref={cardsContainerRef}
+          className={`${styles.cardsContainer} ${isCardsContainerVisible ? styles.animateIn : ''}`}
+        >
           <div className={`${styles.cardWrapper} ${styles.card02}`}>
             <div className={styles.card}>
               <div className={styles.cardNumber}>02</div>
@@ -242,7 +302,10 @@ export default function SystemBefore() {
 
       {/* Digitalization 섹션 */}
       <section ref={digitalizationSectionRef} className={styles.digitalizationSection}>
-        <div className={styles.digitalizationHeader}>
+        <div 
+          ref={digitalizationHeaderRef}
+          className={`${styles.digitalizationHeader} ${isDigitalizationHeaderVisible ? styles.animateIn : ''}`}
+        >
           <h6 className={styles.sectionLabel}>Digitalization</h6>
           <div className={styles.digitalizationTitleWrapper}>
             <h1 className={styles.digitalizationTitle}>더 이상은<br />선택이 아닌 필수</h1>
@@ -276,7 +339,10 @@ export default function SystemBefore() {
 
       {/* Device 섹션 */}
       <section className={styles.deviceSection}>
-        <div className={styles.deviceHeader}>
+        <div 
+          ref={deviceHeaderRef}
+          className={`${styles.deviceHeader} ${isDeviceHeaderVisible ? styles.animateIn : ''}`}
+        >
           <h6 className={styles.sectionLabel}>Device</h6>
           <div className={styles.deviceTitleWrapper}>
             <h1 className={styles.deviceTitle}>교정 현장부터<br />운영의 중심까지</h1>
@@ -325,7 +391,10 @@ export default function SystemBefore() {
 
       {/* User Persona 섹션 */}
       <section className={styles.personaSection}>
-        <div className={styles.personaHeader}>
+        <div 
+          ref={personaHeaderRef}
+          className={`${styles.personaHeader} ${isPersonaHeaderVisible ? styles.animateIn : ''}`}
+        >
           <h6 className={styles.sectionLabel}>User Persona</h6>
           <div className={styles.personaTitleWrapper}>
             <h1 className={styles.personaTitle}>현장의 데이터로,<br />효율의 해답을 찾다</h1>
@@ -335,7 +404,10 @@ export default function SystemBefore() {
           </div>
         </div>
 
-        <div className={styles.personaBoxes}>
+        <div 
+          ref={personaBoxesRef}
+          className={`${styles.personaBoxes} ${isPersonaBoxesVisible ? styles.animateIn : ''}`}
+        >
           <div 
             className={`${styles.personaBox} ${styles.personaBoxOrange}`}
             onMouseEnter={() => setHoveredPersona('kim')}
@@ -421,12 +493,18 @@ export default function SystemBefore() {
       {/* 마지막 섹션 */}
       <section className={styles.finalSection}>
         <div className={styles.finalContent}>
-          <h1 className={styles.finalTitle}>
-            <ShinyText text="세계를 선도하는" speed={3} /><br />
-            <ShinyText text="대한민국 교정으로" speed={3} /><br />
-            <ShinyText text="- O.K" speed={3} />
+          <h1 
+            ref={finalTitleRef}
+            className={`${styles.finalTitle} ${isFinalTitleVisible ? styles.animateIn : ''}`}
+          >
+            <ShinyText text="세계를 선도하는" speed={5} /><br />
+            <ShinyText text="대한민국 교정으로" speed={5} /><br />
+            <ShinyText text="- O.K" speed={5} />
           </h1>
-          <p className={styles.finalDescription}>
+          <p 
+            ref={finalDescriptionRef}
+            className={`${styles.finalDescription} ${isFinalDescriptionVisible ? styles.animateIn : ''}`}
+          >
             교도관들의 핵심 임무에 집중할 수 있도록 돕는 동시에 현장의 상황과 데<br />이터를 유기적으로 연결해 즉각적 대응과 정확한 기록을 가능하게 해 교<br />정시설 운영 전반의 효율과 신뢰를 높입니다. 이를 통해 대한민국 교정시<br />설을 한 단계 도약시켜 세계가 주목하는 선도적 모델로 자리매김합니다.
           </p>
         </div>
