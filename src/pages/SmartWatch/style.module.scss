@@ -31,13 +31,13 @@
 .heroText {
   position: relative;
   z-index: 2;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0;
   text-align: left;
   padding: 0 var(--site-margin);
   
   h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 600;
     font-family: $font-pretendard;
     line-height: 1.2;
@@ -47,24 +47,23 @@
   }
   
   p {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     line-height: 1.5;
-    color: rgba(247, 247, 247, 0.9);
+    color: $color-light;
     font-family: $font-pretendard;
     margin: 0;
     font-weight: 300;
-    letter-spacing: -0.02em;
-    color: $color-light;
+    letter-spacing: -0.05em;
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
   }
 }
 .pageContainerTitle {
-  font-size: 3rem;
   margin-top: 10rem;
   font-weight: 700;
   font-family: $font-pretendard;
   color: $color-light;
-  text-align: center;border: 1px solid red;
+  text-align: center;
+  
   h3 {
     font-size: 1.5rem;
     font-weight: 700;
@@ -72,8 +71,8 @@
     color: $color-light;
     margin-bottom: 5rem;
     text-align: center;
-    
   }
+  
   h2 {
     font-size: 3rem;
     font-weight: 700;
@@ -81,7 +80,7 @@
     color: $color-light;
     margin: 0;
     text-align: center;
-    
+    line-height: 1.2;
   }
 }
 
@@ -90,7 +89,6 @@
   min-height: 100vh;
   font-size: 3rem;
   color: $color-white;
-  border: 1px solid red;
  
   .pageContainerList {
     display: flex;
@@ -141,13 +139,18 @@
 // 텍스트 섹션
 .pageContainerText {
   text-align: center;
-  border: 1px solid red;
+  padding: 0 var(--site-margin);
+  margin-bottom: 5rem;
+  
   p {
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-family: $font-pretendard;
     color: $color-light;
     margin: 0;
     text-align: center;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -260,9 +263,30 @@
     }
   }
   
+  .pageContainerTitle {
+    margin-top: 5rem;
+    
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    h2 {
+      font-size: 1.75rem;
+    }
+  }
+  
   .pageContainer {
     font-size: 2rem;
     padding: 3rem var(--site-margin);
+  }
+  
+  .pageContainerText {
+    margin-bottom: 3rem;
+    
+    p {
+      font-size: 0.95rem;
+    }
   }
 }
 
@@ -285,9 +309,30 @@
       font-size: 1.3rem;
     }
   }
+  
+  .pageContainerTitle {
+    margin-top: 8rem;
+    
+    h3 {
+      font-size: 1.05rem;
+      margin-bottom: 3rem;
+    }
+    
+    h2 {
+      font-size: 2.2rem;
+    }
+  }
 
   .pageContainer {
     font-size: 3rem;
+  }
+  
+  .pageContainerText {
+    margin-bottom: 4rem;
+    
+    p {
+      font-size: 1.05rem;
+    }
   }
 }
 
@@ -308,18 +353,65 @@
       font-size: 1.4rem;
     }
   }
+  
+  .pageContainerTitle {
+    margin-top: 10rem;
+    
+    h3 {
+      font-size: 1.15rem;
+      margin-bottom: 4rem;
+    }
+    
+    h2 {
+      font-size: 3rem;
+    }
+  }
 
   .pageContainer {
     font-size: 3.5rem;
   }
+  
+  .pageContainerText {
+    margin-bottom: 5rem;
+    
+    p {
+      font-size: 1.5rem;
+    }
+  }
 }
 
 @include desktop {
-  .pageContainerTitle {
-    font-size: 4.2rem;
+  .heroText {
+    h1 {
+      font-size: 5rem;
+    }
+    
+    p {
+      font-size: 2rem;
+    }
   }
+  
+  .pageContainerTitle {
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 5rem;
+    }
+    
+    h2 {
+      font-size: 4.2rem;
+    }
+  }
+  
   .pageContainer {
     font-size: 4rem;
+  }
+  
+  .pageContainerText {
+    margin-bottom: 5.5rem;
+    
+    p {
+      font-size: 2rem;
+    }
   }
 }
 
@@ -347,12 +439,33 @@
     }
     
     p {
-      font-size: 2.2rem;
+      font-size: 2.6rem;
+    }
+  }
+  
+  .pageContainerTitle {
+    margin-top: 12rem;
+    
+    h3 {
+      font-size: 1.6rem;
+      margin-bottom: 6rem;
+    }
+    
+    h2 {
+      font-size: 4.5rem;
     }
   }
 
   .pageContainer {
     font-size: 4.5rem;
+  }
+  
+  .pageContainerText {
+    margin-bottom: 6rem;
+    
+    p {
+      font-size: 2.6rem;
+    }
   }
 }
 
@@ -369,9 +482,17 @@
   font-family: $font-pretendard;
   color: $color-light;
   margin: 0;
-   
+  letter-spacing: 0.05em;
  }
-.carouselTitle { margin: 0; color: $color-light; font-family: $font-pretendard; line-height: 1.2; }
+.carouselTitle { 
+  margin: 0; 
+  color: $color-light; 
+  font-family: $font-pretendard; 
+  line-height: 1.2;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
 
 .carouselPanel {
   position: relative;
@@ -548,24 +669,55 @@
   .carouselVisual { height: clamp(220px, 38vh, 340px); }
   .carouselTextBox { padding: 1rem; min-height: 140px; }
   .panelArrowLeft, .panelArrowRight, .textArrowLeft, .textArrowRight { display: none; }
+  
+  .sectionLabel {
+    font-size: 0.95rem;
+  }
+  
+  .carouselTitle {
+    font-size: 1.75rem;
+  }
 }
 
 @include tablet {
   .carouselSection { padding: 6rem var(--site-margin); }
   .carouselInner { gap: 2rem; grid-template-columns: 0.5fr 0.5fr; }
   .carouselVisual { height: clamp(260px, 42vh, 420px); }
+  
+  .sectionLabel {
+    font-size: 1.05rem;
+  }
+  
+  .carouselTitle {
+    font-size: 2.2rem;
+  }
 }
 
 @include laptop {
-  .carouselSection {  }
   .carouselInner { grid-template-columns: 0.47fr 0.53fr; }
   .carouselVisual { height: clamp(300px, 45vh, 460px); }
+  
+  .sectionLabel {
+    font-size: 1.15rem;
+  }
+  
+  .carouselTitle {
+    font-size: 3rem;
+  }
 }
 
 @include desktop {
   .carouselSection { padding: 10rem var(--site-margin); }
   .carouselInner { grid-template-columns: 0.45fr 0.55fr; }
   .carouselVisual { height: clamp(320px, 42vh, 500px); }
+  
+  .sectionLabel {
+    font-size: 2rem;
+  }
+  
+  .carouselTitle {
+    font-size: 4.2rem;
+  }
 }
 
 @include imac5k {
@@ -573,4 +725,918 @@
   .carouselVisual { height: clamp(420px, 40vh, 0px); }
   .carouselPanel { height: clamp(420px, 100vh, 1000px); }
   
+  .sectionLabel {
+    font-size: 1.6rem;
+  }
+  
+  .carouselTitle {
+    font-size: 4.5rem;
+  }
+}
+
+// ===============================
+// Real-Time Action System 섹션
+// ===============================
+.actionSection {
+  padding: 8rem var(--site-margin);
+  color: $color-light;
+  background: $color-dark;
+}
+
+.actionHeader {
+  margin-bottom: 5rem;
+  text-align: left;
+}
+
+.actionLabel {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.actionTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-family: $font-pretendard;
+  color: $color-light;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.actionContent {
+  display: grid;
+  grid-template-columns: 0.45fr 1.55fr;
+  gap: 4rem;
+  align-items: center;
+  overflow: visible;
+}
+
+.actionWatch {
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+  aspect-ratio: 1.2;
+  min-height: 400px;
+  
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.actionText {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.actionSubTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.actionDescription {
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-family: $font-pretendard;
+  color: rgba(247, 247, 247, 0.9);
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+// Real-Time Action System 섹션 반응형
+@include mobile {
+  .actionSection {
+    padding: 4rem var(--site-margin);
+  }
+  
+  .actionHeader {
+    margin-bottom: 3rem;
+  }
+  
+  .actionLabel {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+  
+  .actionTitle {
+    font-size: 1.75rem;
+  }
+  
+  .actionContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .actionWatch {
+    aspect-ratio: 1.2;
+    min-height: 250px;
+  }
+  
+  .actionText {
+    gap: 1.5rem;
+  }
+  
+  .actionSubTitle {
+    font-size: 1.25rem;
+  }
+  
+  .actionDescription {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+}
+
+@include tablet {
+  .actionSection {
+    padding: 6rem var(--site-margin);
+  }
+  
+  .actionHeader {
+    margin-bottom: 4rem;
+  }
+  
+  .actionLabel {
+    font-size: 1.05rem;
+  }
+  
+  .actionTitle {
+    font-size: 2.2rem;
+  }
+  
+  .actionContent {
+    gap: 3rem;
+  }
+  
+  .actionSubTitle {
+    font-size: 1.6rem;
+  }
+  
+  .actionDescription {
+    font-size: 1.05rem;
+  }
+}
+
+@include laptop {
+  .actionSection {
+    padding: 8rem var(--site-margin);
+  }
+  
+  .actionHeader {
+    margin-bottom: 4.5rem;
+  }
+  
+  .actionLabel {
+    font-size: 1.15rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .actionTitle {
+    font-size: 3.5rem;
+  }
+  
+  .actionContent {
+    gap: 3.5rem;
+  }
+  
+  .actionWatch {
+    width: 65%;
+    min-height: 380px;
+  }
+  
+  .actionText {
+    gap: 1.8rem;
+  }
+  
+  .actionSubTitle {
+    font-size: 1.8rem;
+  }
+  
+  .actionDescription {
+    font-size: 1.15rem;
+  }
+}
+
+@include desktop {
+  .actionSection {
+    padding: 10rem var(--site-margin);
+  }
+  
+  .actionHeader {
+    margin-bottom: 5.5rem;
+  }
+  
+  .actionLabel {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .actionTitle {
+    font-size: 4.2rem;
+  }
+  
+  .actionContent {
+    gap: 4rem;
+  }
+  
+  .actionWatch {
+    width: 60%;
+    min-height: 400px;
+  }
+  
+  .actionText {
+    gap: 2rem;
+  }
+  
+  .actionSubTitle {
+    font-size: 2.5rem;
+  }
+  
+  .actionDescription {
+    font-size: 2rem;
+  }
+}
+
+@include imac5k {
+  .actionSection {
+    padding: 12rem var(--site-margin);
+  }
+  
+  .actionHeader {
+    margin-bottom: 6rem;
+  }
+  
+  .actionLabel {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .actionTitle {
+    font-size: 5.6rem;
+  }
+  
+  .actionContent {
+    gap: 4.5rem;
+  }
+  
+  .actionWatch {
+    width: 60%;
+    min-height: 500px;
+  }
+  
+  .actionText {
+    gap: 2.5rem;
+  }
+  
+  .actionSubTitle {
+    font-size: 2.6rem;
+  }
+  
+  .actionDescription {
+    font-size: 1.6rem;
+  }
+}
+
+// ===============================
+// 긴급 SOS 발신 섹션
+// ===============================
+.sosSection {
+  padding: 8rem var(--site-margin);
+  color: $color-light;
+  background: $color-dark;
+}
+
+.sosContent {
+  display: grid;
+  grid-template-columns: 1.55fr 0.45fr;
+  gap: 4rem;
+  align-items: center;
+  overflow: visible;
+}
+
+.sosText {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sosSubTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.sosDescription {
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-family: $font-pretendard;
+  color: rgba(247, 247, 247, 0.9);
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.sosWatch {
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+  aspect-ratio: 1.2;
+  min-height: 400px;
+  
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// 긴급 SOS 발신 섹션 반응형
+@include mobile {
+  .sosSection {
+    padding: 4rem var(--site-margin);
+  }
+  
+  .sosContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .sosWatch {
+    aspect-ratio: 1.2;
+    min-height: 250px;
+  }
+  
+  .sosText {
+    gap: 1.5rem;
+  }
+  
+  .sosSubTitle {
+    font-size: 1.25rem;
+  }
+  
+  .sosDescription {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+}
+
+@include tablet {
+  .sosSection {
+    padding: 6rem var(--site-margin);
+  }
+  
+  .sosContent {
+    gap: 3rem;
+  }
+  
+  .sosSubTitle {
+    font-size: 1.6rem;
+  }
+  
+  .sosDescription {
+    font-size: 1.05rem;
+  }
+}
+
+@include laptop {
+  .sosSection {
+    padding: 8rem var(--site-margin);
+  }
+  
+  .sosContent {
+    gap: 3.5rem;
+  }
+  
+  .sosWatch {
+    width: 65%;
+    min-height: 380px;
+  }
+  
+  .sosText {
+    gap: 1.8rem;
+  }
+  
+  .sosSubTitle {
+    font-size: 1.8rem;
+  }
+  
+  .sosDescription {
+    font-size: 1.15rem;
+  }
+}
+
+@include desktop {
+  .sosSection {
+    padding: 10rem var(--site-margin);
+  }
+  
+  .sosContent {
+    gap: 4rem;
+  }
+  
+  .sosWatch {
+    width: 60%;
+    min-height: 400px;
+  }
+  
+  .sosText {
+    gap: 2rem;
+  }
+  
+  .sosSubTitle {
+    font-size: 2.5rem;
+  }
+  
+  .sosDescription {
+    font-size: 2rem;
+  }
+}
+
+@include imac5k {
+  .sosSection {
+    padding: 12rem var(--site-margin);
+  }
+  
+  .sosContent {
+    gap: 4.5rem;
+  }
+  
+  .sosWatch {
+    width: 60%;
+    min-height: 500px;
+  }
+  
+  .sosText {
+    gap: 2.5rem;
+  }
+  
+  .sosSubTitle {
+    font-size: 2.6rem;
+  }
+  
+  .sosDescription {
+    font-size: 1.6rem;
+  }
+}
+
+// ===============================
+// 무전 수신 섹션
+// ===============================
+.radioSection {
+  padding: 8rem var(--site-margin);
+  color: $color-light;
+  background: $color-dark;
+}
+
+.radioContent {
+  display: grid;
+  grid-template-columns: 0.45fr 1.55fr;
+  gap: 4rem;
+  align-items: center;
+  overflow: visible;
+}
+
+.radioWatch {
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+  aspect-ratio: 1.2;
+  min-height: 400px;
+  
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.radioText {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.radioSubTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.radioDescription {
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-family: $font-pretendard;
+  color: rgba(247, 247, 247, 0.9);
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+// 무전 수신 섹션 반응형
+@include mobile {
+  .radioSection {
+    padding: 4rem var(--site-margin);
+  }
+  
+  .radioContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .radioWatch {
+    aspect-ratio: 1.2;
+    min-height: 250px;
+  }
+  
+  .radioText {
+    gap: 1.5rem;
+  }
+  
+  .radioSubTitle {
+    font-size: 1.25rem;
+  }
+  
+  .radioDescription {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+}
+
+@include tablet {
+  .radioSection {
+    padding: 6rem var(--site-margin);
+  }
+  
+  .radioContent {
+    gap: 3rem;
+  }
+  
+  .radioSubTitle {
+    font-size: 1.6rem;
+  }
+  
+  .radioDescription {
+    font-size: 1.05rem;
+  }
+}
+
+@include laptop {
+  .radioSection {
+    padding: 8rem var(--site-margin);
+  }
+  
+  .radioContent {
+    gap: 3.5rem;
+  }
+  
+  .radioWatch {
+    width: 65%;
+    min-height: 380px;
+  }
+  
+  .radioText {
+    gap: 1.8rem;
+  }
+  
+  .radioSubTitle {
+    font-size: 1.8rem;
+  }
+  
+  .radioDescription {
+    font-size: 1.15rem;
+  }
+}
+
+@include desktop {
+  .radioSection {
+    padding: 10rem var(--site-margin);
+  }
+  
+  .radioContent {
+    gap: 4rem;
+  }
+  
+  .radioWatch {
+    width: 60%;
+    min-height: 400px;
+  }
+  
+  .radioText {
+    gap: 2rem;
+  }
+  
+  .radioSubTitle {
+    font-size: 2.5rem;
+  }
+  
+  .radioDescription {
+    font-size: 2rem;
+  }
+}
+
+@include imac5k {
+  .radioSection {
+    padding: 12rem var(--site-margin);
+  }
+  
+  .radioContent {
+    gap: 4.5rem;
+  }
+  
+  .radioWatch {
+    width: 60%;
+    min-height: 500px;
+  }
+  
+  .radioText {
+    gap: 2.5rem;
+  }
+  
+  .radioSubTitle {
+    font-size: 2.6rem;
+  }
+  
+  .radioDescription {
+    font-size: 1.6rem;
+  }
+}
+
+// ===============================
+// 실시간 위험 감지 알림 섹션
+// ===============================
+.alertSection {
+  padding: 8rem var(--site-margin);
+  color: $color-light;
+  background: $color-dark;
+}
+
+.alertContent {
+  display: grid;
+  grid-template-columns: 0.45fr 1.55fr;
+  gap: 4rem;
+  align-items: center;
+  overflow: visible;
+}
+
+.alertWatches {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.alertWatchTop {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  min-height: 440px;
+  transform: translateX(0px) translateY(340px);
+  z-index: 2;
+  
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.alertWatchBottom {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  min-height: 440px;
+  transform: translateX(280px) translateY(150px);
+  z-index: 1;
+  
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.alertText {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.alertSubTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: $font-pretendard;
+  color: $color-light;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.alertDescription {
+  font-size: 1.2rem;
+  font-weight: 300;
+  font-family: $font-pretendard;
+  color: rgba(247, 247, 247, 0.9);
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+// 실시간 위험 감지 알림 섹션 반응형
+@include mobile {
+  .alertSection {
+    padding: 4rem var(--site-margin);
+  }
+  
+  .alertContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .alertWatches {
+    gap: 1.5rem;
+  }
+  
+  .alertWatchTop,
+  .alertWatchBottom {
+    aspect-ratio: 1.2;
+    min-height: 200px;
+    transform: translateX(0);
+  }
+  
+  .alertText {
+    gap: 1.5rem;
+  }
+  
+  .alertSubTitle {
+    font-size: 1.25rem;
+  }
+  
+  .alertDescription {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+}
+
+@include tablet {
+  .alertSection {
+    padding: 6rem var(--site-margin);
+  }
+  
+  .alertContent {
+    gap: 3rem;
+  }
+  
+  .alertWatches {
+    gap: 1.8rem;
+  }
+  
+  .alertWatchTop {
+    transform: translateX(-8px);
+  }
+  
+  .alertWatchBottom {
+    transform: translateX(8px);
+  }
+  
+  .alertSubTitle {
+    font-size: 1.6rem;
+  }
+  
+  .alertDescription {
+    font-size: 1.05rem;
+  }
+}
+
+@include laptop {
+  .alertSection {
+    padding: 8rem var(--site-margin);
+  }
+  
+  .alertContent {
+    gap: 3.5rem;
+  }
+  
+  .alertWatches {
+    gap: 1.8rem;
+  }
+  
+  .alertWatchTop,
+  .alertWatchBottom {
+    min-height: 380px;
+  }
+  
+  .alertWatchTop {
+    transform: translateX(-5px) translateY(280px);
+  }
+  
+  .alertWatchBottom {
+    transform: translateX(240px) translateY(120px);
+  }
+  
+  .alertText {
+    gap: 1.8rem;
+  }
+  
+  .alertSubTitle {
+    font-size: 1.8rem;
+  }
+  
+  .alertDescription {
+    font-size: 1.15rem;
+  }
+}
+
+@include desktop {
+  .alertSection {
+    padding: 10rem var(--site-margin);
+  }
+  
+  .alertContent {
+    gap: 4rem;
+  }
+  
+  .alertWatches {
+    gap: 2rem;
+  }
+  
+  .alertWatchTop,
+  .alertWatchBottom {
+    min-height: 440px;
+  }
+  
+  .alertWatchTop {
+    transform: translateX(0px) translateY(340px);
+  }
+  
+  .alertWatchBottom {
+    transform: translateX(280px) translateY(150px);
+  }
+  
+  .alertText {
+    gap: 2rem;
+  }
+  
+  .alertSubTitle {
+    font-size: 2.5rem;
+  }
+  
+  .alertDescription {
+    font-size: 2rem;
+  }
+}
+
+@include imac5k {
+  .alertSection {
+    padding: 12rem var(--site-margin);
+  }
+  
+  .alertContent {
+    gap: 4.5rem;
+  }
+  
+  .alertWatches {
+    gap: 2.5rem;
+  }
+  
+  .alertWatchTop,
+  .alertWatchBottom {
+    min-height: 550px;
+  }
+  
+  .alertWatchTop {
+    transform: translateX(0px) translateY(420px);
+  }
+  
+  .alertWatchBottom {
+    transform: translateX(350px) translateY(180px);
+  }
+  
+  .alertText {
+    gap: 2.5rem;
+  }
+  
+  .alertSubTitle {
+    font-size: 2.6rem;
+  }
+  
+  .alertDescription {
+    font-size: 1.6rem;
+  }
 }

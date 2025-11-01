@@ -5,6 +5,7 @@ import videoSrc from '../../assets/mp4/watch.webm';
 import onboarding from '../../assets/watchimage/bpm.webm';
 import phone from '../../assets/watchimage/bpm2.webm';
 import run from '../../assets/watchimage/stress.webm';
+import nfcVideo from '../../assets/watchimage/NFC.mov';
 import cctvImg from '../../assets/watchimage/cctv.png';
 import temperatureImg from '../../assets/watchimage/temperature.png';
 import { useMemo, useState, useCallback, useRef, useEffect } from 'react';
@@ -75,6 +76,123 @@ export default function SmartWatch() {
           { img: cctvImg,        title: '활동 패턴', desc: '활동량과 이동 패턴 분석으로 이상 행동을 조기 탐지합니다.' },
         ]), [])}
       />
+
+      {/* Real-Time Action System 섹션 */}
+      <section className={styles.actionSection}>
+        <div className={styles.actionHeader}>
+          <div className={styles.actionLabel}>Real-Time Action System</div>
+          <h2 className={styles.actionTitle}>
+            교도관의 손목 위에서
+            <br />
+            시작되는 신속한 대응
+          </h2>
+        </div>
+        
+        <div className={styles.actionContent}>
+          <div className={styles.actionWatch}>
+            <video
+              src={onboarding}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+          
+          <div className={styles.actionText}>
+            <h3 className={styles.actionSubTitle}>NFC 인식</h3>
+            <p className={styles.actionDescription}>
+              수용자의 NFC 카드를 워치를 통해 인식할 수 있으며, 인식된 정보는 태블릿으로 바로 연동됩니다. 
+              이를 통해 교도관은 수용자의 프로파일을 바로 확인할 수 있고, 수용자에 대한 정보를 현장에서 
+              바로 빠르게 접근할 수 있습니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 긴급 SOS 발신 섹션 */}
+      <section className={styles.sosSection}>
+        <div className={styles.sosContent}>
+          <div className={styles.sosText}>
+            <h3 className={styles.sosSubTitle}>긴급 SOS 발신</h3>
+            <p className={styles.sosDescription}>
+              교도관이 직접 5대 교정 사고 유형에서 선택하여 현장에 즉시 알림을 전송할 수 있는 기능입니다. 
+              AI 자동 감지 시스템 외에도 사람이 직접 위험 상황(도주, 폭행, 등)을 선택해 신속히 전달함으로써, 
+              현장의 판단력을 보완하고 대응 속도를 높입니다.
+            </p>
+          </div>
+          
+          <div className={styles.sosWatch}>
+            <video
+              src={onboarding}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 무전 수신 섹션 */}
+      <section className={styles.radioSection}>
+        <div className={styles.radioContent}>
+          <div className={styles.radioWatch}>
+            <video
+              src={onboarding}
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+          </div>
+          
+          <div className={styles.radioText}>
+            <h3 className={styles.radioSubTitle}>무전 수신</h3>
+            <p className={styles.radioDescription}>
+              무전 수신 기능은 긴급 지시나 상황 보고를 실시간으로 전달하는 교신 채널입니다. 
+              교도관은 워치에서 직접 수신 버튼을 통해 지시를 확인하거나 응답할 수 있어, 
+              양손이 자유롭지 않은 상황에서도 빠른 대응이 가능합니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 실시간 위험 감지 알림 섹션 */}
+      <section className={styles.alertSection}>
+        <div className={styles.alertContent}>
+          <div className={styles.alertWatches}>
+            <div className={styles.alertWatchTop}>
+              <video
+                src={onboarding}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+            <div className={styles.alertWatchBottom}>
+              <video
+                src={onboarding}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+          </div>
+          
+          <div className={styles.alertText}>
+            <h3 className={styles.alertSubTitle}>실시간 위험 감지 알림</h3>
+            <p className={styles.alertDescription}>
+              AI 기반 위치 추적 시스템은 무단 이동 패턴을 감지하고 워치로 실시간 알림을 전송합니다. 
+              교도관은 진동과 시각적 신호를 통해 도주 방향을 빠르게 식별하고, 인근 위치 정보를 바탕으로 
+              신속하게 대응할 수 있습니다. 알림은 위험도에 따라 주황색(긴급)과 파란색(경미)으로 분류되어 
+              교도관이 대응 우선순위를 판단할 수 있도록 합니다.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </>
