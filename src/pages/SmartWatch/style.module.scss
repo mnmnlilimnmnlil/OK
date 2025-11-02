@@ -43,7 +43,7 @@
   
   h1 {
     font-size: 4rem;
-    font-weight: 600;
+    font-weight: 700;
     font-family: $font-pretendard;
     line-height: 1.2;
     color: $color-light;
@@ -143,7 +143,7 @@
   h3 {
     font-size: 1.5rem;
     font-weight: 700;
-    font-family: $font-gotham;
+    font-family: $font-pretendard;
     color: $color-light;
     margin-bottom: 5rem;
     text-align: center;
@@ -170,7 +170,7 @@
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
  
   .videoBox {
-    width: 70%;
+    width: 100%;
     aspect-ratio: 16 / 9;
     background: $color-dark;
     border-radius: 1rem;
@@ -607,7 +607,7 @@
   
   h3 {
     font-size: 1.125rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.05em;
   }
 }

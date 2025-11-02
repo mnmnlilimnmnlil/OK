@@ -29,16 +29,25 @@
 }
 
 .heroText {
+  
   position: relative;
   z-index: 2;
   max-width: 1200px;
   margin: 0;
   text-align: left;
   padding: 0 var(--site-margin);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
   
   h1 {
     font-size: 4rem;
-    font-weight: 600;
+    font-weight: 700;
     font-family: $font-pretendard;
     line-height: 1.2;
     color: $color-light;
@@ -61,31 +70,78 @@
 
 
 .KioskSection {
-  margin-bottom: 5rem;;
-
-.KiosktxtSection {
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  margin-bottom: 2rem;
-  position: relative;
-  margin-top: 18rem;
 
-  h6 {
-    font-size: 1.6rem;
-    font-weight: 600;
-    font-family: $font-pretendard;
-    margin-bottom: 3.2rem;
+  .KiosktxtSection {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    margin-top: 18rem;
+    opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+
+    h6 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      font-family: $font-pretendard;
+      margin-bottom: 5rem;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      font-family: $font-pretendard;
+    }
   }
 
-  h1 {
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    font-family: $font-pretendard;
+  .KioskImgContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: none;     // 최대 크기 제한 해제
+    margin: 0 auto;
+    overflow: visible;   // 이미지가 부모 밖으로 나가도 보이게
+    opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0);
   }
-}
+  
+  }
+
+  .KioskImgContainer img {
+    width: 140%;         // 화면보다 1.6배 크게 (원하면 200% 등으로 변경 가능)
+    max-width: none;     // 브라우저 크기에 제한받지 않게
+    height: auto;
+    object-fit: contain;
+    transform-origin: center;
+    transition: transform 0.4s ease;
+  }
 }
 
 .ThreeSection {
+  position: relative;
+  overflow: visible; // 🔥 핵심: 이미지가 잘리지 않게
+  margin-bottom: 70rem;
+
   h6 {
     font-size: 1.6rem;
     font-weight: 700;
@@ -93,6 +149,32 @@
     margin-bottom: 5rem;
     font-family: $font-pretendard;
   }
+
+.ThreeImgContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 115%;
+  max-width: 2200px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 15%) translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: visible; // 혹시 내부에서 잘릴 경우 대비
+
+  &.animateIn {
+    opacity: 0.9;
+    transform: translate(-50%, 15%) translateY(0);
+  }
+}
+
+.ThreeImgContainer img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block; // 여백 방지
+}
 }
 
 .ThreetxtSection {
@@ -100,6 +182,18 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
+  z-index: 2; // 이미지보다 위로
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  
 
   h1 {
     font-size: 3.5rem;
@@ -124,28 +218,89 @@
 
 
 .JointSection {
-  margin-bottom: 5rem;;
+  margin-bottom: 5rem;
 
 .JointtxtSection {
   text-align: center;
   margin-bottom: 2rem;
   position: relative;
   margin-top: 18rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   h6 {
     font-size: 1.6rem;
-    font-weight: 600;
+    font-weight: 700;
     font-family: $font-pretendard;
-    margin-bottom: 3.2rem;
+    margin-bottom: 5rem;
   }
 
   h1 {
     font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
+    margin-bottom: 5rem;
+    font-weight: 700;
     font-family: $font-pretendard;
   }
 }
+
+/* 컨테이너 */
+.JointImgContainer {
+  position: relative;
+  overflow: hidden;      /* 밖으로 안 튀어나가게 */
+  user-select: none;     /* 드래그 중 텍스트 선택 방지 */
+  cursor: grab;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.JointImgContainer:active { cursor: grabbing; }
+
+/* 트랙 */
+.JointTrack {
+  display: flex;
+  will-change: transform;
+  /* gap을 쓰면 -100% 이동 계산이 틀어지므로 사용하지 않음 */
+}
+
+.JointSlide {
+  flex: 0 0 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ✅ 여기서 여백 조절만 하면 됨 */
+.JointSlideInner {
+  padding: 0 20px;        /* 좌우 여백: 원하는 값으로 */
+  box-sizing: border-box; /* 패딩 포함 계산 */
+  height: 100%;
+}
+
+.JointSlideInner img {
+  width: 100%;
+  height: auto;           /* 필요 시 contain/cover로 교체 */
+  display: block;
+  pointer-events: none;
+}
+
+/* 모바일에서 여백 살짝 축소 */
+@media (max-width: 900px) {
+  .JointSlideInner { padding: 0 14px; }
+}
+
+
 }
 
 
@@ -209,6 +364,19 @@
 
 @include desktop {
 
+    .heroText {
+    h1 {
+      font-size: 5rem;
+      margin-bottom: 4rem;
+    }
+    
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  
+
 .KioskSection{
   .KiosktxtSection {
   margin-bottom: 1rem;
@@ -218,7 +386,7 @@
   }
 
   h1 {
-    font-size: 4.2rem;
+    font-size: 4.25rem;
   }
 }
 }
@@ -228,21 +396,42 @@
     font-size: 2rem;
     margin-bottom: 5rem;
   }
+
+    .ThreeImgContainer {
+  top: 50%;
+  left: 50%;
+  width: 112%;
+  max-width: 2000px;
+  
+  transform: translate(-50%, 12%) translateY(30px);
+  
+  &.animateIn {
+    transform: translate(-50%, 12%) translateY(0) !important;
+  }
+  }
+
+
 }
 .ThreetxtSection{
   h1 {
-    font-size: 4.2rem;
+    font-size: 4.25rem;
     margin-bottom: 5.5rem;
   }
   
   p {
     font-size: 2rem;
   }
+
 }
 
 
 
+
+
+
+
 .JointSection{
+  margin-top: 90rem;
   .JointtxtSection {
   margin-bottom: 1rem;
 
@@ -258,13 +447,15 @@
 
 
 
+
+
 }
 
 // 5K 해상도 대응
 @include imac5k {
   .heroText {
     h1 {
-      font-size: 6rem;
+      font-size: 6.625rem;
       margin-bottom: 4rem;
     }
     
@@ -295,6 +486,22 @@
   h6 {
     font-size: 2.6rem;
   }
+
+
+      .ThreeImgContainer {
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  max-width: 2550px;
+  
+  transform: translate(-51%, 12%) translateY(30px);
+  
+  &.animateIn {
+    transform: translate(-51%, 12%) translateY(0) !important;
+  }
+  }
+
+
 }
 
 .ThreetxtSection {
@@ -310,6 +517,7 @@
 
 .JointSection{
 .JointtxtSection{
+  margin-top: 120rem;
   margin-bottom: 1rem;
 
   h6 {

@@ -2,7 +2,7 @@ import Chat from '../../components/Chat';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import styles from './style.module.scss';
-import videoSrc from '../../assets/mp4/ok-e.webm';
+import videoSrc from '../../assets/mp4/ok-ai.webm';
 import videoSrc2 from '../../assets/mp4/aipage.webm';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import smartIcon from '../../assets/icon/smart.svg';

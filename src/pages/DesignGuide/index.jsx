@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import SpotlightCard from '../../components/SpotlightCard';
 import ColorPicker from '../../components/ColorPicker';
+import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import videoSrc from '../../assets/mp4/designguide.mp4';
 import BlackWhite from '../../assets/icon/BlackWhite.svg';
 import ColorRow from '../../assets/icon/ColorRow.svg';
@@ -17,11 +18,81 @@ import KW2 from '../../assets/icon/KW2.svg';
 import KW3 from '../../assets/icon/KW3.svg';
 import KW4 from '../../assets/icon/KW4.svg';
 import KW5 from '../../assets/icon/KW5.svg';
+import KW6 from '../../assets/icon/KW6.svg';
 
 export default function DesignGuide() {
   // 무한 루프(복제 없이) 마키용 레퍼런스
   const kwWrapRef = useRef(null);
   const kwTrackRef = useRef(null);
+
+  // 히어로 섹션 옵저버
+  const { ref: heroTextRef, isIntersecting: isHeroTextVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // Outline 섹션 옵저버
+  const { ref: outlineTitleRef, isIntersecting: isOutlineTitleVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  const { ref: outlineTextRef, isIntersecting: isOutlineTextVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // Spotlight 카드 섹션 옵저버
+  const { ref: spotlightRef, isIntersecting: isSpotlightVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // Design Guide 섹션 옵저버
+  const { ref: designGuideTitleRef, isIntersecting: isDesignGuideTitleVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  const { ref: designGuideTextRef, isIntersecting: isDesignGuideTextVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // 한글 섹션 옵저버
+  const { ref: hanSectionRef, isIntersecting: isHanSectionVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // 영문 섹션 옵저버
+  const { ref: youngSectionRef, isIntersecting: isYoungSectionVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // 컬러 섹션 옵저버
+  const { ref: colorSectionRef, isIntersecting: isColorSectionVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // 로고 섹션 옵저버
+  const { ref: logoSectionRef, isIntersecting: isLogoSectionVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  // 키워드 섹션 옵저버
+  const { ref: keywordTitleRef, isIntersecting: isKeywordTitleVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
+
+  const { ref: keywordTextRef, isIntersecting: isKeywordTextVisible } = useIntersectionObserver({
+    threshold: 0.3,
+    triggerOnce: true
+  });
 
   useEffect(() => {
     const wrap = kwWrapRef.current;
@@ -94,7 +165,10 @@ export default function DesignGuide() {
           />
         </div>
 
-        <div className={styles.heroText}>
+        <div 
+          ref={heroTextRef}
+          className={`${styles.heroText} ${isHeroTextVisible ? styles.animateIn : ''}`}
+        >
           <h1>
             최적의 사용자 경험을<br />제공하는<br />디자인 기준
           </h1>
@@ -108,33 +182,42 @@ export default function DesignGuide() {
 
       <div className={styles.OutlineSection}>
         {/* Outline 섹션 */}
-        <div className={styles.OLTitleSection}>
+        <div 
+          ref={outlineTitleRef}
+          className={`${styles.OLTitleSection} ${isOutlineTitleVisible ? styles.animateIn : ''}`}
+        >
           <h6>Outline</h6>
         </div>
 
         {/* 메인 타이틀 */}
-        <div className={styles.OLtxtSection}>
+        <div 
+          ref={outlineTextRef}
+          className={`${styles.OLtxtSection} ${isOutlineTextVisible ? styles.animateIn : ''}`}
+        >
           <h1>정부기관 인터페이스의 기준,<br />KRDS</h1>
           <p>
             KRDS는 2024년에 배포된 범정부 UI·UX 디자인 시스템으로, 정부 기관 디지털 서비스
             경험 설계가 사용자에<br />게 최적의 경험을 제공하게 한다. O.K는 확장형 스타일을 적용하여, KRDS에서
-            제공하는 디자인 가이드 중<br />일부를 참고하여 ‘O.K’만의 스타일 가이드를 구축했다.
+            제공하는 디자인 가이드 중<br />일부를 참고하여 'O.K'만의 스타일 가이드를 구축했다.
           </p>
         </div>
       </div>
 
-      <div className="spotlight-container">
-        <SpotlightCard borderColor="#3b82f6">
+      <div 
+        ref={spotlightRef}
+        className={`spotlight-container ${isSpotlightVisible ? styles.animateIn : ''}`}
+      >
+        <SpotlightCard borderColor="#001DFF">
           <h3>타이포그래피</h3>
           <p>'Pretendard GOV' 서체를<br/>국문 서체로 사용</p>
         </SpotlightCard>
 
-        <SpotlightCard borderColor="#f97316">
+        <SpotlightCard borderColor="#FF4D00">
           <h3>선명한 모드 (다크모드)</h3>
           <p>정보의 가시성 극대화를 위해<br />선명한 모드 작용</p>
         </SpotlightCard>
 
-        <SpotlightCard borderColor="#3b82f6">
+        <SpotlightCard borderColor="#001DFF">
           <h3>자간/행간</h3>
           <p>자간은 -5%, 행간은 150%<br/>로 적용하여 가독성을 높임</p>
         </SpotlightCard>
@@ -142,17 +225,26 @@ export default function DesignGuide() {
 
       <div className={styles.DesignGuideSection}>
         {/* Design Guide 섹션 */}
-        <div className={styles.DGTitleSection}>
+        <div 
+          ref={designGuideTitleRef}
+          className={`${styles.DGTitleSection} ${isDesignGuideTitleVisible ? styles.animateIn : ''}`}
+        >
           <h6>Design Guide</h6>
         </div>
 
         {/* 설명 타이틀 */}
-        <div className={styles.DGtxtSection}>
+        <div 
+          ref={designGuideTextRef}
+          className={`${styles.DGtxtSection} ${isDesignGuideTextVisible ? styles.animateIn : ''}`}
+        >
           <h1>업무에 필요한<br />최고의 가독성을 위해</h1>
         </div>
       </div>
 
-      <div className={styles.HanSection}>
+      <div 
+        ref={hanSectionRef}
+        className={`${styles.HanSection} ${isHanSectionVisible ? styles.animateIn : ''}`}
+      >
         {/* SVG가 왼쪽 */}
         <div className={styles.fontimage1Container}>
           <img src={GA} alt="가" />
@@ -168,7 +260,10 @@ export default function DesignGuide() {
         </div>
       </div>
 
-      <div className={styles.YoungSection}>
+      <div 
+        ref={youngSectionRef}
+        className={`${styles.YoungSection} ${isYoungSectionVisible ? styles.animateIn : ''}`}
+      >
         {/* 왼쪽: SVG */}
         <div className={styles.fontimage2Container}>
           <img src={Aa} alt="Aa" />
@@ -184,7 +279,10 @@ export default function DesignGuide() {
         </div>
       </div>
 
-      <div className={styles.ColorSection}>
+      <div 
+        ref={colorSectionRef}
+        className={`${styles.ColorSection} ${isColorSectionVisible ? styles.animateIn : ''}`}
+      >
         <div className={styles.BlackWhiteSection}>
           <div className={styles.Black}>
             <p>
@@ -233,7 +331,10 @@ export default function DesignGuide() {
         </div>
       </div>
 
-      <div className={styles.LogoSection}>
+      <div 
+        ref={logoSectionRef}
+        className={`${styles.LogoSection} ${isLogoSectionVisible ? styles.animateIn : ''}`}
+      >
         <p className={styles.topText}>
           교정시설을 상징하는 블루와 오렌지 컬러를 통해 대한민국 교정의 신뢰<br />감과
           명료함을 시각적으로 표현했습니다. 이 두 컬러가 조화롭게 어우러<br />져, 교정이 나아갈 새로운 비전과
@@ -258,12 +359,18 @@ export default function DesignGuide() {
 
       <div className={styles.KeywordSection}>
         {/* Keyword 섹션 */}
-        <div className={styles.KWtitleSction}>
+        <div 
+          ref={keywordTitleRef}
+          className={`${styles.KWtitleSction} ${isKeywordTitleVisible ? styles.animateIn : ''}`}
+        >
           <h6>Keyword</h6>
         </div>
 
         {/* 메인 타이틀 */}
-        <div className={styles.KWtxtSection}>
+        <div 
+          ref={keywordTextRef}
+          className={`${styles.KWtxtSection} ${isKeywordTextVisible ? styles.animateIn : ''}`}
+        >
           <h1>빛과 레이어의 깊이,<br />투명한 구조</h1>
           <p>
             홀로그래픽, 글래스모피즘, 네오퓨처리즘의 3가지 키워드를 중심으로,<br/>
@@ -280,6 +387,7 @@ export default function DesignGuide() {
             <img src={KW3} alt="KW3" />
             <img src={KW4} alt="KW4" />
             <img src={KW5} alt="KW5" />
+            <img src={KW6} alt="KW6" />
           </div>
         </div>
       </div>

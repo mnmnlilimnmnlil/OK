@@ -38,10 +38,13 @@
   margin: 0;
   text-align: left;
   padding: 0 var(--site-margin);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   
   h1 {
     font-size: 4rem;
-    font-weight: 600;
+    font-weight: 700;
     font-family: $font-pretendard;
     line-height: 1.2;
     color: $color-light;
@@ -59,6 +62,23 @@
     letter-spacing: -0.02em;
     color: $color-light;
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.animateIn {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+// Spotlight container 애니메이션 (전역 클래스)
+:global(.spotlight-container) {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  &.animateIn {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -83,6 +103,10 @@
 
 
 .OLTitleSection {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
   h6 {
     font-size: 1.6rem;
     font-weight: 700;
@@ -98,6 +122,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   
   h1 {
     font-size: 3.5rem;
@@ -134,6 +161,10 @@
 
 
 .DGTitleSection {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
   h6 {
     font-size: 1.6rem;
     font-weight: 700;
@@ -149,6 +180,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   
   h1 {
     font-size: 3.5rem;
@@ -174,6 +208,9 @@
   width: 100%;
   margin-top: 5rem;
   margin-bottom: 12rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .fontimage1Container {
@@ -231,7 +268,9 @@
   flex-direction: column;      // 세로로 쌓기
   gap: 0.5rem;
   width: 100%;                 // 화면 전체 기준으로 오른쪽 붙음
-  
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   h3 {
     line-height: 1.3;
@@ -252,6 +291,12 @@
 // 끝
 
 // 컬러 시작
+
+.ColorSection {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
 .BlackWhiteSection {
   display: flex;
@@ -334,6 +379,9 @@
   align-items: flex-end; // p1(=topText)를 오른쪽 끝에 두기
   gap: 2rem; // 위아래 간격
   margin-top: 8rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   .topText {
     max-width: 60%;
@@ -403,6 +451,10 @@
 
 
 .KWtitleSction {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
   h6 {
     font-size: 1.6rem;
     font-weight: 700;
@@ -418,6 +470,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   
   h1 {
     font-size: 3.5rem;
@@ -684,6 +739,7 @@
   p {
     margin-top: 2.7rem;
     font-size: 2rem;
+    font-weight: 700;
     line-height: 1.7;
   }
 }
@@ -760,14 +816,14 @@ img {
 
 
 
-  .OLTitleSection {
+  .KWtitleSction {
   h6 {
     font-size: 2rem;
     margin-bottom: 5rem;
   }
 }
 
-.OLtxtSection{
+.KWtxtSection{
   h1 {
     font-size: 4.2rem;
     margin-bottom: 5.5rem;
