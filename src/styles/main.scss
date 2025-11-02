@@ -19,7 +19,12 @@
     --site-gutter: 20px;
   }
 }
-
+@media (max-width: 1600px) {
+  :root {
+    --site-margin: 40px;
+    --site-gutter: 10px;
+  }
+}
 // 5K 및 초대형 해상도에서는 마진 증가
 @media (min-width: 2560px) {
   :root {

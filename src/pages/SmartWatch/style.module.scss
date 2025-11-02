@@ -266,12 +266,11 @@
     margin-top: 10rem;
     
     h3 {
-      font-size: 1.15rem;
-      margin-bottom: 4rem;
+      font-size: 1.5rem;
     }
     
     h2 {
-      font-size: 3rem;
+      font-size: 3.2rem;
     }
   }
 
@@ -291,7 +290,7 @@
 @include desktop {
   .pageContainerTitle {
     h3 {
-      font-size: 1.5rem;
+      font-size: 2rem;
       margin-bottom: 5rem;
     }
     
@@ -375,7 +374,7 @@
 
 .carouselPanel {
   position: relative;
-  background: rgb(38, 38, 38);
+  background: rgb(51, 51, 51);
   box-shadow: 0 10px 40px rgba(0,0,0,0.5) inset, 0 10px 60px rgba(0,0,0,0.35);
   padding: 1.25rem 2rem;
   max-width: 100%;
@@ -761,16 +760,25 @@
   }
   
   .textWindow {
-    --cardW: clamp(280px, 32vw, 440px);
+    --cardW: clamp(180px, 34vw, 480px);
   }
-  
+  .watchList {
+    margin-left: -100px
+  }
   .carouselTextBox {
     width: var(--cardW);
     max-width: 100%;
     flex-shrink: 0;
-    min-height: 220px;
-    padding: 1rem 1.25rem;
+    min-height: 200px;
+    padding: 1.5rem 1.75rem;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    
+    .textBody {
+      margin-top: auto;
+    }
   }
   
   .carouselTextBoxNext {
@@ -779,7 +787,15 @@
     max-width: none;
     flex-shrink: 0;
     box-sizing: border-box;
-    min-height: 220px;
+    min-height: 200px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    
+    .textBody {
+      margin-top: auto;
+    }
   }
   
   .textNextWrapper {
@@ -789,7 +805,7 @@
   }
   
   .sectionLabel {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
   
   .carouselTitle {
@@ -936,7 +952,7 @@
   .textArrowRight {
     width: 80px;
     height: 80px;
-    font-size: 1.8rem;
+    font-size: 2.1rem;
   }
   
   .textArrowRight {
@@ -949,7 +965,7 @@
   }
   
   .textBody {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
     line-height: 1.5;
   }
   
@@ -1106,7 +1122,7 @@
 
 @include laptop {
   .actionLabel {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
   
   .actionTitle {
@@ -1118,16 +1134,16 @@
   }
   
   .actionWatch {
-    width: 100%;
-    min-height: 100%;
+    width: 90%;
+    min-height: 90%;
   }
   
   .actionSubTitle {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
   }
   
   .actionDescription {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -1156,7 +1172,7 @@
 
 @include imac5k {
   .actionLabel {
-    font-size: 3.7rem;
+    font-size: 2.6rem;
   }
   
   .actionTitle {
@@ -1166,10 +1182,6 @@
   .actionWatch {
     width: 100%;
     height: 100%;
-  }
-  
-  .actionText {
-    gap: 2.5rem;
   }
   
   .actionSubTitle {
@@ -1283,16 +1295,16 @@
   }
   
   .sosWatch {
-    width: 100%;
-    min-height: 100%;
+    width: 90%;
+    min-height: 90%;
   }
   
   .sosSubTitle {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
   }
   
   .sosDescription {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -1317,9 +1329,6 @@
     min-height: 100%;
   }
   
-  .sosText {
-    gap: 2.5rem;
-  }
   
   .sosSubTitle {
     font-size: 3.7rem;
@@ -1431,16 +1440,16 @@
   }
   
   .radioWatch {
-    width: 100%;
-    min-height: 100%;
+    width: 90%;
+    min-height: 90%;
   }
   
   .radioSubTitle {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
   }
   
   .radioDescription {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -1465,9 +1474,6 @@
     min-height: 100%;
   }
   
-  .radioText {
-    gap: 2.5rem;
-  }
   
   .radioSubTitle {
     font-size: 3.7rem;
@@ -1593,7 +1599,7 @@
 
 @include tablet {
   .alertWatches {
-    gap: 1.8rem;
+    gap: 2.1rem;
   }
   
   .alertWatchTop {
@@ -1614,33 +1620,30 @@
 }
 
 @include laptop {
-  .alertContent {
-    gap: 3.5rem;
-  }
   
   .alertWatches {
-    gap: 1.8rem;
+    gap: 2.1rem;
   }
   
   .alertWatchTop,
   .alertWatchBottom {
-    min-height: 400px;
+    min-height: 440px;
   }
   
   .alertWatchTop {
-    transform: translateX(-5px) translateY(280px);
+    transform: translateX(-30px) translateY(320px);
   }
   
   .alertWatchBottom {
-    transform: translateX(240px) translateY(120px);
+    transform: translateX(220px) translateY(180px);
   }
   
   .alertSubTitle {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
   }
   
   .alertDescription {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -1668,9 +1671,6 @@
 }
 
 @include imac5k {
-  .alertWatches {
-    gap: 2.5rem;
-  }
   
   .alertWatchTop,
   .alertWatchBottom {
@@ -1678,7 +1678,7 @@
   }
   
   .alertWatchTop {
-    transform: translateX(50px) translateY(650px);
+    transform: translateX(0px) translateY(600px);
   }
   
   .alertWatchBottom {

@@ -11,6 +11,7 @@ export default function Chat() {
   const [isConnected, setIsConnected] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const messagesEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
   
   // 섹션 옵저버 훅 사용
   const { ref: chatRef, isIntersecting: isChatVisible } = useIntersectionObserver({
@@ -18,13 +19,12 @@ export default function Chat() {
     triggerOnce: true
   });
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
+  // 메시지 변경 시 자동 스크롤
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    if (messagesContainerRef.current && isExpanded) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
+  }, [messages, isLoading, isExpanded]);
 
   // 서버 연결 상태 확인
   useEffect(() => {
@@ -830,7 +830,7 @@ export default function Chat() {
         </div>
       ) : (
         <>
-      <div className={styles['chat__messages']}>
+      <div ref={messagesContainerRef} className={styles['chat__messages']}>
         {messages.length === 0 && (
           <div className={styles['chat__welcome-message']}>
             <div className={styles['welcome-header']}>
@@ -886,8 +886,6 @@ export default function Chat() {
             </div>
           </div>
         )}
-        
-        <div ref={messagesEndRef} />
       </div>
       
       <div className={styles['chat__input']}>

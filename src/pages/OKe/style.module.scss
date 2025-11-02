@@ -552,12 +552,13 @@
 
   video {
     width: 100%;
-    max-width: 800px;
+    max-width: 1200px;
     height: auto;
-    min-height: 400px;
+    min-height: 600px;
     border-radius: 8px;
     display: block;
     margin: 0 auto;
+
   }
   h1 {
     font-size: 3rem;
@@ -745,14 +746,27 @@
   }
   .aiTitleSection {
     h1 {
-      font-size: 5rem;
+      font-size: 4.25rem;
+    }
+    p {
+      font-size: 2rem;
     }
   }
   .aiCard {
-    gap: 8rem;
+    gap: 6rem;
     .cardNumber {
       font-size: 2rem;
     }
+    .cardContent {
+      p {
+        font-size: 1.75rem;
+      }
+      h3 {
+        font-size: 2rem;
+      }
+      
+    }
+    
   }
   .squareIcon,
   .circleIcon {
@@ -783,7 +797,7 @@
   }
   .titleSection {
     h1, h2 {
-      font-size: 5rem;
+      font-size: 4.25rem;
     }
     p {
       font-size: 2rem;
@@ -796,9 +810,11 @@
   .featureItem {
     padding: 2rem;
     gap: 1.5rem;
+    span {
+      font-size: 2rem;
+    }
   }
-  .featureIcon {
-}
+
   .featureIcon {
     width: 80px;
     height: 80px;
@@ -811,7 +827,7 @@
   .okEHeader {
     h6 {
       font-size: 2rem;
-      margin-bottom: 3rem;
+      margin-bottom: 5rem;
     }
     h1 {
       font-size: 8rem;
@@ -820,7 +836,7 @@
   .okImgBox {
     margin-top: 8rem;
     h1 {
-      font-size: 3.625rem;
+      font-size: 3.5rem;
     }
   }
 }
@@ -957,7 +973,7 @@
   }
   
   .okImgBox video {
-    max-width: 1200px;
+    max-width: 1600px;
   }
   
   .okImgBox h1 {

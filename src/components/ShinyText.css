@@ -1,43 +1,12 @@
 .shiny-text {
-  /* 기본 텍스트 컬러를 밝게 유지하면서,
-     밝은 파란 하이라이트 띠가 지나가도록 그라디언트 구성 */
-  background: linear-gradient(
-    120deg,
-    #e0e0e0 20%,      /* 기본 컬러 (밝은 회색) */
-    #f0f0f0 35%,      /* 하이라이트 전환 시작 */
-    #d0d8ff 42%,      /* 하이라이트 전환 (파란색 톤) */
-    #a0b0ff 45%,      /* 하이라이트 전환 (진한 파란색 톤) */
-    #ffffff 47%,      /* 하이라이트 코어 (밝은 흰색) */
-    #0025ff 49.5%,    /* 하이라이트 중앙 (진한 파란색) */
-    #0015ff 50%,      /* 하이라이트 중앙 (프로젝트 메인 파란색) */
-    #0025ff 50.5%,    /* 하이라이트 중앙 (진한 파란색) */
-    #ffffff 53%,      /* 하이라이트 코어 */
-    #a0b0ff 55%,      /* 하이라이트 전환 (진한 파란색 톤) */
-    #d0d8ff 58%,      /* 하이라이트 전환 (파란색 톤) */
-    #f0f0f0 65%,      /* 하이라이트 전환 끝 */
-    #e0e0e0 80%       /* 기본 컬러 복귀 */
-  );
-  
-  background-size: 400% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent; /* 그라디언트만 보이도록 */
+  /* 글자 빛나는 효과만 유지 (파란색 지나가는 효과 제거) */
+  color: #ffffff;
   display: inline-block;
   font-weight: 700;
-  animation: shine var(--animation-duration, 5s) linear infinite;
   filter: 
     drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))
     drop-shadow(0 0 12px rgba(255, 255, 255, 0.2))
     drop-shadow(0 0 18px rgba(255, 255, 255, 0.15));
-}
-
-@keyframes shine {
-  0% {
-    background-position: 200%;
-  }
-  100% {
-    background-position: -200%;
-  }
 }
 
 .shiny-text.disabled {
