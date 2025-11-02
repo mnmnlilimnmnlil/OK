@@ -223,7 +223,7 @@ export default function Main() {
         >
           <div className={styles.sectionNumber}>03</div>
           <h2 className={styles.sectionTitle}>태블릿</h2>
-          <p className={styles.sectionDescription}>현재 교정에 적용된디지털 인프라를 활용하면서, 교도관들의 일일 업무를 태블릿 하나에 담았습니다. 현장대응, 교대 인수인계, 수용자 프로파일, 일정관리, 그리고 스마트 어시턴트인 OK-E까지 하나의 흐름으로 연결됩니다.</p>
+          <p className={styles.sectionDescription}>현재 교정에 적용된 디지털 인프라를 활용하면서, 교도관들의 일일 업무를 태블릿 하나에 담았습니다. 현장대응, 교대 인수인계, 수용자 프로파일, 일정관리, 그리고 스마트 어시턴트인 OK-E까지 하나의 흐름으로 연결됩니다.</p>
         </div>
 
         <div 
@@ -232,7 +232,7 @@ export default function Main() {
         >
           <div className={styles.sectionNumber}>04</div>
           <h2 className={styles.sectionTitle}>스마트 워치</h2>
-          <p className={styles.sectionDescription}>긴급 대처가 필요한 상화응ㄹ 위해 스마트 워치를 활용합니다. 교정 시설 내 SOS부터 교도관들의 건강 모니터링, 무전 수신, 그리고 수용자 NFC 카드 인식까지의 기능을 통해 즉각 대응 솔루션으로의 기능을 수행합니다.</p>
+          <p className={styles.sectionDescription}>긴급 대처가 필요한 상황을 위해 스마트 워치를 활용합니다. 교정 시설 내 SOS부터 교도관들의 건강 모니터링, 무전 수신, 그리고 수용자 NFC 카드 인식까지의 기능을 통해 즉각 대응 솔루션으로의 기능을 수행합니다.</p>
         </div>
 
         <div 
@@ -241,7 +241,7 @@ export default function Main() {
         >
           <div className={styles.sectionNumber}>05</div>
           <h2 className={styles.sectionTitle}>키오스크</h2>
-          <p className={styles.sectionDescription}>교정시설의 각 수용돔 입구에서 교도관 모두를 위한 공용대시보드로 키오스크를 배치합니다. 교정시설의 시각화를 통해 한 눈에 교정의 상황읋 확인할 수 있게 해, 더 효율적이고 정확한 업무를 수행할 수 있는 환경을 제공합니다.</p>
+          <p className={styles.sectionDescription}>교정시설의 각 수용동 입구에서 교도관 모두를 위한 공용대시보드로 키오스크를 배치합니다. 교정시설의 시각화를 통해 한 눈에 교정의 상황읋 확인할 수 있게 해, 더 효율적이고 정확한 업무를 수행할 수 있는 환경을 제공합니다.</p>
         </div>
 
         <div 
@@ -250,7 +250,7 @@ export default function Main() {
         >
           <div className={styles.sectionNumber}>06</div>
           <h2 className={styles.sectionTitle}>OK-E</h2>
-          <p className={styles.sectionDescription}>대한민국의 새롭고 든든한 스마트 어시스턴트인 OK-E는 교정의 매일매일을 돕습니다. OK-E는 하이브리드 AI모델을 사용하여 현장과 데이터를 둘 다 분석하고 예측하며 더 정확하고도 높은 업무 생산성을 도모합니다.</p>
+          <p className={styles.sectionDescription}>대한민국의 새롭고 든든한 스마트 어시스턴트인 OK-E는 교정의 매일매일을 돕습니다. OK-E는 하이브리드 AI 모델을 사용하여 현장과 데이터를 둘 다 분석하고 예측하며 더 정확하고도 높은 업무 생산성을 도모합니다.</p>
         </div>
       </div>
 

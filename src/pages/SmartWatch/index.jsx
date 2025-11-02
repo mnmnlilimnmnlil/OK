@@ -6,7 +6,7 @@ import videoSrc from '../../assets/mp4/watch.webm';
 import bpm from '../../assets/watchimage/bpm.mp4';
 import cctvImg from '../../assets/watchimage/CCTV.png';
 import danger from '../../assets/watchimage/danger.mp4';
-import fuckdongImg from '../../assets/watchimage/폭동.png';
+import fuckdongImg from '../../assets/watchimage/fuckdong.png';
 import nfcVideo from '../../assets/watchimage/NFC.mp4';
 import radio from '../../assets/watchimage/radio.mp4';
 import run from '../../assets/watchimage/Run.mp4';

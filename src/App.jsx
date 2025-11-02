@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-// import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from "./components/ScrollToTop";
 // import Aurora from "./components/Aurora";
 import Intro from "./pages/Intro";
 import Main from "./pages/Main";
@@ -14,8 +14,8 @@ function App() {
   const { pathname } = useLocation();
   return (
     <>
-      {/* <ScrollToTop />
-      {pathname !== "/" && (
+      <ScrollToTop />
+      {/* {pathname !== "/" && (
         <Aurora
           colorStops={["#0015FF", "#0015FF", "#0015FF"]}
           blend={1}

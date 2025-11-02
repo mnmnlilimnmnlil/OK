@@ -1,42 +1,55 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./style.module.scss";
+import introVideo from '../../assets/mp4/three.mp4';
 
 export default function Intro() {
   const navigate = useNavigate();
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
-        navigate("/main");
-      }
+    let scrollTimeout;
+    let hasNavigated = false;
+
+    const navigateToMain = () => {
+      if (hasNavigated) return;
+      hasNavigated = true;
+      navigate("/main");
     };
 
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      if (hasNavigated) return;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(navigateToMain, 100);
+    };
+
+    const handleWheel = (e) => {
+      if (hasNavigated) return;
+      e.preventDefault();
+      navigateToMain();
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("wheel", handleWheel, { passive: false });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleWheel);
+      clearTimeout(scrollTimeout);
     };
   }, [navigate]);
 
   return (
     <div className={styles.introContainer}>
-      {/* 3D 영역 - 다른 작업자가 구현할 예정 */}
-      <div className={styles.threeDContainer}>
-        <div className={styles.placeholder3D}>
-          <h3>123123123</h3>
-          <h2>3D 영역</h2>
-          <p>작업 예정</p>
-        </div>
-      </div>
-      
-      {/* 스크롤 안내 */}
-      <div className={styles.scrollIndicator}>
-        <p>스크롤하며 3D 보기 가장 하단에 도달 시에 main으로 넘어감</p>
-        <div className={styles.scrollArrow}>↓</div>
-      </div>
-      
-      <h1 className={styles.introTitle}>OK</h1>
+      <video
+        ref={videoRef}
+        className={styles.introVideo}
+        src={introVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
     </div>
   );
 }
