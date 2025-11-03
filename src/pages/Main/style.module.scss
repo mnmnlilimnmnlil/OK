@@ -234,6 +234,45 @@
   }
 }
 
+// ===============================
+// 출처 정보 섹션 (고정)
+// ===============================
+.creditSection {
+  background: $color-dark;
+  padding: 0rem var(--site-margin);
+  margin: 0 calc(-1 * var(--site-margin));
+  width: calc(100% + 2 * var(--site-margin));
+  display: flex !important;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+  top:140px;
+  z-index: 30;
+  min-height: 60px;
+  
+  .creditText {
+    font-size: 0.8rem;
+    color: rgba(247, 247, 247, 0.5);
+    font-family: $font-pretendard;
+    font-weight: 300;
+    margin: 0;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    opacity: 1;
+    
+    a {
+      color: rgba(247, 247, 247, 0.5);
+      text-decoration: none;
+      pointer-events: auto;
+      
+      &:hover {
+        color: rgba(247, 247, 247, 0.7);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 .videoOverlay {
   position: absolute;
   top: 50%;
@@ -358,6 +397,17 @@
   // 메인 영상 섹션
   .videoContainer {
     height: 60vh;
+  }
+
+  // 출처 정보 섹션
+  .creditSection {
+    padding: 1.5rem var(--site-margin);
+    
+    .creditText {
+      font-size: 0.65rem;
+      line-height: 1.5;
+      word-break: break-word;
+    }
   }
 
   .videoOverlay {

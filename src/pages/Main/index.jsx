@@ -310,6 +310,16 @@ export default function Main() {
          )}
        </div>
 
+      {/* 출처 정보 */}
+      <div className={styles.creditSection}>
+        <p className={styles.creditText}>
+          SOURCE: <a href="https://www.free-mockup.com/mockups/ipad-tablet-mockup-held-in-hands/" target="_blank" rel="noopener noreferrer">https://www.free-mockup.com/mockups/ipad-tablet-mockup-held-in-hands/</a>
+        </p>
+        <p className={styles.creditText}>
+          본 작품(또는 영상/이미지)은 Midjourney AI를 활용하여 생성된 일부 이미지(또는 영상)를 포함하고 있습니다.
+        </p>
+      </div>
+
       <Footer />
     </>
   );
