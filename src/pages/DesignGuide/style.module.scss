@@ -361,8 +361,8 @@
   width: 100vw;
   height: auto;
   display: block;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding-right: var(--site-margin);
+  padding-left: var(--site-margin);
   margin-bottom: 1.5rem;
 }
 
@@ -370,8 +370,8 @@
   width: 100vw;
   height: auto;
   display: block;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding-right: var(--site-margin);
+  padding-left: var(--site-margin);
 }
 
 .LogoSection {
@@ -404,11 +404,11 @@
       font-size: 1.4rem;
       line-height: 1.7;
       margin-top: 30rem;
-
     }
 
     img {
-      width: 600px; // 원하는 크기 조정
+      width: 100%;
+      max-width: 600px; // 최대 크기 제한
       height: auto;
     }
   }
@@ -583,6 +583,8 @@
 @media (max-width: 768px) {
   .BlackWhiteBox img {
     width: 280px;
+    padding-right: var(--site-margin);
+    padding-left: var(--site-margin);
   }
 
   .ColorRow {
@@ -592,6 +594,8 @@
 
   .ColorRow img {
     width: 200px;
+    padding-right: var(--site-margin);
+    padding-left: var(--site-margin);
   }
 }
 
@@ -631,6 +635,18 @@
     font-size: 2rem;
     padding: 3rem var(--site-margin);
   }
+
+  .LogoSection {
+    .contentRow {
+      flex-direction: column;
+      gap: 2rem;
+      
+      img {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  }
 }
 
 // 태블릿 반응형
@@ -649,24 +665,119 @@
   .pageContainer {
     font-size: 3rem;
   }
+
+  .LogoSection {
+    .contentRow {
+      gap: 2rem;
+      
+      img {
+        max-width: 400px;
+      }
+    }
+  }
 }
 
 // 노트북 반응형
 @include laptop {
   .heroText {
     h1 {
-      font-size: 3.5rem;
+      font-size: 3.8rem;
     }
     
     p {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
     }
   }
+  .OLTitleSection {
+    h6 {
+      font-size: 1.5rem;
+    }
+  }
+  .OLtxtSection {
+    h1 {
+      font-size: 3.5rem;
+    }
+    p {
+      font-size: 1.5rem; // 기본 1.48rem에서 통일
+    }
+  }
+
 
   .pageContainer {
     font-size: 3.5rem;
   }
   
+  .DGTitleSection {
+    h6 {
+      font-size: 1.5rem;
+    }
+  }
+  .DGtxtSection {
+    h1 {
+      font-size: 3.5rem;
+    }
+  }
+  .HantxtSection {
+    h3 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
+  .YoungtxtSection {
+    h3 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1.5rem; // 기본 1.4rem에서 통일
+    }
+  }
+
+  .Black p {
+    font-size: 1.5rem; // 기본 1.4rem에서 통일
+  }
+
+  .White p {
+    font-size: 1.5rem; // 기본 1.4rem에서 통일
+  }
+
+  .Blue p {
+    font-size: 1.5rem; // 기본 1.4rem에서 통일
+  }
+
+  .Orange p {
+    font-size: 1.5rem; // 기본 1.4rem에서 통일
+  }
+
+  .LogoSection {
+    .topText {
+      font-size: 1.5rem; // 기본 1.4rem에서 통일
+    }
+
+    .contentRow {
+      p {
+        font-size: 1.5rem; // 기본 1.4rem에서 통일
+        margin-top: 20rem; // 랩탑에서 30rem에서 20rem으로 조정
+      }
+
+      img {
+        max-width: 500px; // 랩탑에서 이미지 크기 조정
+      }
+    }
+  }
+
+  .KWtitleSction {
+    h6 {
+      font-size: 1.5rem; // 기본 1.6rem에서 통일
+    }
+  }
+
+  .KWtxtSection {
+    p {
+      font-size: 1.5rem; // 기본 1.48rem에서 통일
+    }
+  }
 }
 
 @include desktop {
@@ -809,7 +920,8 @@ p {
 }
 
 img {
-    width: 750px; // 원하는 크기 조정
+    width: 100%;
+    max-width: 750px; // 최대 크기 제한
     height: auto;
   }
 
@@ -1000,11 +1112,12 @@ img {
 
 .LogoSection .contentRow {
   p {
-    margin-top: 45rem;
+    margin-top: 30rem; // 아이맥 5K에서 30rem으로 조정
     font-size: 2.6rem;
   }
   img {
-    width: 1000px; // 원하는 크기 조정
+    width: 100%;
+    max-width: 1200px; // 아이맥 5K에서 크기 확대 (1000px → 1200px)
     height: auto;
   }
 }

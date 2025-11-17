@@ -241,7 +241,7 @@ export default function Main() {
         >
           <div className={styles.sectionNumber}>05</div>
           <h2 className={styles.sectionTitle}>키오스크</h2>
-          <p className={styles.sectionDescription}>교정시설의 각 수용동 입구에서 교도관 모두를 위한 공용대시보드로 키오스크를 배치합니다. 교정시설의 시각화를 통해 한 눈에 교정의 상황읋 확인할 수 있게 해, 더 효율적이고 정확한 업무를 수행할 수 있는 환경을 제공합니다.</p>
+          <p className={styles.sectionDescription}>교정시설의 각 수용동 입구에서 교도관 모두를 위한 공용대시보드로 키오스크를 배치합니다. 교정시설의 시각화를 통해 한 눈에 교정의 상황을 확인할 수 있게 해, 더 효율적이고 정확한 업무를 수행할 수 있는 환경을 제공합니다.</p>
         </div>
 
         <div 

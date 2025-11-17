@@ -519,7 +519,7 @@
     background: linear-gradient(130deg, #ff783e 0%, #FF4D00 50%);
     opacity: 0;
     transition: opacity 0.3s;
-    border-radius: 12px;
+    border-radius: 6px; // 원래 박스의 절반 값 (12px → 6px)
     z-index: 1;
   }
   
@@ -547,7 +547,7 @@
     background: linear-gradient(130deg, #0015ff 0%, #000d99 74%);
     opacity: 0;
     transition: opacity 0.3s;
-    border-radius: 12px;
+    border-radius: 6px; // 원래 박스의 절반 값 (12px → 6px)
     z-index: 1;
   }
 
@@ -804,9 +804,9 @@
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 12px;
     opacity: 0;
     transition: opacity 0.3s ease;
+    border-radius: 6px; // 원래 박스의 절반 값 (12px → 6px)
     z-index: 1;
   }
   
@@ -1394,7 +1394,7 @@
   }
   
   .digitalizationTitle {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
   }
   
   .digitalizationLongDescription {
@@ -1407,7 +1407,7 @@
     min-height: 280px;
     
     p {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       padding: 0 3rem 2.5rem;
     }
   }
@@ -1422,7 +1422,7 @@
   }
 
   .deviceTitle {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
   }
 
   .deviceDescription {
@@ -1468,7 +1468,7 @@
   }
 
   .personaTitle {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     margin-bottom: 3rem;
   }
 
@@ -1506,38 +1506,48 @@
   }
 
   .personaBox {
-    padding: 1.75rem 2.25rem;
+    padding: 1.5rem 2rem;
   }
 
   .personaBoxName {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
   }
 
   .personaBoxHoverText {
-    font-size: 1.3rem;
+    font-size: 1rem;
     margin: 0 0 1rem 0;
   }
 
   .personaBoxDetails {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 1.5rem;
   }
 
   .personaBoxTags {
     span {
-      font-size: 1.3rem;
+      font-size: 1rem;
+    }
+  }
+  .finalContent {
+    h1 {
+      span {
+        font-size:  5rem;
+      }
+    }
+    p {
+      font-size: 1.5rem;
     }
   }
 
   // 히어로 섹션
   .heroText {
     h1 {
-      font-size: 3.5rem;
+      font-size: 3.8rem;
     }
     
     p {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
     }
   }
 
@@ -1552,15 +1562,19 @@
   }
 
   .cardsContainer {
-    grid-template-columns: 1fr 1.35fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .cardTitle {
-    font-size: 2rem;
+    font-size: 2.3rem;
+
   }
 
   .cardDescription {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+  }
+  .cardNumber {
+    font-size: 2.3rem;
   }
 
   // Background 숫자 섹션
@@ -1576,7 +1590,7 @@
       font-size: 1.5rem;
     }
     h2 {
-      font-size: 3.5rem;
+      font-size: 3.2rem;
     }
     p {
       font-size: 1.5rem;
@@ -1595,7 +1609,9 @@
     bottom: 250px;
   }
 
+
 }
+
 
 // 대형 데스크톱
 @include desktop {

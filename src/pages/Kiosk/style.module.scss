@@ -349,11 +349,48 @@
 @include laptop {
   .heroText {
     h1 {
-      font-size: 3.5rem;
+      font-size: 3.8rem;
     }
     
     p {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  .KioskSection {
+    .KiosktxtSection {
+      h6 {
+        font-size: 1.5rem; // 기본 1.6rem에서 통일
+      }
+      h1 {
+        font-size: 3.5rem;
+      }
+    }
+  }
+
+  .ThreeSection {
+    h6 {
+      font-size: 1.5rem; // 기본 1.6rem에서 통일
+    }
+  }
+
+  .ThreetxtSection {
+    h1 {
+      font-size: 3.5rem;
+    }
+    p {
+      font-size: 1.5rem; // 기본 1.48rem에서 통일
+    }
+  }
+
+  .JointSection {
+    .JointtxtSection {
+      h6 {
+        font-size: 1.5rem; // 기본 1.6rem에서 통일
+      }
+      h1 {
+        font-size: 3.5rem;
+      }
     }
   }
 

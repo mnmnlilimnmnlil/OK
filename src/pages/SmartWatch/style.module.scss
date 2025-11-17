@@ -93,11 +93,11 @@
 @include laptop {
   .heroText {
     h1 {
-      font-size: 3.5rem;
+      font-size: 3.8rem;
     }
     
     p {
-      font-size: 1.4rem;
+      font-size: 1.5rem; // 기본 1.5rem에서 통일
     }
   }
 }
@@ -374,7 +374,7 @@
 
 .carouselPanel {
   position: relative;
-  background: rgb(49, 49, 49);
+  background: rgb(50, 50, 50);
   box-shadow: 0 10px 40px rgba(0,0,0,0.5) inset, 0 10px 60px rgba(0,0,0,0.35);
   padding: 1.25rem 2rem;
   max-width: 100%;
@@ -382,6 +382,7 @@
   overflow: hidden;
   --panelH: clamp(320px, 80vh, 640px);
   height: calc(var(--panelH) + 4rem);
+  
 }
 
 .panelArrowLeft,
@@ -456,12 +457,10 @@
 
 .isLeft {
   transform: translateX(-15px) scale(0.7);
-  opacity: 0.6;
 }
 
 .isMid {
   transform: translateX(-100px) scale(0.7);
-  opacity: 0.6;
 }
 
 .isMain {

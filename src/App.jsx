@@ -1,7 +1,6 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 // import Aurora from "./components/Aurora";
-import Intro from "./pages/Intro";
 import Main from "./pages/Main";
 import SystemBefore from "./pages/SystemBefore";
 import DesignGuide from "./pages/DesignGuide";
@@ -24,7 +23,7 @@ function App() {
         />
       )} */}
       <Routes>
-        <Route path="/" element={<Intro />} />
+        <Route path="/" element={<Navigate to="/main" replace />} />
         <Route path="/main" element={<Main />} />
         <Route path="/system-before" element={<SystemBefore />} />
         <Route path="/design-guide" element={<DesignGuide />} />

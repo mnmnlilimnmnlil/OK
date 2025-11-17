@@ -1,8 +1,4 @@
-@mixin desktop {
-  @media (min-width: 1920px) {
-    @content;
-  }
-}
+@use '../styles/mixins' as *;
 
 .card-spotlight {
   width: 20rem;
@@ -84,6 +80,17 @@
   font-weight: 500;
 }
 
+// 랩탑 반응형
+@include laptop {
+  .spotlight-container h3 {
+    font-size: 1.4rem;  // 기본 1.6rem에서 축소
+  }
+
+  .spotlight-container p {
+    font-size: 1.2rem;  // 기본 1.3rem에서 축소
+  }
+}
+
 @include desktop {
   .card-spotlight {
   width: 27rem;
@@ -107,6 +114,35 @@
   padding-left: 1rem;
   padding-top: 0.5rem;
 }
+}
 
+// 아이맥 5K 해상도
+@include imac5k {
+  .card-spotlight {
+    width: 35rem;
+    height: 28rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
 
+  .spotlight-container {
+    gap: 2rem;
+    margin-top: 10rem;
+  }
+
+  .spotlight-container h3 {
+    margin-bottom: 12rem;
+    font-size: 3rem;
+    padding-left: 1.2rem;
+    padding-top: 0.5rem;
+  }
+
+  .spotlight-container p {
+    margin-top: 0;
+    line-height: 1.6;
+    font-size: 2rem;
+    padding-left: 1.2rem;
+    padding-top: 0.5rem;
+  }
 }

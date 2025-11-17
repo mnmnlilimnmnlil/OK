@@ -56,7 +56,7 @@
     font-family: $font-pretendard;
     margin: 0;
     font-weight: 300;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.05em;
     color: $color-light;
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
   }
@@ -118,7 +118,7 @@
     font-family: $font-pretendard;
     margin-bottom: 0;
     font-weight: 300;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.05em;
   }
 } 
 
@@ -264,7 +264,7 @@
     font-family: $font-pretendard;
     margin-bottom: 0;
     font-weight: 300;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.05em;
   }
 }
 
@@ -472,7 +472,7 @@
     font-family: $font-pretendard;
     margin-bottom: 0;
     font-weight: 300;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.05em;
   }
 }
 
@@ -578,8 +578,7 @@
   background: #424242;   
   border-radius: 9999px;  
   width: 4.2rem;
-  margin-top: -4.2rem;
-  margin-left: 40rem;
+  margin: -4.2rem auto 0;
 
   .dot {
     width: 8px;
@@ -660,7 +659,7 @@
     margin: 0;
     flex: 1.05;
     font-weight: 300;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.05em;
     white-space: pre-line;
   }
 }
@@ -748,7 +747,7 @@
     margin: 0;
     flex: 1.05;
     font-weight: 300;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.05em;
     white-space: pre-line;
   }
 }
@@ -1064,7 +1063,7 @@
       margin: 0;
       flex: 0.8;
       font-weight: 300;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.05em;
       white-space: pre-line;
     }
   }
@@ -1087,7 +1086,78 @@
 
 //여기까지 
 
+// 노트북 반응형
+@include laptop {
+  .heroText {
+    h1 {
+      font-size: 3.8rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
 
+  .TBTitleSection {
+    h6 {
+      font-size: 1.5rem; // 기본 1.6rem에서 통일
+    }
+  }
+
+  .TBtxtSection {
+    h1 {
+      font-size: 3.5rem;
+    }
+    p {
+      font-size: 1.5rem; // 기본 1.48rem에서 통일
+    }
+  }
+
+  .UITitleSection {
+    h6 {
+      font-size: 1.5rem; // 기본 1.6rem에서 통일
+    }
+  }
+
+  .UItxtSection {
+    h1 {
+      font-size: 3.5rem;
+    }
+    p {
+      font-size: 1.5rem; // 기본 1.48rem에서 통일
+    }
+  }
+
+  .TransTitleSection {
+    h6 {
+      font-size: 1.5rem; // 기본 1.6rem에서 통일
+    }
+  }
+
+  .TranstxtSection {
+    h1 {
+      font-size: 3.5rem;
+    }
+    p {
+      font-size: 1.5rem; // 기본 1.4rem에서 통일
+    }
+  }
+
+  .SmartSection {
+    .SmartTitleSection {
+      h6 {
+        font-size: 1.5rem; // 기본 1.6rem에서 통일
+      }
+    }
+    .SmarttxtSection {
+      h1 {
+        font-size: 3.5rem;
+      }
+      p {
+        font-size: 1.5rem; // 기본 1.4rem에서 통일
+      }
+    }
+  }
+}
 
 // 데스크탑 
 @include desktop {
@@ -1118,8 +1188,7 @@
 .slide2 .overlay2-2 { top: 70%; left: 78%; width: 35%; }
 
 .ScdDots {
-  margin-top: -4.2rem;
-  margin-left: 52rem;
+  margin: -4.2rem auto 0;
 }
 
 
@@ -1806,8 +1875,7 @@
   gap: 15px;
   width: 6rem;
   height: auto;
-  margin-top: -5.5rem;
-  margin-left: 70rem;
+  margin: -5.5rem auto 0;
 
   .dot {
     width: 13px;

@@ -714,13 +714,71 @@
   }
 }
 @include laptop{
-  
   .heroText {
+    h1 {
+      font-size: 3.8rem;
+    }
+    p {
+      font-size: 1.5rem; // 기본 1.4rem에서 통일
+    }
+  }
+
+  .backgroundSection {
+    h6 {
+      font-size: 1.5rem; // 기본 1.6rem에서 통일
+    }
+  }
+
+  .outlineSection {
+    h6 {
+      font-size: 1.5rem; // 기본 1.6rem에서 통일
+    }
+  }
+
+  .aiTitleSection {
     h1 {
       font-size: 3.5rem;
     }
     p {
-      font-size: 1.4rem;
+      font-size: 1.5rem; // 기본 1.48rem에서 통일
+    }
+  }
+
+  .aiCard {
+    .cardNumber {
+      font-size: 1.5rem;
+    }
+    .cardContent {
+      h3 {
+        font-size: 1.5rem; // 기본 1.6rem에서 통일
+      }
+      p {
+        font-size: 1.5rem; // 기본 1.4rem에서 통일
+      }
+    }
+  }
+
+  .titleSection {
+    h1, h2 {
+      font-size: 3.5rem;
+    }
+    p {
+      font-size: 1.5rem; // 기본 1.53rem에서 통일
+    }
+  }
+
+  .okEHeader {
+    h6 {
+      font-size: 1.5rem; // 기본 1.6rem에서 통일
+    }
+    h1 {
+      font-size: 3.5rem;
+    }
+  }
+
+  .okImgBox {
+    h1 {
+      font-size: 3.5rem;
     }
   }
 }
