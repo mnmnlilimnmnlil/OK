@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 function rgbToHex(r, g, b) {
   const toHex = (v) => v.toString(16).padStart(2, "0");
@@ -26,10 +27,18 @@ export default function ColorPicker({ imgSrc, label }) {
 
   const handleMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    setCursor({ x: e.clientX, y: e.clientY });
+    // 뷰포트 기준 정확한 마우스 위치
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    
+    // 툴팁을 마우스 커서 오른쪽에 배치
+    setCursor({ 
+      x: mouseX + 12,  // 커서에서 12px 오른쪽
+      y: mouseY        // 커서와 같은 높이
+    });
 
-    const relX = e.clientX - rect.left;
-    const relY = e.clientY - rect.top;
+    const relX = mouseX - rect.left;
+    const relY = mouseY - rect.top;
     const scaleX = canvasRef.current.width / rect.width;
     const scaleY = canvasRef.current.height / rect.height;
     const px = Math.floor(relX * scaleX);
@@ -42,58 +51,61 @@ export default function ColorPicker({ imgSrc, label }) {
     } catch (_) {}
   };
 
-  return (
+  const tooltip = hover ? (
     <div
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      onMouseMove={handleMove}
       style={{
-        position: "absolute",
-        inset: 0,
-        cursor: "none",
+        position: "fixed",
+        left: `${cursor.x}px`,
+        top: `${cursor.y}px`,
+        transform: "translateY(-50%)",
+        pointerEvents: "none",
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        zIndex: 9999,
       }}
     >
-      {hover && (
-        <div
-          style={{
-            position: "fixed",
-            left: cursor.x,
-            top: cursor.y,
-            transform: "translate(-50%, -50%)",
-            pointerEvents: "none",
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            zIndex: 9999,
-          }}
-        >
-          {/* 색상 칩 */}
-          <div
-            style={{
-              width: 30,
-              height: 30,
-              borderRadius: "50%",
-              border: "2px solid rgba(0,0,0,0.3)",
-              background: hex,
-            }}
-          />
-          {/* 텍스트 라벨 */}
-          <div
-            style={{
-              width: 110,
-              height: 35,
-              background: "rgba(0,0,0,0.65)",
-              color: "#fff",
-              padding: "4px 8px",
-              borderRadius: 6,
-              fontSize: 18,
-              whiteSpace: "nowrap",
-            }}
-          >
-            {label}: {hex}
-          </div>
-        </div>
-      )}
+      {/* 색상 칩 */}
+      <div
+        style={{
+          width: 30,
+          height: 30,
+          borderRadius: "50%",
+          border: "2px solid rgba(0,0,0,0.3)",
+          background: hex,
+        }}
+      />
+      {/* 텍스트 라벨 */}
+      <div
+        style={{
+          width: 110,
+          height: 35,
+          background: "rgba(0,0,0,0.65)",
+          color: "#fff",
+          padding: "4px 8px",
+          borderRadius: 6,
+          fontSize: 18,
+          whiteSpace: "nowrap",
+        }}
+      >
+        {label}: {hex}
+      </div>
     </div>
+  ) : null;
+
+  return (
+    <>
+      <div
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+        onMouseMove={handleMove}
+        style={{
+          position: "absolute",
+          inset: 0,
+          cursor: "none",
+        }}
+      />
+      {typeof document !== "undefined" && createPortal(tooltip, document.body)}
+    </>
   );
 }
