@@ -12,7 +12,7 @@ import radio from '../../assets/watchimage/radio.webm';
 import run from '../../assets/watchimage/Run.webm';
 import stress from '../../assets/watchimage/stress.webm';
 import temper from '../../assets/watchimage/temper.webm';
-import threeW from '../../assets/watchimage/threeW.mp4';
+import threeW from '../../assets/watchimage/threeW.webm';
 import { useMemo, useState, useCallback, useRef, useEffect } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';

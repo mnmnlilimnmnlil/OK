@@ -57,8 +57,8 @@ export default function ColorPicker({ imgSrc, label }) {
         <div
           style={{
             position: "fixed",
-            left: cursor.x + 20,
-            top: cursor.y + 20,
+            left: cursor.x,
+            top: cursor.y,
             transform: "translate(-50%, -50%)",
             pointerEvents: "none",
             display: "flex",

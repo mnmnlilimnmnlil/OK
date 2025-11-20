@@ -27,9 +27,9 @@ import ovC from '../../assets/icon/overlayC.svg';
 
 import iv1 from '../../assets/mp4/inmate1.webm';
 import iv2 from '../../assets/mp4/inmate2.webm';
-import iv3 from '../../assets/mp4/inmate3.mp4';
+import iv3 from '../../assets/mp4/inmate3.webm';
 import iv4 from '../../assets/mp4/inmate4.webm';
-import iv5 from '../../assets/mp4/inmate5.mp4';
+import iv5 from '../../assets/mp4/inmate5.webm';
 import iv6 from '../../assets/mp4/inmate6.webm';
 import iv7 from '../../assets/mp4/inmate7.webm';
 
